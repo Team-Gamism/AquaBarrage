@@ -5,6 +5,7 @@ public class BoatController : MonoBehaviour
 {
     [SerializeField] private float maxSpeed = 5f;
     [SerializeField] private float speedUp = 1f;
+    [SerializeField] private float speedDown = 2f;
     private Rigidbody rb;
     private float curSpeed = 0f;
 
@@ -13,30 +14,31 @@ public class BoatController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    public void OnMove(InputAction.CallbackContext context)
+    public void OnMove(InputValue value)
     {
-        Debug.Log("Boat!");
+        Vector2 input = value.Get<Vector2>();
 
-        float input = context.ReadValue<Vector2>().x;
-
-        if (input != 0)
+        if (input.x != 0)
         {
-            float speed = maxSpeed * -input;
+            float speed = maxSpeed * input.x;
             curSpeed = Mathf.MoveTowards(curSpeed, speed, speedUp * Time.deltaTime);
-            rb.velocity = new Vector3(curSpeed, rb.velocity.y, 0);
-            Flip(input);
         }
         else
         {
-            curSpeed = Mathf.MoveTowards(curSpeed, 0, speedUp * Time.deltaTime);
-            rb.velocity = new Vector3(curSpeed, rb.velocity.y, 0);
+            curSpeed = 0f;
+        }
+        rb.velocity = new Vector3(curSpeed, rb.velocity.y, 0);
+
+        if (input.x != 0)
+        {
+            Flip(input.x);
         }
     }
 
     private void Flip(float dir)
     {
         Vector3 scale = transform.localScale;
-        scale.x = Mathf.Abs(scale.x) * Mathf.Sign(dir);
+        scale.x = dir > 0 ? -Mathf.Abs(scale.x) : Mathf.Abs(scale.x);
         transform.localScale = scale;
     }
 }
