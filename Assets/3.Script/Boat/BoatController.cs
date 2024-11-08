@@ -18,23 +18,19 @@ public class BoatController : MonoBehaviour
     public void OnMove(InputValue value)
     {
         Vector2 input = value.Get<Vector2>();
-        Debug.Log(input);
 
         if (input.x != 0)
         {
             float speed = maxSpeed * input.x;
             curSpeed = Mathf.MoveTowards(curSpeed, speed, speedUp * Time.deltaTime);
+
+            Flip(input.x);
         }
         else
         {
             curSpeed = 0f;
         }
         rb.velocity = new Vector3(curSpeed, rb.velocity.y, 0);
-
-        if (input.x != 0)
-        {
-            Flip(input.x);
-        }
     }
 
     private void Flip(float dir)
