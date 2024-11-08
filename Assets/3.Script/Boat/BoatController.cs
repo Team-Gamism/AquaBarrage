@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,7 +7,6 @@ public class BoatController : MonoBehaviour
 {
     [SerializeField] private float maxSpeed = 5f;
     [SerializeField] private float speedUp = 1f;
-    [SerializeField] private float speedDown = 2f;
     private Rigidbody rb;
     private float curSpeed = 0f;
 
@@ -17,6 +18,7 @@ public class BoatController : MonoBehaviour
     public void OnMove(InputValue value)
     {
         Vector2 input = value.Get<Vector2>();
+        Debug.Log(input);
 
         if (input.x != 0)
         {
