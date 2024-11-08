@@ -1,18 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class FishingRodController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void OnCast(InputAction.CallbackContext context)
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
