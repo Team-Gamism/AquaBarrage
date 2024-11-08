@@ -7,34 +7,41 @@ public class BoatController : MonoBehaviour
 {
     [SerializeField] private float maxSpeed = 5f;
     [SerializeField] private float speedUp = 1f;
+    [SerializeField] private float speedDown = 2f;
     private Rigidbody rb;
     private float curSpeed = 0f;
+    private float targetSpeed = 0f;
 
-    void Start()
+    private void Start()
     {
         rb = GetComponent<Rigidbody>();
+    }
+
+    private void Update()
+    {
+        curSpeed = Mathf.MoveTowards(curSpeed, targetSpeed, (targetSpeed == 0 ? speedDown : speedUp) * Time.deltaTime);
+        rb.velocity = new Vector3(curSpeed, rb.velocity.y, 0);
     }
 
     public void OnMove(InputValue value)
     {
         Vector2 input = value.Get<Vector2>();
+        float dir = input.x;
 
-        if (input.x != 0)
+        if (dir != 0)
         {
-            float speed = maxSpeed * input.x;
-            curSpeed = Mathf.MoveTowards(curSpeed, speed, speedUp * Time.deltaTime);
-
-            Flip(input.x);
+            targetSpeed = maxSpeed * dir;
+            Flip(dir);
         }
         else
         {
-            curSpeed = 0f;
+            targetSpeed = 0;
         }
-        rb.velocity = new Vector3(curSpeed, rb.velocity.y, 0);
     }
 
     private void Flip(float dir)
     {
+        if (dir == 0) return;
         Vector3 scale = transform.localScale;
         scale.x = dir > 0 ? -Mathf.Abs(scale.x) : Mathf.Abs(scale.x);
         transform.localScale = scale;
