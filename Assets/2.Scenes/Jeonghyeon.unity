@@ -189,12 +189,52 @@ MonoBehaviour:
   m_ControlsChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-  m_ActionEvents: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e41dfe5b-14e7-4dcf-8990-89d35b91b956
+    m_ActionName: Boat/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f2b1966f-5398-4ab2-b63b-b22bd7903ca9
+    m_ActionName: Boat/Cast[/Keyboard/c]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Boat
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!1 &575823832
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 575823833}
+  m_Layer: 0
+  m_Name: RightShoulderRotation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &575823833
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 575823832}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.85217017, y: 0, z: 0, w: 0.5232647}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 9066998207290466357}
+  m_Father: {fileID: 2412494255962838086}
+  m_LocalEulerAnglesHint: {x: -116.897, y: 0, z: 0}
 --- !u!1 &1195853235
 GameObject:
   m_ObjectHideFlags: 0
@@ -1182,7 +1222,7 @@ Transform:
   m_LocalScale: {x: 1.0000001, y: 1, z: 0.9999998}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 9066998207290466357}
+  - {fileID: 575823833}
   m_Father: {fileID: 4474901015332328112}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2725162523488195545
@@ -1326,6 +1366,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c48b5c92d5ce24524b420c79217982d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rightShoulderTransform: {fileID: 575823833}
+  rotation: 30
+  speed: 100
+  resetSpeed: 300
+  waitTime: 1
 --- !u!4 &3565544563469237701
 Transform:
   m_ObjectHideFlags: 0
@@ -2928,13 +2973,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 809847022099790978}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.02613266, y: -0.2939557, z: 0.13509218, w: 0.94586325}
-  m_LocalPosition: {x: 0.0000000030267984, y: 0.10204695, z: 0.00000004800677}
-  m_LocalScale: {x: 1.0000001, y: 0.9999997, z: 1}
+  m_LocalRotation: {x: 0.81971073, y: -0.26893812, z: -0.1798114, w: 0.4726673}
+  m_LocalPosition: {x: 0, y: -0.046164915, z: 0.0910076}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6189421955274590597}
-  m_Father: {fileID: 2412494255962838086}
+  m_Father: {fileID: 575823833}
   m_LocalEulerAnglesHint: {x: 7.404, y: -33.617, z: 14.017}
 --- !u!4 &9084458182702452380
 Transform:
