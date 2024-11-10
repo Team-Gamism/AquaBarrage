@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -21,25 +22,18 @@ public class GameManager : MonoBehaviour
 
     public int money;
 
-    public Stages stageData;
+    public int stageData;
 
     public string playerName;
 
-    public int rankLength = 0;
+    public List<PlayerData> playerDataList = new List<PlayerData>();
 
-    public enum Stages
-    {
-        Stage1,
-        Stage2,
-        Stage3,
-        Stage4,
-        Stage5
-    }
 
-    void InitData()
+    public void InitData()
     {
         money = 0;
-        stageData = Stages.Stage1;
+        stageData = 1;
+        playerName = "";
     }
 
     public void EndGame()
@@ -52,15 +46,48 @@ public class GameManager : MonoBehaviour
         stageData++;
     }
 
-    void LoadData()
+    public class PlayerData
     {
-        rankLength = PlayerPrefs.GetInt("RankLength");
-        stageData = (Stages)PlayerPrefs.GetInt("StageData");
+        public string playerName;
+        public int stageData;
     }
 
-    void SaveData()
+    public void LoadData()
     {
-        PlayerPrefs.SetInt("RankLength",rankLength++);
-        PlayerPrefs.SetInt("StageData", (int)stageData);
+        if (PlayerPrefs.HasKey("RankLength"))
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                playerDataList.Add(new PlayerData());
+                playerDataList[i].stageData =  PlayerPrefs.GetInt($"StageData{i}");
+                playerDataList[i].playerName = PlayerPrefs.GetString($"NameData{i}");
+            }
+        }
+        else
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                playerDataList.Add(new PlayerData());
+                playerDataList[i].stageData = 0;
+                playerDataList[i].playerName = "--";
+            }
+        }
     }
+
+    public void AddData()
+    {
+        if (playerDataList[4].stageData < stageData)
+        {
+            playerDataList[4].stageData = stageData;
+            playerDataList[4].playerName = playerName;
+            SortData();
+        }
+    }
+
+    public void SortData()
+    {
+        playerDataList = playerDataList.OrderByDescending(obj => obj.stageData).ToList();
+    }
+
+    
 }
