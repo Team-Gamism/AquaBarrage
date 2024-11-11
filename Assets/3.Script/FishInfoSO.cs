@@ -9,4 +9,5 @@ public class FishInfoSO : ScriptableObject
     public string fishName;
     public float speed;
     public float weight;
+    public float attackCoolTime;
 }

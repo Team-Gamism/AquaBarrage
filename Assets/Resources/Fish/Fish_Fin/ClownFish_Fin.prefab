@@ -13,7 +13,9 @@ GameObject:
   - component: {fileID: 7703905738403423149}
   - component: {fileID: 7820102143291489578}
   - component: {fileID: 5930797337143378286}
-  - component: {fileID: 4266753123437438653}
+  - component: {fileID: 4432451466293012654}
+  - component: {fileID: -5170566434274803400}
+  - component: {fileID: 7441484703044338250}
   m_Layer: 0
   m_Name: ClownFish_Fin
   m_TagString: Untagged
@@ -29,13 +31,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1554914872145350523}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.13555384, y: 0.6939922, z: -0.13555384, w: 0.6939922}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: -22.104}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7595235683883299100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1888,8 +1890,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1554914872145350523}
   m_Mesh: {fileID: 0}
---- !u!64 &4266753123437438653
-MeshCollider:
+--- !u!65 &4432451466293012654
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1903,10 +1905,49 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  serializedVersion: 3
+  m_Size: {x: 0.100000024, y: 0.060000002, z: 0.00999999}
+  m_Center: {x: 0.36754298, y: 0.2690546, z: 0.21024314}
+--- !u!54 &-5170566434274803400
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554914872145350523}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &7441484703044338250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554914872145350523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0df85031dd2b8c429d3d2bc9b3e0be8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3

@@ -1,0 +1,12 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Carp : Fish
+{
+    protected override void Attack()
+    {
+        int n = Random.Range(0, 2);
+        (Instantiate(Resources.Load($"Fish/Fish_Fin/{fishInfo.fishName}_Fin{n+1}"), bulletPoints[n]) as GameObject).transform.parent = null;
+    }
+}

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad0002365fbf0940b1c2a8a824b712e, type: 3}
   m_Name: FishStat - Carp
   m_EditorClassIdentifier: 
-  fishName: TestFish
+  fishName: Carp
   speed: 2.5
   weight: 10
+  attackCoolTime: 3
