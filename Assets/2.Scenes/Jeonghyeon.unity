@@ -1371,8 +1371,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rightShoulderTransform: {fileID: 575823833}
   rotation: 30
-  speed: 100
-  resetSpeed: 300
+  speed: 250
+  resetSpeed: 500
   waitTime: 1
   isCasting: 0
 --- !u!4 &3565544563469237701
