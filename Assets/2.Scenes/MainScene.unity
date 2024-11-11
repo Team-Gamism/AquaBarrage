@@ -1147,7 +1147,7 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: 0.009364955, y: 0.7039977, z: 0.00928827, w: -0.71007985}
-  m_LocalPosition: {x: 635.0482, y: 0.18195152, z: -2.5306635}
+  m_LocalPosition: {x: 621.7, y: -10.2, z: -2.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1349,7 +1349,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 154e597fc5ec0654faa138b0fe87861f, type: 2}
+  - {fileID: 2100000, guid: 2e1564353e9a7564e96a3f3053189342, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1501,7 +1501,6 @@ MonoBehaviour:
   money: 0
   stageData: 0
   playerName: 
-  rankLength: 0
 --- !u!4 &1401499473
 Transform:
   m_ObjectHideFlags: 0
