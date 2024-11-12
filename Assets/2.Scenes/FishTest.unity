@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17905185, g: 0.21854378, b: 0.27339187, a: 1}
+  m_IndirectSpecularColor: {r: 0.17905162, g: 0.21854368, b: 0.27339092, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -363,7 +363,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4979357293161310471, guid: ce7620e4c0d92c74ba2a37b5f82b2c36, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -990,6 +990,10 @@ PrefabInstance:
     - target: {fileID: 8433227713108293245, guid: bb9267ee7079fd44bab13340eb980ebd, type: 3}
       propertyPath: m_Name
       value: Carp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8433227713108293245, guid: bb9267ee7079fd44bab13340eb980ebd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8589000861289018325, guid: bb9267ee7079fd44bab13340eb980ebd, type: 3}
       propertyPath: m_Mesh
