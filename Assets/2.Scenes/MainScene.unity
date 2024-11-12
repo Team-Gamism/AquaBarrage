@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.08014171, g: 0.09952094, b: 0.3007938, a: 1}
+  m_IndirectSpecularColor: {r: 0.08057078, g: 0.099952675, b: 0.3012178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -457,7 +457,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8538bd626cb3e80478f62e319f75e337, type: 2}
+  - {fileID: 2100000, guid: 7cd1461727433f14387ce29c55c4d554, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -495,13 +495,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 155825725}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -28, y: -2, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0.036768958, w: 0.9993238}
+  m_LocalPosition: {x: 236, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -4.214}
 --- !u!1 &206280712
 GameObject:
   m_ObjectHideFlags: 0
@@ -1184,6 +1184,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moneyText: {fileID: 0}
+  engineLevelText: {fileID: 0}
+  fishLevelText: {fileID: 0}
+  rillLevelText: {fileID: 0}
+  boatHpText: {fileID: 0}
+  engineExpenseText: {fileID: 0}
+  fishExpenseText: {fileID: 0}
+  rillExpenseText: {fileID: 0}
+  boatExpenseText: {fileID: 0}
+  storeSO_Fish: {fileID: 0}
+  storeSO_Engine: {fileID: 0}
+  storeSO_Rill: {fileID: 0}
 --- !u!1 &519827791
 GameObject:
   m_ObjectHideFlags: 0
@@ -1404,7 +1415,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
+  m_LocalRotation: {x: 0.40821832, y: -0.23456964, z: 0.109381735, w: 0.87542593}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2162,6 +2173,9 @@ MonoBehaviour:
   money: 0
   stageData: 0
   playerName: 
+  engineLevel: 0
+  rillLevel: 0
+  fishLevel: 0
 --- !u!4 &1401499473
 Transform:
   m_ObjectHideFlags: 0

@@ -18,6 +18,9 @@ public class UI_Main : MonoBehaviour
         if (nameText.text != "")
         {
             GameManager.Instance.InitData();
+            GameManager.Instance.playerName = nameText.text;
+
+            SceneManager.LoadScene("GameScene");
         }
     }
 
