@@ -10,6 +10,8 @@ public class Fin : MonoBehaviour
 
     private void Awake()
     {
+        transform.parent = null;
+
         rigid = GetComponent<Rigidbody>();
         Destroy(gameObject, 6f);
 
@@ -20,8 +22,6 @@ public class Fin : MonoBehaviour
     {
         rigid.velocity = transform.up * speed;
         rigid.angularVelocity = Vector3.zero;
-
-        transform.rotation = Quaternion.Euler(0f, 0f, transform.rotation.eulerAngles.z);
     }
 
     protected virtual IEnumerator Effect()

@@ -44,6 +44,8 @@ public class Fish : MonoBehaviour
     private void Move()
     {
         transform.Translate((fish_Direction == Fish_Direction.left ? 1 : -1) * speed * transform.right / 2 * Time.deltaTime);
+
+        transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
     }
 
     private void Rotate()

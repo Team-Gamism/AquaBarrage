@@ -11,7 +11,7 @@ public class ClownFish_Fin : Fin
         {
             for (int j = 0; j < 10; j++)
             {
-                transform.localScale = Vector3.Lerp(transform.localScale, Vector3.one * (0.1f * i), 0.25f);
+                transform.localScale = Vector3.Lerp(transform.localScale, Vector3.one * 5 * (0.1f * i), 0.25f);
                 yield return new WaitForSeconds(0.0005f);
             }
         }
