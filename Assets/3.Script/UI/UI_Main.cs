@@ -24,6 +24,11 @@ public class UI_Main : MonoBehaviour
         }
     }
 
+    public void ClickHelp()
+    {
+        SceneManager.LoadScene("HelpScene");
+    }
+
     public void ClickRank()
     {
         SceneManager.LoadScene("RankScene");
