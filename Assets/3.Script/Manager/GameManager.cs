@@ -29,11 +29,21 @@ public class GameManager : MonoBehaviour
     public List<PlayerData> playerDataList = new List<PlayerData>();
 
 
+    #region 플레이어 데이터
+    public int engineLevel;
+    public int rillLevel;
+    public int fishLevel;
+    #endregion
+
+
     public void InitData()
     {
         money = 0;
         stageData = 1;
         playerName = "";
+        engineLevel = 0;
+        fishLevel = 0;
+        rillLevel = 0;
     }
 
     public void EndGame()
