@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Fish : MonoBehaviour
 {
-    public FishInfoSO fishInfo;
+    public FishStatSO fishStat;
 
     public Transform[] bulletPoints;
 
@@ -53,9 +53,7 @@ public class Fish : MonoBehaviour
         transform.rotation = Quaternion.Euler(new Vector3(
             Mathf.Lerp(transform.rotation.eulerAngles.x >= 180 ?
             transform.rotation.eulerAngles.x - 360 : transform.rotation.eulerAngles.x,
-            turnVecX, Time.deltaTime * 1.5f) + (fish_Direction == Fish_Direction.left ? 0 : 180), -90, 0));
-
-        transform.rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, 0f);
+            turnVecX, Time.deltaTime*Time.deltaTime) - (fish_Direction == Fish_Direction.left ? 0 : 180), -90f, fish_Direction == Fish_Direction.left ? 0 : -180));
 
     }
 
@@ -98,16 +96,22 @@ public class Fish : MonoBehaviour
 
     void Init()
     {
-        fishName = fishInfo.fishName;
-        speed = fishInfo.speed;
-        weight = fishInfo.weight;
-        attackCoolTime = fishInfo.attackCoolTime;
+        fishName = fishStat.fishName;
+        speed = fishStat.speed;
+        weight = fishStat.weight;
+        attackCoolTime = fishStat.attackCoolTime;
+
+        if(fish_Direction == Fish_Direction.right)
+        {
+            transform.rotation = Quaternion.Euler(new Vector3(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, -transform.rotation.eulerAngles.z));
+        }
     }
 
-    private void OnDrawGizmos()
+    private void OnTriggerEnter(Collider other)
     {
-        Gizmos.color = Color.red;
-
-        Gizmos.DrawRay(transform.position, (fish_Direction == Fish_Direction.left ? 1 : -1) * transform.forward * 2f);
+        if(other.tag == "Deleter")
+        {
+            Destroy(gameObject);
+        }
     }
 }

@@ -13,7 +13,7 @@ public class Fin : MonoBehaviour
         transform.parent = null;
 
         rigid = GetComponent<Rigidbody>();
-        Destroy(gameObject, 6f);
+        Destroy(gameObject, 10f);
 
         StartCoroutine(Effect());
     }
@@ -21,11 +21,24 @@ public class Fin : MonoBehaviour
     private void FixedUpdate()
     {
         rigid.velocity = transform.up * speed;
+
         rigid.angularVelocity = Vector3.zero;
     }
 
     protected virtual IEnumerator Effect()
     {
         yield return null;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log("º¸¤Ñ¤¼ Ãæµ¹");
+            GameManager.Instance.CurHP--;
+
+            Destroy(gameObject);
+        }
+
     }
 }

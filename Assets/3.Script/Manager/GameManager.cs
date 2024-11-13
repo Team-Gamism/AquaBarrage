@@ -24,6 +24,17 @@ public class GameManager : MonoBehaviour
 
     public int stageData;
 
+    public int maxHp;
+    public int curHp;
+    public int CurHP
+    {
+        get => curHp;
+        set
+        {
+            curHp = Mathf.Clamp(value, 0, maxHp);
+        }
+    }
+
     public string playerName;
 
     public List<PlayerData> playerDataList = new List<PlayerData>();

@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 [CreateAssetMenu(fileName = "FishStat", menuName = "FishStat", order = 1)]
-public class FishInfoSO : ScriptableObject
+public class FishStatSO : ScriptableObject
 {
     public string fishName;
     public float speed;
