@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Shark : MonoBehaviour
 {
-    public FishInfoSO fishInfo;
+    public FishStatSO fishInfo;
 
     public Transform[] bulletPoints;
 
