@@ -19,6 +19,9 @@ public class UI_IngameHP : MonoBehaviour
         }
 
         if (GameManager.Instance.curHp <= 0)
+        {
+            GameManager.Instance.AddData();
             SceneManager.LoadScene("RankScene");
+        }
     }
 }

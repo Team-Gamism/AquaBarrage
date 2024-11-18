@@ -75,24 +75,12 @@ public class GameManager : MonoBehaviour
 
     public void LoadData()
     {
-        if (PlayerPrefs.HasKey("RankLength"))
-        {
             for (int i = 0; i < 5; i++)
             {
                 playerDataList.Add(new PlayerData());
                 playerDataList[i].stageData = PlayerPrefs.GetInt($"StageData{i}");
                 playerDataList[i].playerName = PlayerPrefs.GetString($"NameData{i}");
             }
-        }
-        else
-        {
-            for (int i = 0; i < 5; i++)
-            {
-                playerDataList.Add(new PlayerData());
-                playerDataList[i].stageData = 0;
-                playerDataList[i].playerName = "--";
-            }
-        }
     }
 
     public void AddData()
@@ -101,6 +89,7 @@ public class GameManager : MonoBehaviour
         {
             playerDataList[4].stageData = stageData;
             playerDataList[4].playerName = playerName;
+            Debug.Log(playerName);
             SortData();
         }
     }
@@ -108,6 +97,12 @@ public class GameManager : MonoBehaviour
     public void SortData()
     {
         playerDataList = playerDataList.OrderByDescending(obj => obj.stageData).ToList();
+
+        for (int i = 0; i < 5; i++)
+        {
+            PlayerPrefs.SetInt($"StageData{i}", playerDataList[i].stageData);
+            PlayerPrefs.GetString($"NameData{i}", playerDataList[i].playerName);
+        }
     }
 
 }
