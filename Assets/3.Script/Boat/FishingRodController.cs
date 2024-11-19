@@ -1,33 +1,108 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class FishingRodController : MonoBehaviour
 {
     [SerializeField] private Transform rightShoulderTransform;
+    [SerializeField] private GameObject arrow;
+    [SerializeField] private GameObject launchPrefab;
+    [SerializeField] private Transform launchPoint;
+    [SerializeField] private LineRenderer lineRenderer;
+    [SerializeField] private float arrowSpeed = 45f;
+    [SerializeField] private float launchForce = 100f;
     [SerializeField] private float rotation;
     [SerializeField] private float speed;
     [SerializeField] private float resetSpeed;
     [SerializeField] private float waitTime = 1f;
+    private InputAction castAction;
+    private PlayerInput playerInput;
+    private GameObject curPrefab;
     private bool isCasting = false;
+    private bool isHoldingCast = false;
+    private float curAngle = 45f;
+    private int dir = 1;
 
-    public void OnCast()
+    private void Awake()
+    {
+        playerInput = GetComponent<PlayerInput>();
+        castAction = playerInput.actions["Cast"];
+
+        castAction.started += context => StartCasting();
+        castAction.canceled += context => StopCastingAndLaunch();
+
+        Init();
+    }
+
+    private void Init()
+    {
+        if (lineRenderer == null)
+        {
+            lineRenderer = gameObject.AddComponent<LineRenderer>();
+        }
+        lineRenderer.startWidth = 0.075f;
+        lineRenderer.endWidth = 0.075f;
+        lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
+        lineRenderer.positionCount = 0;
+    }
+
+    private void OnEnable()
+    {
+        castAction.Enable();
+    }
+
+    private void OnDisable()
+    {
+        castAction.Disable();
+    }
+
+    private void StartCasting()
     {
         if (!isCasting)
         {
-            StartCoroutine(CastFishingRod());
+            isCasting = true;
+            isHoldingCast = true;
+            arrow.SetActive(true);
+            StartCoroutine(MoveArrow());
+        }
+    }
+
+    private void StopCastingAndLaunch()
+    {
+        isHoldingCast = false;
+        arrow.SetActive(false);
+        StartCoroutine(CastFishingRod());
+    }
+
+    private IEnumerator MoveArrow()
+    {
+        while (isHoldingCast)
+        {
+            curAngle += arrowSpeed * Time.deltaTime * dir;
+            curAngle = Mathf.Clamp(curAngle, 25f, 45f);
+
+            if (curAngle >= 45f && dir > 0)
+            {
+                dir = -1;
+            }
+            else if (curAngle <= 25f && dir < 0)
+            {
+                dir = 1;
+            }
+            arrow.transform.localEulerAngles = new Vector3(0, 0, curAngle);
+
+            yield return null;
         }
     }
 
     private IEnumerator CastFishingRod()
     {
-        isCasting = true;
-
         yield return Rotate(rotation, speed);
         yield return new WaitForSeconds(waitTime);
-        yield return Rotate(-180f, resetSpeed);
-
+        yield return Rotate(175f, resetSpeed);
+        LaunchPrefab();
+        StartCoroutine(DrawFishingLine());
+        yield return new WaitForSeconds(0.1f);
         isCasting = false;
     }
 
@@ -52,5 +127,58 @@ public class FishingRodController : MonoBehaviour
     {
         Vector3 euler = rightShoulderTransform.localEulerAngles;
         rightShoulderTransform.localRotation = Quaternion.Euler(euler.x, euler.y, z);
+    }
+
+    private void LaunchPrefab()
+    {
+        if (launchPrefab != null && launchPoint != null)
+        {
+            curPrefab = Instantiate(launchPrefab, launchPoint.position, Quaternion.identity);
+            Rigidbody rb = curPrefab.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                float angle = curAngle * Mathf.Deg2Rad - 180;
+                Vector3 force = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0) * launchForce;
+                rb.AddForce(force, ForceMode.Impulse);
+            }
+        }
+    }
+
+    private IEnumerator DrawFishingLine()
+    {
+        lineRenderer.positionCount = 20;
+
+        while (curPrefab != null)
+        {
+            Vector3 startPoint = launchPoint.position;
+            Vector3 endPoint = curPrefab.transform.position;
+
+            float distance = Vector3.Distance(startPoint, endPoint);
+            Vector3 controlPoint = Vector3.Lerp(startPoint, endPoint, 0.5f)
+                + Vector3.up * Mathf.Clamp(distance * 0.1f, 0.1f, 1f);
+
+            for (int i = 0; i < lineRenderer.positionCount; i++)
+            {
+                float t = i / (lineRenderer.positionCount - 1f);
+
+                Vector3 dynamicControlPoint = Vector3.Lerp(startPoint, controlPoint, t * t);
+                Vector3 pointOnCurve = CalculateBezierPoint(t, startPoint, dynamicControlPoint, endPoint);
+
+                lineRenderer.SetPosition(i, pointOnCurve);
+            }
+            yield return null;
+        }
+        ResetLine();
+    }
+
+    private Vector3 CalculateBezierPoint(float t, Vector3 p0, Vector3 p1, Vector3 p2)
+    {
+        float u = 1 - t;
+        return u * u * p0 + 2 * u * t * p1 + t * t * p2;
+    }
+
+    private void ResetLine()
+    {
+        lineRenderer.positionCount = 0;
     }
 }
