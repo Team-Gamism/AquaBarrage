@@ -1381,7 +1381,7 @@ Transform:
   m_GameObject: {fileID: 7892558797459058589}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.268, y: -0, z: 1.4134}
+  m_LocalPosition: {x: 0.2629, y: 0, z: 1.4182}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1440,6 +1440,7 @@ MonoBehaviour:
   speed: 250
   resetSpeed: 500
   waitTime: 1
+  reelSpeed: 10
 --- !u!120 &3469287837444934924
 LineRenderer:
   serializedVersion: 2
