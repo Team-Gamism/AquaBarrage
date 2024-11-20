@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -15,11 +16,14 @@ public class FishingRodController : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float resetSpeed;
     [SerializeField] private float waitTime = 1f;
+    [SerializeField] private float reelSpeed = 10f;
     private InputAction castAction;
+    private InputAction reelAction;
     private PlayerInput playerInput;
     private GameObject curPrefab;
     private bool isCasting = false;
     private bool isHoldingCast = false;
+    private bool isReeling = false;
     private float curAngle = 45f;
     private int dir = 1;
 
@@ -27,9 +31,11 @@ public class FishingRodController : MonoBehaviour
     {
         playerInput = GetComponent<PlayerInput>();
         castAction = playerInput.actions["Cast"];
+        reelAction = playerInput.actions["Reel"];
 
         castAction.started += context => StartCasting();
         castAction.canceled += context => StopCastingAndLaunch();
+        reelAction.performed += context => StartReeling();
 
         Init();
     }
@@ -40,8 +46,8 @@ public class FishingRodController : MonoBehaviour
         {
             lineRenderer = gameObject.AddComponent<LineRenderer>();
         }
-        lineRenderer.startWidth = 0.075f;
-        lineRenderer.endWidth = 0.075f;
+        lineRenderer.startWidth = 0.05f;
+        lineRenderer.endWidth = 0.05f;
         lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
         lineRenderer.positionCount = 0;
     }
@@ -49,16 +55,18 @@ public class FishingRodController : MonoBehaviour
     private void OnEnable()
     {
         castAction.Enable();
+        reelAction.Enable();
     }
 
     private void OnDisable()
     {
         castAction.Disable();
+        reelAction.Disable();
     }
 
     private void StartCasting()
     {
-        if (!isCasting)
+        if (!isCasting && !isReeling && curPrefab == null)
         {
             isCasting = true;
             isHoldingCast = true;
@@ -69,9 +77,12 @@ public class FishingRodController : MonoBehaviour
 
     private void StopCastingAndLaunch()
     {
-        isHoldingCast = false;
-        arrow.SetActive(false);
-        StartCoroutine(CastFishingRod());
+        if (isHoldingCast)
+        {
+            isHoldingCast = false;
+            arrow.SetActive(false);
+            StartCoroutine(CastFishingRod());
+        }
     }
 
     private IEnumerator MoveArrow()
@@ -131,17 +142,51 @@ public class FishingRodController : MonoBehaviour
 
     private void LaunchPrefab()
     {
-        if (launchPrefab != null && launchPoint != null)
+        if (launchPrefab != null && launchPoint != null && curPrefab == null)
         {
+            MeshRenderer meshRenderer = launchPoint.GetComponent<MeshRenderer>();
+            if (meshRenderer != null)
+            {
+                meshRenderer.enabled = false;
+            }
+
             curPrefab = Instantiate(launchPrefab, launchPoint.position, Quaternion.identity);
             Rigidbody rb = curPrefab.GetComponent<Rigidbody>();
             if (rb != null)
             {
-                float angle = curAngle * Mathf.Deg2Rad - 180;
+                float angle = curAngle * Mathf.Deg2Rad - Mathf.PI;
                 Vector3 force = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0) * launchForce;
                 rb.AddForce(force, ForceMode.Impulse);
             }
         }
+    }
+
+    private IEnumerator ReelPrefab()
+    {
+        if (curPrefab != null)
+        {
+            Rigidbody rb = curPrefab.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                rb.isKinematic = true;
+            }
+        }
+        isReeling = true;
+
+        while (curPrefab != null && Vector3.Distance(curPrefab.transform.position, launchPoint.position) > 0.1f)
+        {
+            curPrefab.transform.position = Vector3.MoveTowards(curPrefab.transform.position, launchPoint.position, reelSpeed * Time.deltaTime);
+            yield return null;
+        }
+
+        MeshRenderer meshRenderer = launchPoint.GetComponent<MeshRenderer>();
+        if (meshRenderer != null)
+        {
+            meshRenderer.enabled = true;
+        }
+        Destroy(curPrefab);
+        ResetLine();
+        isReeling = false;
     }
 
     private IEnumerator DrawFishingLine()
@@ -180,5 +225,13 @@ public class FishingRodController : MonoBehaviour
     private void ResetLine()
     {
         lineRenderer.positionCount = 0;
+    }
+
+    private void StartReeling()
+    {
+        if (curPrefab != null && !isReeling)
+        {
+            StartCoroutine(ReelPrefab());
+        }
     }
 }
