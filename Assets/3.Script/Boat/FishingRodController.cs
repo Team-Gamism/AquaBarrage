@@ -42,6 +42,8 @@ public class FishingRodController : MonoBehaviour
 
     private void Init()
     {
+        arrow.SetActive(false);
+
         if (lineRenderer == null)
         {
             lineRenderer = gameObject.AddComponent<LineRenderer>();
@@ -155,7 +157,7 @@ public class FishingRodController : MonoBehaviour
             if (rb != null)
             {
                 float angle = curAngle * Mathf.Deg2Rad - Mathf.PI;
-                Vector3 force = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0) * launchForce;
+                Vector3 force = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0) * launchForce * transform.localScale.x;
                 rb.AddForce(force, ForceMode.Impulse);
             }
         }

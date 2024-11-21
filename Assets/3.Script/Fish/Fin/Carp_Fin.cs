@@ -14,7 +14,7 @@ public class Carp_Fin : Fin
 
         q = Quaternion.Euler(0f, 0f, q.eulerAngles.z);
 
-        for (int i = 0; i < 1000; i++)
+        for (int i = 0; i < 100; i++)
         {
             transform.rotation = Quaternion.Lerp(transform.rotation, q, Time.deltaTime * 5);
             yield return new WaitForSeconds(0.0005f);
