@@ -101,7 +101,7 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < 5; i++)
         {
             PlayerPrefs.SetInt($"StageData{i}", playerDataList[i].stageData);
-            PlayerPrefs.GetString($"NameData{i}", playerDataList[i].playerName);
+            PlayerPrefs.SetString($"NameData{i}", playerDataList[i].playerName);
         }
     }
 
