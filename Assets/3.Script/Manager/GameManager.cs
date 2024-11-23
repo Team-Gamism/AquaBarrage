@@ -55,6 +55,8 @@ public class GameManager : MonoBehaviour
         engineLevel = 0;
         fishLevel = 0;
         rillLevel = 0;
+
+        curHp = maxHp;
     }
 
     public void EndGame()
@@ -104,5 +106,4 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetString($"NameData{i}", playerDataList[i].playerName);
         }
     }
-
 }

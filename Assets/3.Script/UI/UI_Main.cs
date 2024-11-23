@@ -6,8 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class UI_Main : MonoBehaviour
 {
-    public Text nameText;
-
     private void Start()
     {
         GameManager.Instance.InitData();
@@ -15,13 +13,9 @@ public class UI_Main : MonoBehaviour
 
     public void ClickPlay()
     {
-        if (nameText.text != "")
-        {
             GameManager.Instance.InitData();
-            GameManager.Instance.playerName = nameText.text;
 
             SceneManager.LoadScene("GameScene");
-        }
     }
 
     public void ClickHelp()

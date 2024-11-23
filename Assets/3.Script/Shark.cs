@@ -42,7 +42,7 @@ public class Shark : MonoBehaviour
     {
         Debug.Log("∆–≈œ1");
         StartCoroutine(Pattern3());
-        while (isSkill3)
+        while (isSkill3)   
         {
             yield return null;
             Move();

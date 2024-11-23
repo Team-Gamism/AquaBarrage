@@ -34,11 +34,10 @@ public class Fin : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("º¸¤Ñ¤¼ Ãæµ¹");
-            GameManager.Instance.CurHP--;
+            if (GameManager.Instance != null)
+                GameManager.Instance.CurHP--;
 
             Destroy(gameObject);
         }
-
     }
 }

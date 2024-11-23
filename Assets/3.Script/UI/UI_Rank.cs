@@ -19,6 +19,9 @@ public class UI_Rank : MonoBehaviour
         {
             nameTexts[i].text = GameManager.Instance.playerDataList[i].playerName;
             scoreTexts[i].text = $"스테이지{GameManager.Instance.playerDataList[i].stageData}";
+
+            Debug.Log(GameManager.Instance.playerDataList[i].playerName);
+            Debug.Log($"스테이지{GameManager.Instance.playerDataList[i].stageData}");
         }
 
         if (GameManager.Instance.playerName != null)
