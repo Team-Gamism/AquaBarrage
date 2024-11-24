@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class UI_Main : MonoBehaviour
 {
+    public GameObject settingUI;
     private void Start()
     {
         GameManager.Instance.InitData();
@@ -13,9 +14,13 @@ public class UI_Main : MonoBehaviour
 
     public void ClickPlay()
     {
-            GameManager.Instance.InitData();
+        GameManager.Instance.InitData();
+        SceneManager.LoadScene("GameScene");
+    }
 
-            SceneManager.LoadScene("GameScene");
+    public void ClickSetting()
+    {
+        Instantiate(settingUI);
     }
 
     public void ClickHelp()
