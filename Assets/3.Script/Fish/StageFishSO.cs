@@ -6,4 +6,6 @@ using UnityEngine;
 public class StageFishSO : ScriptableObject
 {
     public GameObject[] stageFishes;
+
+    public int stageTime;
 }

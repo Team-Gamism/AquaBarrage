@@ -21,7 +21,7 @@ public class FishSpawner : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(7.5f + Random.Range(-1.5f, 1.5f));
+            yield return new WaitForSeconds(12.5f + Random.Range(-1.5f, 1.5f));
 
             int randomIdx;
 
@@ -34,15 +34,9 @@ public class FishSpawner : MonoBehaviour
             else
                 fish3cnt++;
 
-            while (fish1cnt >= 5 && fish2cnt >= 2 && fish3cnt >= 2)
+            do
             {
-                if (randomIdx <= 2)
-                    fish1cnt--;
-                else if (randomIdx == 3)
-                    fish2cnt--;
-                else
-                    fish3cnt--;
-
+                
                 randomIdx = Random.Range(0, stageFish.stageFishes.Length);
                 if (randomIdx <= 2)
                     fish1cnt++;
@@ -50,7 +44,19 @@ public class FishSpawner : MonoBehaviour
                     fish2cnt++;
                 else
                     fish3cnt++;
-            } 
+
+                if (fish1cnt < 6 && fish2cnt < 3 && fish3cnt < 3)
+                    break;
+
+                if (randomIdx <= 2)
+                    fish1cnt--;
+                else if (randomIdx == 3)
+                    fish2cnt--;
+                else
+                    fish3cnt--;
+
+                yield return null;
+            } while (fish1cnt >= 6 && fish2cnt >= 3 && fish3cnt >= 3);
 
             GameObject fishObj = Instantiate(stageFish.stageFishes[randomIdx], transform.position + Vector3.up * Random.Range(-3f, 3f), Quaternion.identity);
             

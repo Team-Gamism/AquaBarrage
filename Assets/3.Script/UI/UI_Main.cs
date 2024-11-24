@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 public class UI_Main : MonoBehaviour
 {
     public GameObject settingUI;
-
     private void Start()
     {
         GameManager.Instance.InitData();
