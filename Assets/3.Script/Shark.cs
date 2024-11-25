@@ -63,7 +63,6 @@ public class Shark : MonoBehaviour
     }
     IEnumerator Pattern2()
     {
-        Debug.Log("ÆÐÅÏ2");
         yield return null;
         transform.DOMove(new Vector3(-50,-19,0),6).onComplete += () => 
         {

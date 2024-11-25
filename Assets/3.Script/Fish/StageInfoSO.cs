@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "StageFish", menuName = "StageFish", order = 2)]
-public class StageFishSO : ScriptableObject
+public class StageInfoSO : ScriptableObject
 {
     public GameObject[] stageFishes;
 

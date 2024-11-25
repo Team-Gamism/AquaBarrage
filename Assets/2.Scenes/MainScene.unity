@@ -741,8 +741,8 @@ MonoBehaviour:
   isPlayGame: 0
   money: 0
   stageData: 0
-  maxHp: 5
-  curHp: 5
+  maxHp: 6
+  curHp: 6
   playerName: 
   engineLevel: 0
   rillLevel: 0

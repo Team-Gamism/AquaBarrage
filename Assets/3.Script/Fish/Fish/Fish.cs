@@ -20,8 +20,8 @@ public class Fish : MonoBehaviour
 
     public enum Fish_Direction
     {
-        left,
-        right
+        Left,
+        Right
     }
 
     public Fish_Direction fish_Direction;
@@ -43,7 +43,7 @@ public class Fish : MonoBehaviour
 
     private void Move()
     {
-        transform.Translate((fish_Direction == Fish_Direction.left ? 1 : -1) * speed * transform.right / 2 * Time.deltaTime);
+        transform.Translate((fish_Direction == Fish_Direction.Left ? 1 : -1) * speed * transform.right / 2 * Time.deltaTime);
 
         transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
     }
@@ -53,11 +53,11 @@ public class Fish : MonoBehaviour
         transform.rotation = Quaternion.Euler(new Vector3(
             Mathf.Lerp(transform.rotation.eulerAngles.x >= 180 ?
             transform.rotation.eulerAngles.x - 360 : transform.rotation.eulerAngles.x,
-            turnVecX, Time.deltaTime*Time.deltaTime) - (fish_Direction == Fish_Direction.left ? 0 : 180), -90f, fish_Direction == Fish_Direction.left ? 0 : -180));
+            turnVecX, Time.deltaTime*Time.deltaTime) - (fish_Direction == Fish_Direction.Left ? 0 : 180), -90f, fish_Direction == Fish_Direction.Left ? 0 : -180));
 
     }
 
-    IEnumerator TurnCoroutine()
+    private IEnumerator TurnCoroutine()
     {
         while (true)
         {
@@ -67,7 +67,7 @@ public class Fish : MonoBehaviour
         }
     }
 
-    IEnumerator AttackCoroutine()
+    private IEnumerator AttackCoroutine()
     {
         while (true)
         {
@@ -81,7 +81,7 @@ public class Fish : MonoBehaviour
 
     }
 
-    void CheckGround()
+    private void CheckGround()
     {
         if (Physics.Raycast(transform.position, transform.forward, 2f, groundLayer))
         {
@@ -94,14 +94,14 @@ public class Fish : MonoBehaviour
         }
     }
 
-    void Init()
+    private void Init()
     {
         fishName = fishStat.fishName;
         speed = fishStat.speed;
         weight = fishStat.weight;
         attackCoolTime = fishStat.attackCoolTime;
 
-        if(fish_Direction == Fish_Direction.right)
+        if(fish_Direction == Fish_Direction.Right)
         {
             transform.rotation = Quaternion.Euler(new Vector3(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, -transform.rotation.eulerAngles.z));
         }
@@ -109,7 +109,7 @@ public class Fish : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Deleter")
+        if(other.CompareTag("Deleter"))
         {
             Destroy(gameObject);
         }

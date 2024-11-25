@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class FishSpawner : MonoBehaviour
 {
-    public Fish.Fish_Direction direction;
-
-    public StageFishSO stageFish;
+    public Fish.Fish_Direction direction; 
 
     static int fish1cnt;
     static int fish2cnt;
@@ -26,7 +25,7 @@ public class FishSpawner : MonoBehaviour
             int randomIdx;
 
 
-            randomIdx = Random.Range(0, stageFish.stageFishes.Length);
+            randomIdx = Random.Range(0, LevelManager.instance.stageInfo.stageFishes.Length);
             if (randomIdx <= 2)
                 fish1cnt++;
             else if (randomIdx == 3)
@@ -37,7 +36,7 @@ public class FishSpawner : MonoBehaviour
             do
             {
                 
-                randomIdx = Random.Range(0, stageFish.stageFishes.Length);
+                randomIdx = Random.Range(0, LevelManager.instance.stageInfo.stageFishes.Length);
                 if (randomIdx <= 2)
                     fish1cnt++;
                 else if (randomIdx == 3)
@@ -58,12 +57,12 @@ public class FishSpawner : MonoBehaviour
                 yield return null;
             } while (fish1cnt >= 6 && fish2cnt >= 3 && fish3cnt >= 3);
 
-            GameObject fishObj = Instantiate(stageFish.stageFishes[randomIdx], transform.position + Vector3.up * Random.Range(-3f, 3f), Quaternion.identity);
+            GameObject fishObj = Instantiate(LevelManager.instance.stageInfo.stageFishes[randomIdx], transform.position + Vector3.up * Random.Range(-3f, 3f), Quaternion.identity);
             
             Fish fish = fishObj.GetComponent<Fish>();
             fish.fish_Direction = direction;
 
-            if (fish.fish_Direction == Fish.Fish_Direction.right)
+            if (fish.fish_Direction == Fish.Fish_Direction.Right)
                 transform.rotation = Quaternion.Euler( new Vector3(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, -transform.rotation.eulerAngles.z));
         }
     }

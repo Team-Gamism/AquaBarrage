@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,10 +8,16 @@ using UnityEngine.UI;
 public class UI_Game : MonoBehaviour
 {
     public InputField nameInput;
-    
-
-   
+    public Text stageText;
+    public Text timerText;
     public GameObject[] hearts;
+
+    private float time;
+
+    private void Start()
+    {
+       StageInit();
+    }
 
     private void Update()
     {
@@ -23,6 +30,14 @@ public class UI_Game : MonoBehaviour
         {
             transform.GetChild(1).gameObject.SetActive(true);
             Time.timeScale = 0f;
+        }
+
+        timerText.text = $"{(int)time / 60} : {(int)time % 60}";
+        time -= Time.deltaTime;
+        if (time <= 0)
+        {
+            GameManager.Instance.stageData++;
+            StageInit();
         }
     }
 
@@ -44,4 +59,13 @@ public class UI_Game : MonoBehaviour
         }
     }
 
+    private void StageInit()
+    {
+        LevelManager.instance.stageInfo =
+            Resources.Load($"StageInfo/{GameManager.Instance.stageData}Stage") as StageInfoSO;
+        time = LevelManager.instance.stageInfo.stageTime;
+        
+        stageText.text = $"Stage {GameManager.Instance.stageData}";
+        GameManager.Instance.curHp = GameManager.Instance.maxHp;
+    }
 }
