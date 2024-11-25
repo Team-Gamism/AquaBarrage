@@ -9,6 +9,10 @@ public class GameManager : MonoBehaviour
 
     static GameManager instance;
 
+    UIManager ui = new();
+
+    public static UIManager UI { get { return Instance.ui; } }
+
     private void Awake()
     {
         if (instance == null)
@@ -19,6 +23,8 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
     }
+
+    public bool isPlayGame;
 
     public int money;
 
@@ -62,6 +68,7 @@ public class GameManager : MonoBehaviour
     public void EndGame()
     {
         InitData();
+        isPlayGame = false;
     }
 
     public void NextStage()
@@ -106,4 +113,6 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetString($"NameData{i}", playerDataList[i].playerName);
         }
     }
+
+    public GameObject uiController;
 }

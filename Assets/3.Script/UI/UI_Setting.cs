@@ -38,6 +38,16 @@ public class UI_Setting : MonoBehaviour
         SetMusic();
     }
 
+    private void OnEnable()
+    {
+        GameManager.UI.AddPopupUI(gameObject);
+    }
+
+    private void OnDisable()
+    {
+        GameManager.UI.RemovePopupUI(gameObject);
+    }
+
     public void MusicUp()
     {
         MusicFigure++;

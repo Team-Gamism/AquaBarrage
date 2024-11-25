@@ -24,6 +24,16 @@ public class UI_Store : MonoBehaviour
         SetStore();
     }
 
+    private void OnEnable()
+    {
+        GameManager.UI.AddPopupUI(gameObject);
+    }
+
+    private void OnDisable()
+    {
+        GameManager.UI.RemovePopupUI(gameObject);
+    }
+
     public void UpgradeEngine()
     {
         if (GameManager.Instance.money >= storeSO_Engine.levelList[GameManager.Instance.engineLevel] && storeSO_Engine.levelList.Count != GameManager.Instance.engineLevel)
