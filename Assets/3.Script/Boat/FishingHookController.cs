@@ -1,37 +1,59 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class FishingHookController : MonoBehaviour
 {
+    private Vector3 lastPosition;
+
+    private void Start()
+    {
+        lastPosition = transform.position;
+    }
+
+    private void Update()
+    {
+        Vector3 movementDirection = transform.position - lastPosition;
+
+        lastPosition = transform.position;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Fish"))
         {
             Transform fish = other.transform;
-            Transform mouth = fish.Find("Mouth");
 
-            if (mouth != null)
+            string scriptName = fish.name;
+            Type fishScriptType = Type.GetType(scriptName);
+
+            if (fishScriptType != null)
             {
-                switch (fish.name)
+                MonoBehaviour fishScript = fish.GetComponent(fishScriptType) as MonoBehaviour;
+                if (fishScript != null)
                 {
-                    case "ClownFish":
-                        fish.GetComponent<ClownFish>().enabled = false;
-                        break;
+                    fishScript.enabled = false;
                 }
-                Vector3 mouthPos = mouth.position;
 
-                mouth.SetParent(transform);
-                mouth.localPosition = Vector3.zero;
+                Rigidbody rb = GetComponent<Rigidbody>();
+                if (rb != null)
+                {
+                    rb.useGravity = false;
+                    rb.isKinematic = true;
+                }
 
                 fish.SetParent(transform);
-                fish.position = mouthPos;
-
-                Vector3 dir = (transform.position - fish.position).normalized;
-                Quaternion lookRotation = Quaternion.LookRotation(dir, Vector3.up);
-                fish.rotation = lookRotation;
 
                 fish.localPosition = Vector3.zero;
+
+                Vector3 movementDirection = (transform.position - lastPosition).normalized;
+
+                if (movementDirection.sqrMagnitude > 0.001f)
+                {
+                    Quaternion lookRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
+                    fish.rotation = lookRotation;
+                }
             }
         }
     }
