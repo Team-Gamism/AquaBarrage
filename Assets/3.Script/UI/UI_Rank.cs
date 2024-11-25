@@ -14,6 +14,7 @@ public class UI_Rank : MonoBehaviour
 
     private void Start()
     {
+        GameManager.Instance.isPlayGame = false;
         GameManager.Instance.LoadData();
         for (int i = 0; i < nameTexts.Length; i++)
         {
@@ -33,6 +34,13 @@ public class UI_Rank : MonoBehaviour
 
     public void ClickLeave()
     {
+        StartCoroutine(LoadMainScene());
+    }
+
+    IEnumerator LoadMainScene()
+    {
+        UI_Fade.FadeIn();
+        yield return new WaitForSeconds(2);
         SceneManager.LoadScene("MainScene");
     }
 }
