@@ -16,6 +16,13 @@ public class UI_Main : MonoBehaviour
     public void ClickPlay()
     {
         GameManager.Instance.isPlayGame = true;
+        StartCoroutine(LoadGameScene());
+    }
+
+    IEnumerator LoadGameScene()
+    {
+        UI_Fade.FadeIn();
+        yield return new WaitForSeconds(2f);
         SceneManager.LoadScene("GameScene");
     }
 
@@ -26,11 +33,25 @@ public class UI_Main : MonoBehaviour
 
     public void ClickHelp()
     {
+        StartCoroutine(LoadHelpScene());
+    }
+
+    IEnumerator LoadHelpScene()
+    {
+        UI_Fade.FadeIn();
+        yield return new WaitForSeconds(2f);
         SceneManager.LoadScene("HelpScene");
     }
 
     public void ClickRank()
     {
+        StartCoroutine(LoadRankScene());
+    }
+
+    IEnumerator LoadRankScene()
+    {
+        UI_Fade.FadeIn();
+        yield return new WaitForSeconds(2f);
         SceneManager.LoadScene("RankScene");
     }
 
