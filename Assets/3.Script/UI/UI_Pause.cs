@@ -6,6 +6,7 @@ public class UI_Pause : MonoBehaviour
 {
     public GameObject checkLeaveUI;
 
+    public GameObject settingUI;
     private void OnEnable()
     {
         Time.timeScale = 0;
@@ -23,7 +24,7 @@ public class UI_Pause : MonoBehaviour
 
     public void Setting()
     {
-
+        Instantiate(settingUI);
     }
 
     public void Home()
