@@ -10,11 +10,12 @@ public class UI_Main : MonoBehaviour
     private void Start()
     {
         GameManager.Instance.InitData();
+        
     }
 
     public void ClickPlay()
     {
-        GameManager.Instance.InitData();
+        GameManager.Instance.isPlayGame = true;
         SceneManager.LoadScene("GameScene");
     }
 

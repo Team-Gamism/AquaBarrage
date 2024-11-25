@@ -10,11 +10,13 @@ public class UI_Pause : MonoBehaviour
     private void OnEnable()
     {
         Time.timeScale = 0;
+        GameManager.UI.AddPopupUI(gameObject);
     }
 
     private void OnDisable()
     {
         Time.timeScale = 1;
+        GameManager.UI.RemovePopupUI(gameObject);
     }
 
     public void Continue()

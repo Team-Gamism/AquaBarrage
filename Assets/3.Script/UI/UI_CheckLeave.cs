@@ -5,7 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class UI_CheckLeave : MonoBehaviour
 {
-   public void Leave()
+    private void OnEnable()
+    {
+        GameManager.UI.AddPopupUI(gameObject);
+    }
+
+    private void OnDisable()
+    {
+        GameManager.UI.RemovePopupUI(gameObject);
+    }
+
+    public void Leave()
     {
         SceneManager.LoadScene("MainScene");
     }
