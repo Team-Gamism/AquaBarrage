@@ -2,7 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fish : MonoBehaviour
+public interface ICanFish
+{
+    public void Fished(Transform hook, Vector3 lastPostion);
+}
+
+public class Fish : MonoBehaviour, ICanFish
 {
     public FishStatSO fishStat;
 
@@ -112,6 +117,27 @@ public class Fish : MonoBehaviour
         if(other.CompareTag("Deleter"))
         {
             Destroy(gameObject);
+        }
+    }
+
+   public void Fished(Transform hook, Vector3 lastPosition)
+    {
+        MonoBehaviour fishScript = GetComponent<Fish>();
+        if (fishScript != null)
+        {
+            fishScript.enabled = false;
+        }
+
+        transform.SetParent(hook);
+
+        transform.localPosition = Vector3.zero;
+
+        Vector3 movementDirection = (transform.position - lastPosition).normalized;
+
+        if (movementDirection.sqrMagnitude > 0.001f)
+        {
+            Quaternion lookRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
+            transform.rotation = lookRotation;
         }
     }
 }
