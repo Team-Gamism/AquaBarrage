@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Carp : Fish
+public class Fish_Carp : Fish
 {
     protected override void Attack()
     {
