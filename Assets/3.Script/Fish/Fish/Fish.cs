@@ -5,6 +5,7 @@ using UnityEngine;
 public interface ICanFish
 {
     public void Fished(Transform hook, Vector3 lastPostion);
+
 }
 
 public class Fish : MonoBehaviour, ICanFish
@@ -122,11 +123,8 @@ public class Fish : MonoBehaviour, ICanFish
 
    public void Fished(Transform hook, Vector3 lastPosition)
     {
-        MonoBehaviour fishScript = GetComponent<Fish>();
-        if (fishScript != null)
-        {
-            fishScript.enabled = false;
-        }
+        gameObject.SetActive(false);
+        gameObject.SetActive(true);
 
         transform.SetParent(hook);
 

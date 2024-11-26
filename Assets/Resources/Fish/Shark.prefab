@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8765934169196227440}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Bone.018_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 678856206256621570}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Bone_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 528743903448607774}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Bone.018
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5124307290895589838}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SharkArmature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2717355021013145301}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Bone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 703708868682297581}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Bone.021
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -201,7 +201,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4820677660236698926}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Bullet Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -235,7 +235,7 @@ GameObject:
   - component: {fileID: 5593807751334403327}
   - component: {fileID: 6152840606297105673}
   - component: {fileID: 5520810594456948352}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Shark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -318,7 +318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fishInfo: {fileID: 11400000, guid: 8c51a2bfe3a9b0e4eacc7a2e22dd3b49, type: 2}
-  maxHp: 100
+  maxHp: 10
   hpBar: {fileID: 4022902334774014485}
   bulletPoints: []
   groundLayer:
@@ -345,7 +345,7 @@ GameObject:
   - component: {fileID: 6507926891965619618}
   - component: {fileID: 8880964829089932166}
   - component: {fileID: 3512917526284654551}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Pupil (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -448,7 +448,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4664843799834310922}
   - component: {fileID: 1985255754443914241}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Shark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -544,7 +544,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 429085893862185692}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Bone.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -576,7 +576,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7576202610015619806}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Bone.009_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -607,7 +607,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4363671179199609083}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Bone.001_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -638,7 +638,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8853080631578209473}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Bone.009
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -670,7 +670,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 479556064768925002}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Bone.021_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -701,7 +701,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5346076065082247752}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Bone.020
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -733,7 +733,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8236768712905271900}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Bone.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -767,7 +767,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8130271282898175760}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Bone.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -799,7 +799,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4936408840270810042}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Bone.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -831,7 +831,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7943101091395961244}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Bone.016
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -868,7 +868,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 599708221228420853, guid: f739cfe52e29fcb45aaee8bc646a2613, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1164482424489168439, guid: f739cfe52e29fcb45aaee8bc646a2613, type: 3}
       propertyPath: m_LocalScale.x
@@ -948,9 +948,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 638251440586143719}
     m_Modifications:
+    - target: {fileID: 154015236821556642, guid: 8ed1be3fbd57e9d43ab6594077d314d4, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 1152610533715217767, guid: 8ed1be3fbd57e9d43ab6594077d314d4, type: 3}
       propertyPath: m_Name
       value: UI_BossHpBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 1152610533715217767, guid: 8ed1be3fbd57e9d43ab6594077d314d4, type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1315087427123649071, guid: 8ed1be3fbd57e9d43ab6594077d314d4, type: 3}
       propertyPath: m_AnchorMax.x
@@ -959,6 +967,26 @@ PrefabInstance:
     - target: {fileID: 1315087427123649071, guid: 8ed1be3fbd57e9d43ab6594077d314d4, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1887453433676291947, guid: 8ed1be3fbd57e9d43ab6594077d314d4, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2202793283212031756, guid: 8ed1be3fbd57e9d43ab6594077d314d4, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2572267844895041007, guid: 8ed1be3fbd57e9d43ab6594077d314d4, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2589631406304406688, guid: 8ed1be3fbd57e9d43ab6594077d314d4, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5542501519051915206, guid: 8ed1be3fbd57e9d43ab6594077d314d4, type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7353274220291028706, guid: 8ed1be3fbd57e9d43ab6594077d314d4, type: 3}
       propertyPath: m_Pivot.x
@@ -1096,7 +1124,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 599708221228420853, guid: f739cfe52e29fcb45aaee8bc646a2613, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1164482424489168439, guid: f739cfe52e29fcb45aaee8bc646a2613, type: 3}
       propertyPath: m_LocalScale.x
@@ -1153,6 +1181,10 @@ PrefabInstance:
     - target: {fileID: 1164482424489168439, guid: f739cfe52e29fcb45aaee8bc646a2613, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6164718139463515170, guid: f739cfe52e29fcb45aaee8bc646a2613, type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
