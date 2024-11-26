@@ -11,6 +11,7 @@ public class UI_Game : MonoBehaviour
     public Text stageText;
     public Text timerText;
     public GameObject[] hearts;
+    public GameObject[] blackHearts;
 
     private float time;
 
@@ -24,6 +25,7 @@ public class UI_Game : MonoBehaviour
         for (int i = 1; i <= GameManager.Instance.maxHp; i++)
         {
             hearts[i - 1].SetActive(GameManager.Instance.CurHP >= i);
+            blackHearts[i - 1].SetActive(GameManager.Instance.CurHP < i);
         }
 
         if (GameManager.Instance.curHp <= 0)
@@ -50,13 +52,19 @@ public class UI_Game : MonoBehaviour
         }
     }
 
-    public void GoRanking()
+    public void ClickRanking()
     {
         if (GameManager.Instance.playerName != "")
         {
             GameManager.Instance.AddData();
             SceneManager.LoadScene("RankScene");
         }
+    }
+
+    public void ClickReTry()
+    {
+        GameManager.Instance.InitData();
+        SceneManager.LoadScene("GameScene");
     }
 
     private void StageInit()
