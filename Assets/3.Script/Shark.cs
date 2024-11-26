@@ -3,16 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shark : MonoBehaviour, ICanFish
+public class Shark : MonoBehaviour
 {
     public FishStatSO fishInfo;
 
-    public int maxHp = 100;
-
-    int hp;
-
-    public UI_BossHpBar hpBar;
-    
     public Transform[] bulletPoints;
 
     private string fishName;
@@ -42,8 +36,6 @@ public class Shark : MonoBehaviour, ICanFish
         Init();
         StartCoroutine(TurnCoroutine());
         StartCoroutine(Pattern1());
-        hp = maxHp;
-        hpBar.SetHpBar(hp / maxHp);
     }
 
     IEnumerator Pattern1()
@@ -119,7 +111,13 @@ public class Shark : MonoBehaviour, ICanFish
 
     private void Rotate()
     {
-       
+        //transform.rotation = Quaternion.Euler(new Vector3(
+        //    Mathf.Lerp(transform.rotation.eulerAngles.x >= 180 ?
+        //    transform.rotation.eulerAngles.x - 360 : transform.rotation.eulerAngles.x,
+        //    turnVecX, Time.deltaTime * 1.5f) + (fish_Direction == Fish_Direction.left ? 0 : 180), -90, 0));
+
+        //transform.rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, 0f);
+
         transform.rotation = Quaternion.Euler(new Vector3(
            Mathf.Lerp(transform.rotation.eulerAngles.x >= 180 ?
            transform.rotation.eulerAngles.x - 360 : transform.rotation.eulerAngles.x,
@@ -177,32 +175,5 @@ public class Shark : MonoBehaviour, ICanFish
         Gizmos.color = Color.red;
 
         Gizmos.DrawRay(transform.position, (fish_Direction == Fish_Direction.Left ? 1 : -1) * transform.forward * 10f);
-    }
-
-    public void Fished(Collider other, Vector3 lastPosition)
-    {
-       if(hp > 0)
-        {
-            hp -= 10;
-            hpBar.SetHpBar((float)hp / maxHp);
-        }
-       else
-        {
-            Transform fish = other.transform;
-
-            GetComponent<Shark>().enabled = false;
-
-            fish.SetParent(transform);
-
-            fish.localPosition = Vector3.zero;
-
-            Vector3 movementDirection = (transform.position - lastPosition).normalized;
-
-            if (movementDirection.sqrMagnitude > 0.001f)
-            {
-                Quaternion lookRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
-                fish.rotation = lookRotation;
-            }
-        }
     }
 }

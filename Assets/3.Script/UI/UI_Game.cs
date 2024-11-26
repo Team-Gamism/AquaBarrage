@@ -57,28 +57,14 @@ public class UI_Game : MonoBehaviour
         if (GameManager.Instance.playerName != "")
         {
             GameManager.Instance.AddData();
-            StartCoroutine(LoadRankScene());
+            SceneManager.LoadScene("RankScene");
         }
-    }
-
-    IEnumerator LoadRankScene()
-    {
-        UI_Fade.FadeIn();
-        yield return new WaitForSeconds(2f);
-        SceneManager.LoadScene("RankScene");
     }
 
     public void ClickReTry()
     {
         GameManager.Instance.InitData();
-        StartCoroutine(LoadGameScene());
-    }
-
-    IEnumerator LoadGameScene()
-    {
-        UI_Fade.FadeIn();
-        yield return new WaitForSeconds(2f);
-        SceneManager.LoadScene("RankScene");
+        SceneManager.LoadScene("GameScene");
     }
 
     private void StageInit()
