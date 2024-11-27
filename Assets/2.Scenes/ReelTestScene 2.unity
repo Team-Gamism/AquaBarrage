@@ -7110,7 +7110,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayGame: 0
+  isDash: 0
   money: 0
+  fishCount: 0
   stageData: 0
   maxHp: 6
   curHp: 1
