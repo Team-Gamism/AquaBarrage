@@ -10,4 +10,5 @@ public class FishStatSO : ScriptableObject
     public float speed;
     public float weight;
     public float attackCoolTime;
+    public int money; 
 }

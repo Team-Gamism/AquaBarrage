@@ -193,6 +193,8 @@ public class Shark : MonoBehaviour, ICanFish
 
             transform.localPosition = Vector3.zero;
 
+            GameManager.Instance.money += fishInfo.money;
+
             Vector3 movementDirection = (transform.position - lastPosition).normalized;
 
             if (movementDirection.sqrMagnitude > 0.001f)
