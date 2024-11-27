@@ -34,7 +34,7 @@ public class Fin : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (GameManager.Instance != null)
+            if (GameManager.Instance != null && !GameManager.Instance.isDash)
                 GameManager.Instance.CurHP--;
 
             Destroy(gameObject);
