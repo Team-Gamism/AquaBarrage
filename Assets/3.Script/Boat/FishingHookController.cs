@@ -9,6 +9,8 @@ public class FishingHookController : MonoBehaviour
     private Transform caughtFish;
     private float minYPos = -24.5f;
 
+    public Action hookAction;
+
     private void Start()
     {
         fishingOrigin = GameObject.Find("FishingOrigin").transform;
@@ -39,33 +41,22 @@ public class FishingHookController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Transform fish = other.transform;
-
-        Fish fishComponent = fish.GetComponent<Fish>();
-        if (fishComponent != null)
+        if (caughtFish == null)
         {
-            string scriptName = $"Fish_{fishComponent.fishStat.fishName}";
-            Type fishScriptType = Type.GetType(scriptName);
 
-            if (fishScriptType != null)
+            if (other.TryGetComponent<ICanFish>(out var canFish))
             {
-                MonoBehaviour fishScript = fish.GetComponent(fishScriptType) as MonoBehaviour;
-                if (fishScript != null)
+                caughtFish = canFish.Fished(transform);
+
+                hookAction?.Invoke();
+
+                Rigidbody rb = GetComponent<Rigidbody>();
+                if (rb != null)
                 {
-                    fishScript.enabled = false;
+                    rb.useGravity = false;
+                    rb.isKinematic = true;
                 }
             }
-        }
-        fish.SetParent(transform);
-        fish.localPosition = Vector3.zero;
-
-        caughtFish = fish;
-
-        Rigidbody rb = GetComponent<Rigidbody>();
-        if (rb != null)
-        {
-            rb.useGravity = false;
-            rb.isKinematic = true;
         }
     }
 }
