@@ -60,16 +60,11 @@ public class UI_Game : MonoBehaviour
             StartCoroutine(LoadRankScene());
         }
     }
-    IEnumerator LoadGameScene()
-    {
-        UI_Fade.instance.FadeIn();
-        yield return new WaitForSecondsRealtime(2);
-        SceneManager.LoadScene("RankScene");
-    }
+  
 
     IEnumerator LoadRankScene()
     {
-        UI_Fade.FadeIn();
+        UI_Fade.instance.FadeIn();
         yield return new WaitForSeconds(2f);
         SceneManager.LoadScene("RankScene");
     }
@@ -82,9 +77,9 @@ public class UI_Game : MonoBehaviour
 
     IEnumerator LoadGameScene()
     {
-        UI_Fade.FadeIn();
+        UI_Fade.instance.FadeIn();
         yield return new WaitForSeconds(2f);
-        SceneManager.LoadScene("RankScene");
+        SceneManager.LoadScene("GameScene");
     }
 
     private void StageInit()

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface ICanFish
 {
-    public void Fished(Transform hook, Vector3 lastPostion);
+    public Transform Fished(Transform hook);
 
 }
 
@@ -121,7 +121,7 @@ public class Fish : MonoBehaviour, ICanFish
         }
     }
 
-   public void Fished(Transform hook, Vector3 lastPosition)
+   public Transform Fished(Transform hook)
     {
         gameObject.SetActive(false);
         gameObject.SetActive(true);
@@ -132,12 +132,6 @@ public class Fish : MonoBehaviour, ICanFish
 
         GameManager.Instance.money += fishStat.money;
 
-        Vector3 movementDirection = (transform.position - lastPosition).normalized;
-
-        if (movementDirection.sqrMagnitude > 0.001f)
-        {
-            Quaternion lookRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
-            transform.rotation = lookRotation;
-        }
+        return transform;
     }
 }

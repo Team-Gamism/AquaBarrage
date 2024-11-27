@@ -318,7 +318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fishInfo: {fileID: 11400000, guid: 8c51a2bfe3a9b0e4eacc7a2e22dd3b49, type: 2}
-  maxHp: 10
+  maxHp: 100
   hpBar: {fileID: 4022902334774014485}
   bulletPoints: []
   groundLayer:
@@ -330,8 +330,8 @@ MonoBehaviour:
   wallLayer:
     serializedVersion: 2
     m_Bits: 256
-  pattern2Atk: {fileID: 6908634839389341209, guid: 538232f2bfd4d9f4f856f738d55f8920, type: 3}
-  pattern3Atk: {fileID: 6908634839389341209, guid: cceeb4490bf7fdd4f86602fbfa3af12f, type: 3}
+  pattern2Atk: {fileID: 4573201117056922539, guid: 22106a8f053d721479def81435d272e3, type: 3}
+  pattern3Atk: {fileID: 4573201117056922539, guid: 599d4371e8b112844af63c456d04a017, type: 3}
   fish_Direction: 0
 --- !u!1 &4531559520346058983
 GameObject:
