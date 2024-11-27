@@ -19,7 +19,10 @@ public class BoatController : MonoBehaviour
 
     private void Update()
     {
-        curSpeed = Mathf.MoveTowards(curSpeed, targetSpeed, (targetSpeed == 0 ? speedDown : speedUp) * Time.deltaTime);
+        curSpeed = LevelManager.instance.isEndGame
+            ? 0f
+            : Mathf.MoveTowards(curSpeed, targetSpeed,
+                (targetSpeed == 0 ? speedDown : speedUp) * Time.deltaTime);
         rb.velocity = new Vector3(curSpeed, rb.velocity.y, 0);
     }
 

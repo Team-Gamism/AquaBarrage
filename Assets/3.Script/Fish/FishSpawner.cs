@@ -18,7 +18,7 @@ public class FishSpawner : MonoBehaviour
 
     IEnumerator SpawnFish()
     {
-        while (true)
+        while (true && !LevelManager.instance.isEndGame)
         {
             yield return new WaitForSeconds(12.5f + Random.Range(-1.5f, 1.5f));
 

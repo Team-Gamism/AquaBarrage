@@ -31,7 +31,7 @@ public class UI_Game : MonoBehaviour
         if (GameManager.Instance.curHp <= 0)
         {
             transform.GetChild(1).gameObject.SetActive(true);
-            Time.timeScale = 0f;
+            LevelManager.instance.isEndGame = true;
         }
 
         timerText.text = $"{(int)time / 60} : {(int)time % 60}";
@@ -57,8 +57,14 @@ public class UI_Game : MonoBehaviour
         if (GameManager.Instance.playerName != "")
         {
             GameManager.Instance.AddData();
-            SceneManager.LoadScene("RankScene");
+            StartCoroutine(LoadGameScene());
         }
+    }
+    IEnumerator LoadGameScene()
+    {
+        UI_Fade.instance.FadeIn();
+        yield return new WaitForSecondsRealtime(2);
+        SceneManager.LoadScene("RankScene");
     }
 
     public void ClickReTry()

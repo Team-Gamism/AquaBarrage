@@ -12,7 +12,7 @@ public class UI_Help : MonoBehaviour
 
     IEnumerator LoadMainScene()
     {
-        UI_Fade.FadeIn();
+        UI_Fade.instance.FadeIn();
         yield return new WaitForSeconds(2);
         SceneManager.LoadScene("MainScene");
     }

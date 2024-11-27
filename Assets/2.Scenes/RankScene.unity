@@ -1103,7 +1103,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 668, y: -151}
+  m_AnchoredPosition: {x: 568.74, y: -242}
   m_SizeDelta: {x: 203.0593, y: 94.1353}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &752923277
@@ -1133,7 +1133,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 57
-    m_Alignment: 4
+    m_Alignment: 5
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -1810,9 +1810,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 668, y: -255}
+  m_AnchoredPosition: {x: 771.8, y: -241.99995}
   m_SizeDelta: {x: 203.0593, y: 94.1353}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5000002, y: 0.50000036}
 --- !u!114 &1195951344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2179,7 +2179,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 668, y: -12.14}
+  m_AnchoredPosition: {x: 783.09, y: 19}
   m_SizeDelta: {x: 270.5392, y: 94.14}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1487204396
@@ -2599,6 +2599,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI_Fade
       objectReference: {fileID: 0}
+    - target: {fileID: 1397102223998535088, guid: 81ec30eb8531a624bae8634c1b5a2d9f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4650694780108181233, guid: 81ec30eb8531a624bae8634c1b5a2d9f, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2718,7 +2722,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 668, y: 82}
+  m_AnchoredPosition: {x: 535, y: 19}
   m_SizeDelta: {x: 270.5392, y: 94.14}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1790944849
@@ -2748,7 +2752,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 57
-    m_Alignment: 4
+    m_Alignment: 5
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0

@@ -19,17 +19,14 @@ public class UI_Rank : MonoBehaviour
         for (int i = 0; i < nameTexts.Length; i++)
         {
             nameTexts[i].text = GameManager.Instance.playerDataList[i].playerName;
-            scoreTexts[i].text = $"½ºÅ×ÀÌÁö{GameManager.Instance.playerDataList[i].stageData}";
-
-            Debug.Log(GameManager.Instance.playerDataList[i].playerName);
-            Debug.Log($"½ºÅ×ÀÌÁö{GameManager.Instance.playerDataList[i].stageData}");
+            scoreTexts[i].text = $"ìŠ¤í…Œì´ì§€ {GameManager.Instance.playerDataList[i].stageData}";
         }
 
         if (GameManager.Instance.playerName != null)
             recentName.text = GameManager.Instance.playerName;
         else
             recentName.text = "--";
-        recentScore.text = $"½ºÅ×ÀÌÁö{GameManager.Instance.stageData}";
+        recentScore.text = $"ìŠ¤í…Œì´ì§€ {GameManager.Instance.stageData}";
     }
 
     public void ClickLeave()
@@ -39,7 +36,7 @@ public class UI_Rank : MonoBehaviour
 
     IEnumerator LoadMainScene()
     {
-        UI_Fade.FadeIn();
+        UI_Fade.instance.FadeIn();
         yield return new WaitForSeconds(2);
         SceneManager.LoadScene("MainScene");
     }
