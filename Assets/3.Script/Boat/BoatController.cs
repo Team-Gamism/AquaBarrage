@@ -6,8 +6,8 @@ using UnityEngine.InputSystem;
 public class BoatController : MonoBehaviour
 {
     [SerializeField] private float maxSpeed = 5f;
-    [SerializeField] private float speedUp = 1f;
-    [SerializeField] private float speedDown = 2f;
+    [SerializeField] private float speedUp = 2f;
+    [SerializeField] private float speedDown = 3f;
     private Rigidbody rb;
     private float curSpeed = 0f;
     private float targetSpeed = 0f;
