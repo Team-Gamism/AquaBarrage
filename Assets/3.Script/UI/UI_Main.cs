@@ -21,7 +21,7 @@ public class UI_Main : MonoBehaviour
 
     IEnumerator LoadGameScene()
     {
-        UI_Fade.FadeIn();
+        UI_Fade.instance.FadeIn();
         yield return new WaitForSeconds(2f);
         SceneManager.LoadScene("GameScene");
     }
@@ -38,7 +38,7 @@ public class UI_Main : MonoBehaviour
 
     IEnumerator LoadHelpScene()
     {
-        UI_Fade.FadeIn();
+        UI_Fade.instance.FadeIn();
         yield return new WaitForSeconds(2f);
         SceneManager.LoadScene("HelpScene");
     }
@@ -50,7 +50,7 @@ public class UI_Main : MonoBehaviour
 
     IEnumerator LoadRankScene()
     {
-        UI_Fade.FadeIn();
+        UI_Fade.instance.FadeIn();
         yield return new WaitForSeconds(2f);
         SceneManager.LoadScene("RankScene");
     }

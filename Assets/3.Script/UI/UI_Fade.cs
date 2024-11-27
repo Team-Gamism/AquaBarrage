@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class UI_Fade : MonoBehaviour
 {
-    public static Animator anim;
-
-    private void Start()
+    public Animator anim;
+    public static UI_Fade instance;
+    private void Awake()
     {
+        instance = this;
         anim = GetComponent<Animator>();
+        anim.Play("FadeOut");
     }
 
-    public static void FadeIn()
+    public void FadeIn()
     {
         anim.Play("FadeIn");
     }

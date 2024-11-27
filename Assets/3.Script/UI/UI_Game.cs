@@ -31,7 +31,7 @@ public class UI_Game : MonoBehaviour
         if (GameManager.Instance.curHp <= 0)
         {
             transform.GetChild(1).gameObject.SetActive(true);
-            Time.timeScale = 0f;
+            LevelManager.instance.isEndGame = true;
         }
 
         timerText.text = $"{(int)time / 60} : {(int)time % 60}";
@@ -60,10 +60,11 @@ public class UI_Game : MonoBehaviour
             StartCoroutine(LoadRankScene());
         }
     }
+  
 
     IEnumerator LoadRankScene()
     {
-        UI_Fade.FadeIn();
+        UI_Fade.instance.FadeIn();
         yield return new WaitForSeconds(2f);
         SceneManager.LoadScene("RankScene");
     }
@@ -76,9 +77,9 @@ public class UI_Game : MonoBehaviour
 
     IEnumerator LoadGameScene()
     {
-        UI_Fade.FadeIn();
+        UI_Fade.instance.FadeIn();
         yield return new WaitForSeconds(2f);
-        SceneManager.LoadScene("RankScene");
+        SceneManager.LoadScene("GameScene");
     }
 
     private void StageInit()

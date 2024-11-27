@@ -16,3 +16,4 @@ MonoBehaviour:
   speed: 2
   weight: 5
   attackCoolTime: 4
+  money: 100

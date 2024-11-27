@@ -7,6 +7,7 @@ public class LevelManager : MonoBehaviour
 {
     public StageInfoSO stageInfo;
     
+    public bool isEndGame = false;
     public static LevelManager instance;
 
     private void Awake()

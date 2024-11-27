@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shark : MonoBehaviour, ICanFish
+public class Fish_Shark : MonoBehaviour, ICanFish
 {
     public FishStatSO fishInfo;
 
@@ -179,27 +179,25 @@ public class Shark : MonoBehaviour, ICanFish
         Gizmos.DrawRay(transform.position, (fish_Direction == Fish_Direction.Left ? 1 : -1) * transform.forward * 10f);
     }
 
-    public void Fished(Transform hook, Vector3 lastPosition)
+    public Transform Fished(Transform hook)
     {
         hp -= 10;
         hpBar.SetHpBar((float)hp / maxHp);
 
         if (hp <= 0)
         {
-          gameObject.SetActive(false);
-          gameObject.SetActive(true);
+            gameObject.SetActive(false);
+            gameObject.SetActive(true);
 
             transform.SetParent(hook);
 
             transform.localPosition = Vector3.zero;
 
-            Vector3 movementDirection = (transform.position - lastPosition).normalized;
+            GameManager.Instance.money += fishInfo.money;
 
-            if (movementDirection.sqrMagnitude > 0.001f)
-            {
-                Quaternion lookRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
-                transform.rotation = lookRotation;
-            }
+            return transform;
         }
+        else
+            return null;
     }
 }

@@ -153,6 +153,7 @@ public class FishingRodController : MonoBehaviour
             }
 
             curPrefab = Instantiate(launchPrefab, launchPoint.position, Quaternion.identity);
+            //curPrefab.GetComponent<FishingHookController>().hookAction += StartReeling;
             Rigidbody rb = curPrefab.GetComponent<Rigidbody>();
             if (rb != null)
             {
