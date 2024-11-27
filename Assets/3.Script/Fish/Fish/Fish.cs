@@ -130,6 +130,8 @@ public class Fish : MonoBehaviour, ICanFish
 
         transform.localPosition = Vector3.zero;
 
+        GameManager.Instance.money += fishStat.money;
+
         Vector3 movementDirection = (transform.position - lastPosition).normalized;
 
         if (movementDirection.sqrMagnitude > 0.001f)
