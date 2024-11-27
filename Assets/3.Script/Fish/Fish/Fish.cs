@@ -131,6 +131,7 @@ public class Fish : MonoBehaviour, ICanFish
         transform.localPosition = Vector3.zero;
 
         GameManager.Instance.money += fishStat.money;
+        GameManager.Instance.fishCount++;
 
         return transform;
     }
