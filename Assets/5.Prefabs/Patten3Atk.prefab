@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5129656612941737931}
   - component: {fileID: 8519137191664377796}
   - component: {fileID: 2704520661807303908}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Patten3Atk
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -3,10 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shark : MonoBehaviour
+public class Shark : MonoBehaviour, ICanFish
 {
     public FishStatSO fishInfo;
 
+    public int maxHp = 100;
+
+    int hp;
+
+    public UI_BossHpBar hpBar;
+    
     public Transform[] bulletPoints;
 
     private string fishName;
@@ -25,8 +31,8 @@ public class Shark : MonoBehaviour
 
     public enum Fish_Direction
     {
-        left,
-        right
+        Left,
+        Right
     }
 
     public Fish_Direction fish_Direction;
@@ -36,6 +42,8 @@ public class Shark : MonoBehaviour
         Init();
         StartCoroutine(TurnCoroutine());
         StartCoroutine(Pattern1());
+        hp = maxHp;
+        hpBar.SetHpBar(hp / maxHp);
     }
 
     IEnumerator Pattern1()
@@ -70,7 +78,7 @@ public class Shark : MonoBehaviour
             StartCoroutine(Pattern2Attack());
             transform.DOMove(new Vector3(50, -19, 0), 12).onComplete += () => 
             {
-                fish_Direction = Fish_Direction.left;
+                fish_Direction = Fish_Direction.Left;
                 transform.DOLookAt(new Vector3(0, -15.5f, 0), 1);
                 transform.DOMove(new Vector3(0, -15.5f, 0), 4).onComplete += () => { StartCoroutine(Pattern1()); };
             };
@@ -104,19 +112,18 @@ public class Shark : MonoBehaviour
 
     private void Move()
     {
-        transform.Translate((fish_Direction == Fish_Direction.left ? 1 : -1) * speed * transform.right / 2 * Time.deltaTime);
+        transform.Translate((fish_Direction == Fish_Direction.Left ? 1 : -1) * speed * transform.right / 2 * Time.deltaTime);
 
         transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
     }
 
     private void Rotate()
     {
+       
         transform.rotation = Quaternion.Euler(new Vector3(
-            Mathf.Lerp(transform.rotation.eulerAngles.x >= 180 ?
-            transform.rotation.eulerAngles.x - 360 : transform.rotation.eulerAngles.x,
-            turnVecX, Time.deltaTime * 1.5f) + (fish_Direction == Fish_Direction.left ? 0 : 180), -90, 0));
-
-        transform.rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, 0f);
+           Mathf.Lerp(transform.rotation.eulerAngles.x >= 180 ?
+           transform.rotation.eulerAngles.x - 360 : transform.rotation.eulerAngles.x,
+           turnVecX, Time.deltaTime * Time.deltaTime) - (fish_Direction == Fish_Direction.Left ? 0 : 180), -90f, fish_Direction == Fish_Direction.Left ? 0 : -180));
 
     }
 
@@ -142,16 +149,16 @@ public class Shark : MonoBehaviour
             turnVecX = Random.Range(30f, 16);
         }
 
-        if (Physics.Raycast(transform.position, transform.forward, 5f, wallLayer))
+        if (Physics.Raycast(transform.position, transform.forward, 10f, wallLayer))
         {
-            if (fish_Direction == Fish_Direction.right)
+            if (fish_Direction == Fish_Direction.Right)
             {
-                fish_Direction = Fish_Direction.left;
+                fish_Direction = Fish_Direction.Left;
                 transform.DORotate(new Vector3(0, -90, 0), 1);
             }
             else
             {
-                fish_Direction = Fish_Direction.right;
+                fish_Direction = Fish_Direction.Right;
                 transform.DORotate(new Vector3(0, 90, 0), 1);
             }
         }
@@ -169,6 +176,32 @@ public class Shark : MonoBehaviour
     {
         Gizmos.color = Color.red;
 
-        Gizmos.DrawRay(transform.position, (fish_Direction == Fish_Direction.left ? 1 : -1) * transform.forward * 2f);
+        Gizmos.DrawRay(transform.position, (fish_Direction == Fish_Direction.Left ? 1 : -1) * transform.forward * 10f);
+    }
+
+    public void Fished(Transform hook, Vector3 lastPosition)
+    {
+        hp -= 10;
+        hpBar.SetHpBar((float)hp / maxHp);
+
+        if (hp <= 0)
+        {
+          gameObject.SetActive(false);
+          gameObject.SetActive(true);
+
+            transform.SetParent(hook);
+
+            transform.localPosition = Vector3.zero;
+
+            GameManager.Instance.money += fishInfo.money;
+
+            Vector3 movementDirection = (transform.position - lastPosition).normalized;
+
+            if (movementDirection.sqrMagnitude > 0.001f)
+            {
+                Quaternion lookRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
+                transform.rotation = lookRotation;
+            }
+        }
     }
 }

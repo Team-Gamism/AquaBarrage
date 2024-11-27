@@ -1,31 +1,50 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class FishingHookController : MonoBehaviour
 {
-    private Vector3 lastPosition;
+    private Transform fishingOrigin;
+    private Transform caughtFish;
+    private float minYPos = -24.5f;
 
     private void Start()
     {
-        lastPosition = transform.position;
+        fishingOrigin = GameObject.Find("FishingOrigin").transform;
     }
 
     private void Update()
     {
-        Vector3 movementDirection = transform.position - lastPosition;
+        if (transform.position.y < minYPos)
+        {
+            Vector3 pos = transform.position;
+            pos.y = minYPos;
+            transform.position = pos;
 
-        lastPosition = transform.position;
+            Rigidbody rb = GetComponent<Rigidbody>();
+            if (rb != null && !rb.isKinematic)
+            {
+                rb.velocity = Vector3.zero;
+                rb.isKinematic = true;
+            }
+        }
+
+        if (caughtFish != null)
+        {
+            Vector3 dir = (fishingOrigin.position - caughtFish.position).normalized;
+            caughtFish.rotation = Quaternion.LookRotation(dir, Vector3.up);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Fish"))
-        {
-            Transform fish = other.transform;
+        Transform fish = other.transform;
 
-            string scriptName = fish.name;
+        Fish fishComponent = fish.GetComponent<Fish>();
+        if (fishComponent != null)
+        {
+            string scriptName = fishComponent.fishStat.fishName;
             Type fishScriptType = Type.GetType(scriptName);
 
             if (fishScriptType != null)
@@ -35,26 +54,18 @@ public class FishingHookController : MonoBehaviour
                 {
                     fishScript.enabled = false;
                 }
-
-                Rigidbody rb = GetComponent<Rigidbody>();
-                if (rb != null)
-                {
-                    rb.useGravity = false;
-                    rb.isKinematic = true;
-                }
-
-                fish.SetParent(transform);
-
-                fish.localPosition = Vector3.zero;
-
-                Vector3 movementDirection = (transform.position - lastPosition).normalized;
-
-                if (movementDirection.sqrMagnitude > 0.001f)
-                {
-                    Quaternion lookRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
-                    fish.rotation = lookRotation;
-                }
             }
+        }
+        fish.SetParent(transform);
+        fish.localPosition = Vector3.zero;
+
+        caughtFish = fish;
+
+        Rigidbody rb = GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.useGravity = false;
+            rb.isKinematic = true;
         }
     }
 }
