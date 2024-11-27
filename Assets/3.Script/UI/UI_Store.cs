@@ -14,10 +14,16 @@ public class UI_Store : MonoBehaviour
     [SerializeField] Text fishExpenseText;
     [SerializeField] Text rillExpenseText;
     [SerializeField] Text boatExpenseText;
+    [SerializeField] Text repairExpenseText;
+    [SerializeField] Text repairHpText;
+
+    [SerializeField] GameObject repairImage;
 
     [SerializeField] StoreSO storeSO_Fish;
     [SerializeField] StoreSO storeSO_Engine;
     [SerializeField] StoreSO storeSO_Rill;
+
+    int repairHp = 1;
 
     private void Start()
     {
@@ -64,9 +70,43 @@ public class UI_Store : MonoBehaviour
         }
     }
 
-    public void RepairBoat()
+    public void Repair()
     {
-       
+        if (GameManager.Instance.money >= 1000 * repairHp)
+        {
+            GameManager.Instance.money -= 1000 * repairHp;
+            GameManager.Instance.CurHP += repairHp;
+            SetStore();
+        }
+    }
+    public void PlusRepairHp()
+    {
+        if (repairHp + GameManager.Instance.CurHP < GameManager.Instance.maxHp)
+        {
+            repairHp++;
+            UpdateRepairPrice();
+        }
+    }
+
+    public void MinusRepairHp()
+    {
+        if (repairHp > 1)
+        {
+            repairHp--;
+            UpdateRepairPrice();
+        }
+    }
+
+
+    public void UpdateRepairPrice()
+    {
+        repairHpText.text = $"{repairHp}";
+
+        repairExpenseText.text = $"{1000 * repairHp}";
+        if(GameManager.Instance.money >= repairHp * 1000)
+            repairExpenseText.color = Color.black;
+        else
+            repairExpenseText.color = Color.red;
     }
 
     public void SetStore()
@@ -106,6 +146,16 @@ public class UI_Store : MonoBehaviour
             rillExpenseText.color = Color.black;
         else
             rillExpenseText.color = Color.red;
+
+        boatHpText.text = $"{GameManager.Instance.CurHP}/{GameManager.Instance.maxHp}";
+
+        repairHp = Mathf.Clamp(repairHp, 1, GameManager.Instance.maxHp - GameManager.Instance.CurHP);
+        UpdateRepairPrice();
+
+        if (GameManager.Instance.maxHp == GameManager.Instance.CurHP)
+        {
+            repairImage.SetActive(false);
+        }
     }
 
     public void Leave()
