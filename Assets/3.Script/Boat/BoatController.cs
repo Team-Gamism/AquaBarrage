@@ -8,9 +8,12 @@ public class BoatController : MonoBehaviour
     [SerializeField] private float maxSpeed = 5f;
     [SerializeField] private float speedUp = 2f;
     [SerializeField] private float speedDown = 3f;
+    [SerializeField] private float dashForce = 10f;
+    [SerializeField] private float dashDuration = 0.2f;
     private Rigidbody rb;
     private float curSpeed = 0f;
     private float targetSpeed = 0f;
+    private bool isDashing = false;
 
     private void Start()
     {
@@ -19,15 +22,20 @@ public class BoatController : MonoBehaviour
 
     private void Update()
     {
-        curSpeed = LevelManager.instance.isEndGame
+        if (!isDashing)
+        {
+            curSpeed = LevelManager.instance.isEndGame
             ? 0f
             : Mathf.MoveTowards(curSpeed, targetSpeed,
                 (targetSpeed == 0 ? speedDown : speedUp) * Time.deltaTime);
-        rb.velocity = new Vector3(curSpeed, rb.velocity.y, 0);
+            rb.velocity = new Vector3(curSpeed, rb.velocity.y, 0);
+        }
     }
 
     public void OnMove(InputValue value)
     {
+        if (isDashing) return;
+
         Vector2 input = value.Get<Vector2>();
         float dir = input.x;
 
@@ -40,6 +48,23 @@ public class BoatController : MonoBehaviour
         {
             targetSpeed = 0;
         }
+    }
+
+    public void OnDash(InputValue value)
+    {
+        if (!isDashing && value.isPressed)
+        {
+            StartCoroutine(Dash());
+        }
+    }
+
+    private IEnumerator Dash()
+    {
+        isDashing = true;
+        float dir = transform.localScale.x < 0 ? 1 : -1;
+        rb.velocity = new Vector3(dashForce * dir, rb.velocity.y, 0);
+        yield return new WaitForSeconds(dashDuration);
+        isDashing = false;
     }
 
     private void Flip(float dir)

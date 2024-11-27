@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 488508789}
+  m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2888,6 +2888,8 @@ MonoBehaviour:
   maxSpeed: 5
   speedUp: 5
   speedDown: 5
+  dashForce: 10
+  dashDuration: 0.25
 --- !u!120 &619689334
 LineRenderer:
   serializedVersion: 2
@@ -5593,6 +5595,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stageInfo: {fileID: 0}
+  isEndGame: 0
 --- !u!1 &1356260632
 GameObject:
   m_ObjectHideFlags: 0
