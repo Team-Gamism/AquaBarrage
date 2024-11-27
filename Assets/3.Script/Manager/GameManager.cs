@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     public bool isPlayGame;
 
     public int money;
+    public int fishCount;
 
     public int stageData;
 
