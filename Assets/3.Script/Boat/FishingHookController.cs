@@ -44,7 +44,7 @@ public class FishingHookController : MonoBehaviour
         Fish fishComponent = fish.GetComponent<Fish>();
         if (fishComponent != null)
         {
-            string scriptName = fishComponent.fishStat.fishName;
+            string scriptName = $"Fish_{fishComponent.fishStat.fishName}";
             Type fishScriptType = Type.GetType(scriptName);
 
             if (fishScriptType != null)
