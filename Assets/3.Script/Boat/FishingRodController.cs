@@ -33,7 +33,7 @@ public class FishingRodController : MonoBehaviour
 
     [SerializeField] AudioClip windClip;
     [SerializeField] AudioClip getFishClip;
-
+    [SerializeField] ParticleSystem getFishEffect;
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
@@ -178,6 +178,7 @@ public class FishingRodController : MonoBehaviour
     void PlayGetFishSound()
     {
         audioSource.PlayOneShot(getFishClip);
+        getFishEffect.Play();
     }
 
     private IEnumerator ReelPrefab()

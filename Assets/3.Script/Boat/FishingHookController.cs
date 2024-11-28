@@ -17,7 +17,9 @@ public class FishingHookController : MonoBehaviour
     AudioSource audioSource;
 
     [SerializeField] AudioClip splashClip;
-   
+
+    [SerializeField] ParticleSystem fallEffect;
+    [SerializeField] ParticleSystem fallEffect2;
 
     private void Start()
     {
@@ -46,6 +48,9 @@ public class FishingHookController : MonoBehaviour
             if (transform.position.y <= -2.1f)
             {
                 audioSource.PlayOneShot(splashClip);
+                fallEffect.gameObject.SetActive(true);
+                fallEffect2.gameObject.SetActive(true);
+                fallEffect2.transform.parent = null;
                 isfalled = true;
             }
         }

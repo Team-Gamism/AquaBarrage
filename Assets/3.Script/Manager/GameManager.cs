@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,12 +34,18 @@ public class GameManager : MonoBehaviour
     public int stageData;
 
     public int maxHp;
+
+    public Action hitEvent;
+
     public int curHp;
     public int CurHP
     {
         get => curHp;
         set
         {
+            if(curHp > value)
+                hitEvent?.Invoke();
+
             curHp = Mathf.Clamp(value, 0, maxHp);
         }
     }
