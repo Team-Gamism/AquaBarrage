@@ -18,7 +18,7 @@ public class FishSpawner : MonoBehaviour
 
     IEnumerator SpawnFish()
     {
-        while (true && !LevelManager.instance.isEndGame)
+        while (true && !LevelManager.instance.isPausedGame)
         {
             yield return new WaitForSeconds(12.5f + Random.Range(-1.5f, 1.5f));
 
@@ -35,7 +35,7 @@ public class FishSpawner : MonoBehaviour
 
             do
             {
-                
+
                 randomIdx = Random.Range(0, LevelManager.instance.stageInfo.stageFishes.Length);
                 if (randomIdx <= 2)
                     fish1cnt++;
@@ -57,13 +57,18 @@ public class FishSpawner : MonoBehaviour
                 yield return null;
             } while (fish1cnt >= 6 && fish2cnt >= 3 && fish3cnt >= 3);
 
-            GameObject fishObj = Instantiate(LevelManager.instance.stageInfo.stageFishes[randomIdx], transform.position + Vector3.up * Random.Range(-3f, 3f), Quaternion.identity);
-            
-            Fish fish = fishObj.GetComponent<Fish>();
-            fish.fish_Direction = direction;
+            if (!LevelManager.instance.isPausedGame)
+            {
+                GameObject fishObj = Instantiate(LevelManager.instance.stageInfo.stageFishes[randomIdx],
+                    transform.position + Vector3.up * Random.Range(-3f, 3f), Quaternion.identity);
 
-            if (fish.fish_Direction == Fish.Fish_Direction.Right)
-                transform.rotation = Quaternion.Euler( new Vector3(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, -transform.rotation.eulerAngles.z));
+                Fish fish = fishObj.GetComponent<Fish>();
+                fish.fish_Direction = direction;
+
+                if (fish.fish_Direction == Fish.Fish_Direction.Right)
+                    transform.rotation = Quaternion.Euler(new Vector3(transform.rotation.eulerAngles.x,
+                        transform.rotation.eulerAngles.y, -transform.rotation.eulerAngles.z));
+            }
         }
     }
 }

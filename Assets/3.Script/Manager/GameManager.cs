@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
 
     public bool isPlayGame;
     public bool isDash;
+    public bool isClearStage;
 
     public int money;
     public int fishCount;
@@ -68,6 +69,7 @@ public class GameManager : MonoBehaviour
         engineLevel = 0;
         dashLevel = 0;
         rillLevel = 0;
+        fishCount = 0;
 
         curHp = maxHp;
     }

@@ -2,23 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UI_Fade : MonoBehaviour
+public class UI_NextStage : MonoBehaviour
 {
     public Animator anim;
-    public static UI_Fade instance;
+    public static UI_NextStage instance;
     private void Awake()
     {
         instance = this;
         anim = GetComponent<Animator>();
-        anim.Play("FadeOut");
     }
 
-    public void FadeIn()
+    public void NextStage()
     {
-        anim.Play("FadeIn");
-    }
-    public void FadeOut()
-    {
-        anim.Play("FadeOut");
+        anim.Play("NextStage");
     }
 }
