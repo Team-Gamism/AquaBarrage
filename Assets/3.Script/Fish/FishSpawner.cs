@@ -18,7 +18,7 @@ public class FishSpawner : MonoBehaviour
 
     IEnumerator SpawnFish()
     {
-        while (true && !LevelManager.instance.isPausedGame)
+        while (true)
         {
             yield return new WaitForSeconds(12.5f + Random.Range(-1.5f, 1.5f));
 
@@ -26,36 +26,36 @@ public class FishSpawner : MonoBehaviour
 
 
             randomIdx = Random.Range(0, LevelManager.instance.stageInfo.stageFishes.Length);
-            if (randomIdx <= 2)
-                fish1cnt++;
-            else if (randomIdx == 3)
-                fish2cnt++;
-            else
-                fish3cnt++;
+            //if (randomIdx <= 2)
+            //    fish1cnt++;
+            //else if (randomIdx == 3)
+            //    fish2cnt++;
+            //else
+            //    fish3cnt++;
 
-            do
-            {
+            //do
+            //{
 
-                randomIdx = Random.Range(0, LevelManager.instance.stageInfo.stageFishes.Length);
-                if (randomIdx <= 2)
-                    fish1cnt++;
-                else if (randomIdx == 3)
-                    fish2cnt++;
-                else
-                    fish3cnt++;
+            //    randomIdx = Random.Range(0, LevelManager.instance.stageInfo.stageFishes.Length);
+            //    if (randomIdx <= 2)
+            //        fish1cnt++;
+            //    else if (randomIdx == 3)
+            //        fish2cnt++;
+            //    else
+            //        fish3cnt++;
 
-                if (fish1cnt < 6 && fish2cnt < 3 && fish3cnt < 3)
-                    break;
+            //    if (fish1cnt < 6 && fish2cnt < 3 && fish3cnt < 3)
+            //        break;
 
-                if (randomIdx <= 2)
-                    fish1cnt--;
-                else if (randomIdx == 3)
-                    fish2cnt--;
-                else
-                    fish3cnt--;
+            //    if (randomIdx <= 2)
+            //        fish1cnt--;
+            //    else if (randomIdx == 3)
+            //        fish2cnt--;
+            //    else
+            //        fish3cnt--;
 
-                yield return null;
-            } while (fish1cnt >= 6 && fish2cnt >= 3 && fish3cnt >= 3);
+            //    yield return null;
+            //} while (fish1cnt >= 6 && fish2cnt >= 3 && fish3cnt >= 3);
 
             if (!LevelManager.instance.isPausedGame)
             {
@@ -64,7 +64,7 @@ public class FishSpawner : MonoBehaviour
 
                 Fish fish = fishObj.GetComponent<Fish>();
                 fish.fish_Direction = direction;
-
+                 
                 if (fish.fish_Direction == Fish.Fish_Direction.Right)
                     transform.rotation = Quaternion.Euler(new Vector3(transform.rotation.eulerAngles.x,
                         transform.rotation.eulerAngles.y, -transform.rotation.eulerAngles.z));

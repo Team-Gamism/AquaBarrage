@@ -70,11 +70,15 @@ public class FishingHookController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+
+        Debug.Log(other.name);
         if (caughtFish == null)
         {
 
-            if (other.TryGetComponent<ICanFish>(out var canFish))
+            if (other.TryGetComponent<ICanFish>(out var canFish) && caughtFish == null)
             {
+                Debug.Log(other.name);
+
                 caughtFish = canFish.Fished(transform);
 
                 hookAction?.Invoke();

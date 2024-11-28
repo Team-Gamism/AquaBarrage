@@ -23,7 +23,7 @@ public class UI_Main : MonoBehaviour
     {
         UI_Fade.instance.FadeIn();
         yield return new WaitForSeconds(2f);
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("GameScene_UI_HC");
     }
 
     public void ClickSetting()
