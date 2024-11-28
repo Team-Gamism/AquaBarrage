@@ -121,7 +121,7 @@ public class Fish : MonoBehaviour, ICanFish
         }
     }
 
-   public Transform Fished(Transform hook)
+   public virtual Transform Fished(Transform hook)
     {
         gameObject.SetActive(false);
         gameObject.SetActive(true);
