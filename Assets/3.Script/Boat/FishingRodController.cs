@@ -29,6 +29,11 @@ public class FishingRodController : MonoBehaviour
 
     [SerializeField] PlayerStatSO rillLevel;
 
+    AudioSource audioSource;
+
+    [SerializeField] AudioClip windClip;
+    [SerializeField] AudioClip getFishClip;
+
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
@@ -38,6 +43,8 @@ public class FishingRodController : MonoBehaviour
         castAction.started += context => StartCasting();
         castAction.canceled += context => StopCastingAndLaunch();
         reelAction.performed += context => StartReeling();
+
+        audioSource = GetComponent<AudioSource>();
 
         Init();
     }
@@ -154,8 +161,10 @@ public class FishingRodController : MonoBehaviour
                 meshRenderer.enabled = false;
             }
 
+            audioSource.PlayOneShot(windClip);
             curPrefab = Instantiate(launchPrefab, launchPoint.position, Quaternion.identity);
             curPrefab.GetComponent<FishingHookController>().hookAction += StartReeling;
+            curPrefab.GetComponent<FishingHookController>().getHookAction += PlayGetFishSound;
             Rigidbody rb = curPrefab.GetComponent<Rigidbody>();
             if (rb != null)
             {
@@ -164,6 +173,11 @@ public class FishingRodController : MonoBehaviour
                 rb.AddForce(force, ForceMode.Impulse);
             }
         }
+    }
+
+    void PlayGetFishSound()
+    {
+        audioSource.PlayOneShot(getFishClip);
     }
 
     private IEnumerator ReelPrefab()
@@ -177,7 +191,7 @@ public class FishingRodController : MonoBehaviour
             }
         }
         isReeling = true;
-
+        audioSource.Play();
         while (curPrefab != null && Vector3.Distance(curPrefab.transform.position, launchPoint.position) > 0.1f)
         {
             curPrefab.transform.position = Vector3.MoveTowards(curPrefab.transform.position, launchPoint.position, (reelSpeed + rillLevel.valueList[GameManager.Instance.rillLevel]) * Time.deltaTime);
@@ -189,6 +203,7 @@ public class FishingRodController : MonoBehaviour
         {
             meshRenderer.enabled = true;
         }
+        audioSource.Stop();
         Destroy(curPrefab);
         ResetLine();
         isReeling = false;

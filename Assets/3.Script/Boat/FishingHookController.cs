@@ -10,10 +10,19 @@ public class FishingHookController : MonoBehaviour
     private float minYPos = -24.5f;
 
     public Action hookAction;
+    public Action getHookAction;
+
+    bool isfalled = false;
+
+    AudioSource audioSource;
+
+    [SerializeField] AudioClip splashClip;
+   
 
     private void Start()
     {
         fishingOrigin = GameObject.Find("FishingOrigin").transform;
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -32,11 +41,26 @@ public class FishingHookController : MonoBehaviour
             }
         }
 
+        if (!isfalled)
+        {
+            if (transform.position.y <= -2.1f)
+            {
+                audioSource.PlayOneShot(splashClip);
+                isfalled = true;
+            }
+        }
+
         if (caughtFish != null)
         {
             Vector3 dir = (fishingOrigin.position - caughtFish.position).normalized;
             caughtFish.rotation = Quaternion.LookRotation(dir, Vector3.up);
         }
+    }
+
+    private void OnDisable()
+    {
+        if (caughtFish != null)
+            getHookAction?.Invoke();
     }
 
     private void OnTriggerEnter(Collider other)

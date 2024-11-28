@@ -24,9 +24,14 @@ public class BoatController : MonoBehaviour
     public PlayerStatSO engineSO;
     public PlayerStatSO dashSO;
 
+    AudioSource audioSource;
+
+    [SerializeField] AudioClip dashAudio;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void FixedUpdate()
@@ -72,6 +77,7 @@ public class BoatController : MonoBehaviour
     private IEnumerator Dash()
     {
         canDash = false;
+        audioSource.PlayOneShot(dashAudio);
         GameManager.Instance.isDash = true;
         float dir = targetSpeed > 0 ? 1 : -1;
         rb.velocity = new Vector3(dashForce * dir, rb.velocity.y, 0);
