@@ -27,11 +27,15 @@ public class BoatController : MonoBehaviour
     AudioSource audioSource;
 
     [SerializeField] AudioClip dashAudio;
+    [SerializeField] AudioClip hitAudio;
+
+    [SerializeField] ParticleSystem hitEffect;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
+        GameManager.Instance.hitEvent = Hited;
     }
 
     private void FixedUpdate()
@@ -93,5 +97,11 @@ public class BoatController : MonoBehaviour
         Vector3 scale = transform.localScale;
         scale.x = dir > 0 ? -Mathf.Abs(scale.x) : Mathf.Abs(scale.x);
         transform.localScale = scale;
+    }
+
+    void Hited()
+    {
+        hitEffect.Play();
+        audioSource.PlayOneShot(hitAudio);
     }
 }
