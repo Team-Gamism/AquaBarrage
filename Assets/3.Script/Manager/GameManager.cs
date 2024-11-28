@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
 
     public int engineLevel;
     public int rillLevel;
-    public int fishLevel;
+    public int dashLevel;
 
 
     public void InitData()
@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
         stageData = 1;
         playerName = "";
         engineLevel = 0;
-        fishLevel = 0;
+        dashLevel = 0;
         rillLevel = 0;
 
         curHp = maxHp;
@@ -84,12 +84,12 @@ public class GameManager : MonoBehaviour
 
     public void LoadData()
     {
-            for (int i = 0; i < 5; i++)
-            {
-                playerDataList.Add(new PlayerData());
-                playerDataList[i].stageData = PlayerPrefs.GetInt($"StageData{i}");
-                playerDataList[i].playerName = PlayerPrefs.GetString($"NameData{i}");
-            }
+        for (int i = 0; i < 5; i++)
+        {
+            playerDataList.Add(new PlayerData());
+            playerDataList[i].stageData = PlayerPrefs.GetInt($"StageData{i}");
+            playerDataList[i].playerName = PlayerPrefs.GetString($"NameData{i}");
+        }
     }
 
     public void AddData()

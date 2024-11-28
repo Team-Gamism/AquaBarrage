@@ -13,8 +13,16 @@ public class BoatController : MonoBehaviour
     private Rigidbody rb;
     private float curSpeed = 0f;
     private float targetSpeed = 0f;
+
     private float minXPos = -23.5f;
     private float maxXPos = 23.5f;
+
+    bool canDash = true;
+
+    private float dashCool = 2;
+
+    public PlayerStatSO engineSO;
+    public PlayerStatSO dashSO;
 
     private void Start()
     {
@@ -29,7 +37,7 @@ public class BoatController : MonoBehaviour
                 ? 0f
                 : Mathf.MoveTowards(curSpeed, targetSpeed,
                     (targetSpeed == 0 ? speedDown : speedUp) * Time.fixedDeltaTime);
-            rb.velocity = new Vector3(curSpeed, rb.velocity.y, 0);
+            rb.velocity = new Vector3(curSpeed + engineSO.valueList[GameManager.Instance.engineLevel], rb.velocity.y, 0);
         }
         float x = Mathf.Clamp(transform.position.x, minXPos, maxXPos);
         transform.position = new Vector3(x, transform.position.y, transform.position.z);
@@ -37,7 +45,7 @@ public class BoatController : MonoBehaviour
 
     public void OnMove(InputValue value)
     {
-        if (GameManager.Instance.isDash) return;
+        //if (GameManager.Instance.isDash) return;
 
         Vector2 input = value.Get<Vector2>();
         float dir = input.x;
@@ -55,7 +63,7 @@ public class BoatController : MonoBehaviour
 
     public void OnDash(InputValue value)
     {
-        if (!GameManager.Instance.isDash && value.isPressed)
+        if (canDash && value.isPressed)
         {
             StartCoroutine(Dash());
         }
@@ -63,11 +71,14 @@ public class BoatController : MonoBehaviour
 
     private IEnumerator Dash()
     {
+        canDash = false;
         GameManager.Instance.isDash = true;
         float dir = targetSpeed > 0 ? 1 : -1;
         rb.velocity = new Vector3(dashForce * dir, rb.velocity.y, 0);
         yield return new WaitForSeconds(dashDuration);
         GameManager.Instance.isDash = false;
+        yield return new WaitForSeconds(dashCool - dashSO.valueList[GameManager.Instance.dashLevel]);
+        canDash = true;
     }
 
     private void Flip(float dir)

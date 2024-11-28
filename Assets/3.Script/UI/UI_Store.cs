@@ -7,11 +7,11 @@ public class UI_Store : MonoBehaviour
 {
     [SerializeField] Text moneyText;
     [SerializeField] Text engineLevelText;
-    [SerializeField] Text fishLevelText;
+    [SerializeField] Text dashLevelText;
     [SerializeField] Text rillLevelText;
     [SerializeField] Text boatHpText;
     [SerializeField] Text engineExpenseText;
-    [SerializeField] Text fishExpenseText;
+    [SerializeField] Text dashExpenseText;
     [SerializeField] Text rillExpenseText;
     [SerializeField] Text boatExpenseText;
     [SerializeField] Text repairExpenseText;
@@ -19,7 +19,7 @@ public class UI_Store : MonoBehaviour
 
     [SerializeField] GameObject repairImage;
 
-    [SerializeField] StoreSO storeSO_Fish;
+    [SerializeField] StoreSO storeSO_Dash;
     [SerializeField] StoreSO storeSO_Engine;
     [SerializeField] StoreSO storeSO_Rill;
 
@@ -50,12 +50,12 @@ public class UI_Store : MonoBehaviour
         }
     }
 
-    public void UpgradeFish()
+    public void UpgradeDash()
     {
-        if (GameManager.Instance.money >= storeSO_Fish.levelList[GameManager.Instance.fishLevel] && storeSO_Fish.levelList.Count != GameManager.Instance.fishLevel)
+        if (GameManager.Instance.money >= storeSO_Dash.levelList[GameManager.Instance.dashLevel] && storeSO_Dash.levelList.Count != GameManager.Instance.dashLevel)
         {
-            GameManager.Instance.money -= storeSO_Engine.levelList[GameManager.Instance.fishLevel];
-            GameManager.Instance.fishLevel++;
+            GameManager.Instance.money -= storeSO_Engine.levelList[GameManager.Instance.dashLevel];
+            GameManager.Instance.dashLevel++;
             SetStore();
         }
     }
@@ -114,38 +114,53 @@ public class UI_Store : MonoBehaviour
         moneyText.text = $"{GameManager.Instance.money}";
 
         if (storeSO_Engine.levelList.Count != GameManager.Instance.engineLevel)
+        {
             engineLevelText.text = $"Lv. {GameManager.Instance.engineLevel + 1}";
-        else
-            engineLevelText.text = "Lv. Max";
+            engineExpenseText.text = $"{storeSO_Engine.levelList[GameManager.Instance.engineLevel]}";
 
-        if (storeSO_Fish.levelList.Count != GameManager.Instance.fishLevel)
-            fishLevelText.text = $"Lv. {GameManager.Instance.fishLevel + 1}";
+            if (GameManager.Instance.money >= storeSO_Engine.levelList[GameManager.Instance.engineLevel])
+                engineExpenseText.color = Color.black;
+            else
+                engineExpenseText.color = Color.red;
+        }
         else
-            fishLevelText.text = "Lv. Max";
+        {
+            engineLevelText.text = "Lv. Max";
+            engineExpenseText.gameObject.SetActive(false);
+        }
+
+        if (storeSO_Dash.levelList.Count != GameManager.Instance.dashLevel)
+        {
+            dashLevelText.text = $"Lv. {GameManager.Instance.dashLevel + 1}";
+            dashExpenseText.text = $"{storeSO_Dash.levelList[GameManager.Instance.dashLevel]}";
+
+            if (GameManager.Instance.money >= storeSO_Dash.levelList[GameManager.Instance.dashLevel])
+                dashExpenseText.color = Color.black;
+            else
+                dashExpenseText.color = Color.red;
+        }
+        else
+        {
+            dashLevelText.text = "Lv. Max";
+            dashLevelText.gameObject.SetActive(false);
+        }
 
         if (storeSO_Rill.levelList.Count != GameManager.Instance.rillLevel)
+        {
             rillLevelText.text = $"Lv. {GameManager.Instance.rillLevel + 1}";
+            rillExpenseText.text = $"{storeSO_Rill.levelList[GameManager.Instance.rillLevel]}";
+
+            if (GameManager.Instance.money >= storeSO_Rill.levelList[GameManager.Instance.rillLevel])
+                rillExpenseText.color = Color.black;
+            else
+                rillExpenseText.color = Color.red;
+        }
         else
+        {
             rillLevelText.text = "Lv. Max";
+            rillLevelText.gameObject.SetActive(false);
+        }
 
-        engineExpenseText.text = $"{storeSO_Engine.levelList[GameManager.Instance.engineLevel]}";
-        fishExpenseText.text = $"{storeSO_Fish.levelList[GameManager.Instance.fishLevel]}";
-        rillExpenseText.text = $"{storeSO_Rill.levelList[GameManager.Instance.rillLevel]}";
-
-        if (GameManager.Instance.money >= storeSO_Engine.levelList[GameManager.Instance.engineLevel])
-            engineExpenseText.color = Color.black;
-        else
-            engineExpenseText.color = Color.red;
-
-        if (GameManager.Instance.money >= storeSO_Fish.levelList[GameManager.Instance.fishLevel])
-            fishExpenseText.color = Color.black;
-        else
-            fishExpenseText.color = Color.red;
-
-        if (GameManager.Instance.money >= storeSO_Rill.levelList[GameManager.Instance.rillLevel])
-            rillExpenseText.color = Color.black;
-        else
-            rillExpenseText.color = Color.red;
 
         boatHpText.text = $"{GameManager.Instance.CurHP}/{GameManager.Instance.maxHp}";
 

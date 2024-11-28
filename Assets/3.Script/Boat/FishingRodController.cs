@@ -27,6 +27,8 @@ public class FishingRodController : MonoBehaviour
     private float curAngle = 45f;
     private int dir = 1;
 
+    [SerializeField] PlayerStatSO rillLevel;
+
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
@@ -178,7 +180,7 @@ public class FishingRodController : MonoBehaviour
 
         while (curPrefab != null && Vector3.Distance(curPrefab.transform.position, launchPoint.position) > 0.1f)
         {
-            curPrefab.transform.position = Vector3.MoveTowards(curPrefab.transform.position, launchPoint.position, reelSpeed * Time.deltaTime);
+            curPrefab.transform.position = Vector3.MoveTowards(curPrefab.transform.position, launchPoint.position, (reelSpeed + rillLevel.valueList[GameManager.Instance.rillLevel]) * Time.deltaTime);
             yield return null;
         }
 
