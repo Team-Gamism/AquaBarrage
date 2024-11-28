@@ -124,4 +124,6 @@ public class GameManager : MonoBehaviour
     }
 
     public GameObject uiController;
+
+    public AudioSource effectAudioSource;
 }

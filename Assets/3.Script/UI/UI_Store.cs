@@ -33,11 +33,13 @@ public class UI_Store : MonoBehaviour
     private void OnEnable()
     {
         GameManager.UI.AddPopupUI(gameObject);
+        Time.timeScale = 0;
     }
 
     private void OnDisable()
     {
         GameManager.UI.RemovePopupUI(gameObject);
+        Time.timeScale = 1;
     }
 
     public void UpgradeEngine()
