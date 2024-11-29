@@ -23,47 +23,52 @@ public class UI_Game : MonoBehaviour
         StageInit();
     }
 
-    private void Update()
+    IEnumerator UpdateGame()
     {
-        for (int i = 1; i <= GameManager.Instance.maxHp; i++)
+        while(true)
         {
-            hearts[i - 1].SetActive(GameManager.Instance.CurHP >= i);
-            blackHearts[i - 1].SetActive(GameManager.Instance.CurHP < i);
-        }
+            yield return null; 
+            for (int i = 1; i <= GameManager.Instance.maxHp; i++)
+            {
+                hearts[i - 1].SetActive(GameManager.Instance.CurHP >= i);
+                blackHearts[i - 1].SetActive(GameManager.Instance.CurHP < i);
+            }
 
-        if (GameManager.Instance.curHp <= 0)
-        {
-            LevelManager.instance.isPausedGame = true;
-            
-            transform.GetChild(1).gameObject.SetActive(true); //GameOver Panel
-            gameOverStageText.text = $"최종기록 : Stage {GameManager.Instance.stageData}";
-        }
+            if (GameManager.Instance.curHp <= 0)
+            {
+                LevelManager.instance.isPausedGame = true;
 
-        if (!LevelManager.instance.isPausedGame)
-        {
-            timerText.text = $"{(int)time / 60} : {(int)time % 60}";
-            time -= Time.deltaTime;
-        }
+                transform.GetChild(1).gameObject.SetActive(true); //GameOver Panel
+                gameOverStageText.text = $"최종기록 : Stage {GameManager.Instance.stageData}";
+            }
 
-        
-        if (time <= 0 && !GameManager.Instance.isClearStage)
-        {
-            GameManager.Instance.isClearStage = true;
-            
-            Transform trans = Instantiate(Resources.Load<GameObject>("Store")).transform;
-            trans.rotation = Quaternion.Euler(0f, 90f, 0f);
-            trans.GetChild(0).position = trans.position+new Vector3(0.215f, 0.715f, 0.1656f);
-            
-            LevelManager.instance.isPausedGame = true;
+            if (!LevelManager.instance.isPausedGame)
+            {
+                timerText.text = $"{(int)time / 60} : {(int)time % 60}";
+                time -= Time.deltaTime;
+            }
 
-            StartCoroutine(GO());
-        }
 
-        if (LevelManager.instance.isBossCut)
-        {
-            transform.GetChild(2).gameObject.SetActive(true); //GameOver Panel
-            resultStageText.text = $"최종기록 : Stage {GameManager.Instance.stageData}";
-            LevelManager.instance.isPausedGame = true;
+            if (time <= 0 && !GameManager.Instance.isClearStage)
+            {
+                GameManager.Instance.isClearStage = true;
+
+                Transform trans = Instantiate(Resources.Load<GameObject>("Store")).transform;
+                trans.rotation = Quaternion.Euler(0f, 90f, 0f);
+                trans.GetChild(0).position = trans.position + new Vector3(0.215f, 0.715f, 0.1656f);
+
+                LevelManager.instance.isPausedGame = true;
+
+                StartCoroutine(GO());
+            }
+
+            if (LevelManager.instance.isBossCut)
+            {
+                transform.GetChild(2).gameObject.SetActive(true); //GameOver Panel
+                resultStageText.text = $"최종기록 : Stage {GameManager.Instance.stageData}";
+                LevelManager.instance.isPausedGame = true;
+                Time.timeScale = 0;
+            }
         }
     }
 
