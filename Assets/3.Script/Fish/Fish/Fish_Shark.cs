@@ -200,4 +200,9 @@ public class Fish_Shark : MonoBehaviour, ICanFish
         else
             return null;
     }
+
+    private void OnDestroy()
+    {
+        LevelManager.instance.isBossCut = true;
+    }
 }

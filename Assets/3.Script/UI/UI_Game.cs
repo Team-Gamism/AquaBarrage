@@ -1,16 +1,13 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Numerics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using Quaternion = UnityEngine.Quaternion;
-using Vector3 = UnityEngine.Vector3;
 
 public class UI_Game : MonoBehaviour
 {
-    public InputField nameInput;
+    public InputField gameOverNameInput;
+    public InputField resultNameInput;
     public Text stageText;
     public Text timerText;
     public GameObject[] hearts;
@@ -61,12 +58,19 @@ public class UI_Game : MonoBehaviour
 
             StartCoroutine(GO());
         }
+
+        if (LevelManager.instance.isBossCut)
+        {
+            transform.GetChild(2).gameObject.SetActive(true); //GameOver Panel
+            resultStageText.text = $"최종기록 : Stage {GameManager.Instance.stageData}";
+            LevelManager.instance.isPausedGame = true;
+        }
     }
 
     IEnumerator GO()
     {
-        yield return new WaitForSeconds(8f);
-        UI_Go.instance.Go();
+        yield return new WaitForSeconds(5f);
+        LevelManager.instance.goUI = Instantiate(Resources.Load("UI_GO"), transform) as GameObject;
     }
     
     private void OnTriggerEnter(Collider other)
@@ -75,12 +79,20 @@ public class UI_Game : MonoBehaviour
         StageInit();
     }
 
-    public void ClickConfirmName()
+    public void GameOverClickConfirmName()
     {
-        if (nameInput.text.Length > 0)
+        if (gameOverNameInput.text.Length > 0)
         {
-            GameManager.Instance.playerName = nameInput.text;
-            nameInput.readOnly = true;
+            GameManager.Instance.playerName = gameOverNameInput.text;
+            gameOverNameInput.readOnly = true;
+        }
+    }
+    public void ResultClickConfirmName()
+    {
+        if (resultNameInput.text.Length > 0)
+        {
+            GameManager.Instance.playerName = resultNameInput.text;
+            resultNameInput.readOnly = true;
         }
     }
 
@@ -120,6 +132,9 @@ public class UI_Game : MonoBehaviour
         time = LevelManager.instance.stageInfo.stageTime;
         GameManager.Instance.isClearStage = false;
         LevelManager.instance.isPausedGame = false;
+
+        if (LevelManager.instance.goUI != null)
+            Destroy(LevelManager.instance.goUI);
 
         GameObject.Find("Boat").transform.position = new Vector3(0f, -2f, 0f);
 
