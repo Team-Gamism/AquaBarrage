@@ -35,6 +35,7 @@ public class BoatController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
         GameManager.Instance.hitEvent = Hited;
+        GameManager.Instance.player = transform;
     }
 
     private void FixedUpdate()

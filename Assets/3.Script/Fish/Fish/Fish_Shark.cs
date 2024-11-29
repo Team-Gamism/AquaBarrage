@@ -26,8 +26,11 @@ public class Fish_Shark : MonoBehaviour, ICanFish
     public LayerMask seaBorderLayer;
     public LayerMask wallLayer;
 
+    public GameObject pattern1Atk;
     public GameObject pattern2Atk;
     public GameObject pattern3Atk;
+
+    bool isSkill;
 
     public enum Fish_Direction
     {
@@ -41,16 +44,15 @@ public class Fish_Shark : MonoBehaviour, ICanFish
     {
         Init();
         StartCoroutine(TurnCoroutine());
-        StartCoroutine(Pattern1());
+        StartCoroutine(ChoicePattern());
         hp = maxHp;
         hpBar.SetHpBar(hp / maxHp);
     }
 
-    IEnumerator Pattern1()
+    IEnumerator ChoicePattern()
     {
-        Debug.Log("ÆÐÅÏ1");
         StartCoroutine(Pattern3());
-        while (isSkill3)   
+        while (isSkill)   
         {
             yield return null;
             Move();
@@ -58,7 +60,7 @@ public class Fish_Shark : MonoBehaviour, ICanFish
 
             CheckGround();
         }
-        switch (Random.Range(0, 2))
+        switch (Random.Range(0, 3))
         {
             case 0:
                 StartCoroutine(Pattern1());
@@ -66,48 +68,63 @@ public class Fish_Shark : MonoBehaviour, ICanFish
             case 1:
                 StartCoroutine(Pattern2());
                 break;
+            case 2:
+                StartCoroutine(Pattern3());
+                break;
         }
         
     }
-    IEnumerator Pattern2()
+    IEnumerator Pattern1()
     {
         yield return null;
         transform.DOMove(new Vector3(-50,-19,0),6).onComplete += () => 
         {
             transform.DOLookAt(new Vector3(45, -19, 0), 1);
-            StartCoroutine(Pattern2Attack());
+            StartCoroutine(Pattern1Attack());
             transform.DOMove(new Vector3(50, -19, 0), 12).onComplete += () => 
             {
                 fish_Direction = Fish_Direction.Left;
                 transform.DOLookAt(new Vector3(0, -15.5f, 0), 1);
-                transform.DOMove(new Vector3(0, -15.5f, 0), 4).onComplete += () => { StartCoroutine(Pattern1()); };
+                transform.DOMove(new Vector3(0, -15.5f, 0), 4).onComplete += () => { StartCoroutine(ChoicePattern()); };
             };
         };
         transform.DOLookAt(new Vector3(-50, -19, 0), 1);
     }
 
-    IEnumerator Pattern2Attack()
+    IEnumerator Pattern1Attack()
     {
         yield return new WaitForSeconds(1.2f);
         for (int i = 0;i< 5; i++)
         {
             yield return new WaitForSeconds(Random.Range(0.5f,1.2f));
-            Instantiate(pattern2Atk, transform);
+            Instantiate(pattern1Atk, transform);
         }
     }
 
-    bool isSkill3;
+    
 
-    IEnumerator Pattern3()
+    IEnumerator Pattern2()
     {
-        isSkill3 = true;
+        isSkill = true;
         for(int i = 0; i < 10; i++)
         {
             yield return new WaitForSeconds(Random.Range(2,3.5f));
+            Instantiate(pattern2Atk, transform);
+        }
+        yield return new WaitForSeconds(3);
+        isSkill = false;
+    }
+
+    IEnumerator Pattern3()
+    {
+        isSkill = true;
+        for (int i = 0; i < 5; i++)
+        {
+            yield return new WaitForSeconds(Random.Range(3f, 4.5f));
             Instantiate(pattern3Atk, transform);
         }
         yield return new WaitForSeconds(3);
-        isSkill3 = false;
+        isSkill = false;
     }
 
     private void Move()
