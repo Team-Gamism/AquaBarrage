@@ -123,6 +123,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public Transform player;
+
     public GameObject uiController;
 
     public AudioSource effectAudioSource;

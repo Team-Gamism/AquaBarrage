@@ -13,7 +13,7 @@ public class Fin : MonoBehaviour
         transform.parent = null;
 
         rigid = GetComponent<Rigidbody>();
-        Destroy(gameObject, 10f);
+        Destroy(gameObject, 15f);
 
         StartCoroutine(Effect());
     }

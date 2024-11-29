@@ -7,7 +7,7 @@ public class Carp_Fin : Fin
     protected override IEnumerator Effect()
     {
         yield return new WaitForSeconds(1.5f);
-        GameObject player = GameObject.Find("Boat");
+        GameObject player = GameManager.Instance.player.gameObject;
         float angle = Mathf.Atan2(player.transform.position.y -transform.position.y, player.transform.position.x - transform.position.x) * Mathf.Rad2Deg;
         Quaternion q = Quaternion.AngleAxis(angle - 90, Vector3.forward);
 

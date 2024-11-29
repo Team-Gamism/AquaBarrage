@@ -14,10 +14,11 @@ GameObject:
   - component: {fileID: 1946745586023021151}
   - component: {fileID: 3578799886271163921}
   - component: {fileID: 3995126493019428164}
+  - component: {fileID: 1359186517024537033}
   - component: {fileID: 751541519487560390}
   - component: {fileID: 7022203061068126731}
   m_Layer: 0
-  m_Name: Shark_Fin4
+  m_Name: Shark_Fin1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +34,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -608,7 +609,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 91473bc926281bd4885262cd4e9965d2, type: 2}
+  - {fileID: 2100000, guid: 5cb8eb9b732fe1147b5c7d43970c93ff, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -665,6 +666,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1359186517024537033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4573201117056922539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58eab5a4a86e08046a47441845d8d98b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 7
 --- !u!65 &751541519487560390
 BoxCollider:
   m_ObjectHideFlags: 0
