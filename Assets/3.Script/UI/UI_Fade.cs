@@ -19,6 +19,7 @@ public class UI_Fade : MonoBehaviour
     }
     public void FadeOut()
     {
+        Time.timeScale = 1f;
         anim.Play("FadeOut");
     }
 }
