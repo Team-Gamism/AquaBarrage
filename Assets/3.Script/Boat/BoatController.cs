@@ -47,7 +47,7 @@ public class BoatController : MonoBehaviour
             rb.velocity = new Vector3(curSpeed + engineSO.valueList[GameManager.Instance.engineLevel], rb.velocity.y, 0);
         }
         float x = Mathf.Clamp(transform.position.x, minXPos, maxXPos);
-        transform.position = new Vector3(x, transform.position.y, transform.position.z);
+        transform.position = new Vector3(x, -2.5f, transform.position.z);
     }
 
     public void OnMove(InputValue value)
