@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.08014171, g: 0.09952094, b: 0.3007938, a: 1}
+  m_IndirectSpecularColor: {r: 0.08059167, g: 0.0999681, b: 0.30122826, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -530,17 +530,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4331655169734981847, guid: d355711e2f489d44a90fe1beb91b63fa, type: 3}
   m_PrefabInstance: {fileID: 160326146}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &160326148 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6825885602336374968, guid: d355711e2f489d44a90fe1beb91b63fa, type: 3}
-  m_PrefabInstance: {fileID: 160326146}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d199490a83bb2b844b9695cbf13b01ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &160326149 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2674840144309313321, guid: d355711e2f489d44a90fe1beb91b63fa, type: 3}
@@ -2102,7 +2091,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 472602603e45aed47b8e4feaccbe3f6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameInput: {fileID: 160326148}
+  gameOverNameInput: {fileID: 0}
+  resultNameInput: {fileID: 0}
   stageText: {fileID: 542860846}
   timerText: {fileID: 1096021135}
   hearts:
@@ -2119,6 +2109,8 @@ MonoBehaviour:
   - {fileID: 197495146}
   - {fileID: 283224316}
   - {fileID: 517925157}
+  gameOverStageText: {fileID: 0}
+  resultStageText: {fileID: 0}
 --- !u!1 &725199233
 GameObject:
   m_ObjectHideFlags: 0
@@ -3445,7 +3437,56 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stageInfo: {fileID: 11400000, guid: db2e0c36659bcd2479da394077b311a5, type: 2}
-  isEndGame: 0
+  isPausedGame: 0
+  isBossCut: 0
+  goUI: {fileID: 0}
+--- !u!1 &1301998692
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1301998693}
+  - component: {fileID: 1301998694}
+  m_Layer: 0
+  m_Name: ObstacleSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1301998693
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1301998692}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1301998694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1301998692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3190300e0368b4bdfb3ef13d3d18308b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pirateShipPrefab: {fileID: 8373124807447159536, guid: bdec24f50e168483f86f3df8ea7a5538, type: 3}
+  spawnPosition: {x: 0, y: 0, z: -25}
+  isDir: 1
 --- !u!1 &1356260632
 GameObject:
   m_ObjectHideFlags: 0
@@ -4541,6 +4582,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayGame: 0
   isDash: 0
+  isClearStage: 0
+  isExplosionDamage: 0
   money: 0
   fishCount: 0
   stageData: 0
@@ -4550,7 +4593,9 @@ MonoBehaviour:
   engineLevel: 0
   rillLevel: 0
   dashLevel: 0
+  player: {fileID: 0}
   uiController: {fileID: 0}
+  effectAudioSource: {fileID: 0}
 --- !u!4 &1671803080
 Transform:
   m_ObjectHideFlags: 0
@@ -4880,3 +4925,4 @@ SceneRoots:
   - {fileID: 717567024}
   - {fileID: 1461563400}
   - {fileID: 1242882560}
+  - {fileID: 1301998693}

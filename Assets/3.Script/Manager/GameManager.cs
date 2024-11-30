@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     public bool isPlayGame;
     public bool isDash;
     public bool isClearStage;
+    public bool isExplosionDamage;
 
     public int money;
     public int fishCount;
@@ -37,6 +38,7 @@ public class GameManager : MonoBehaviour
     public int maxHp;
 
     public Action hitEvent;
+    public Action explosionHitEvent;
 
     public int curHp;
     public int CurHP
@@ -44,17 +46,19 @@ public class GameManager : MonoBehaviour
         get => curHp;
         set
         {
-            if(curHp > value)
-                hitEvent?.Invoke();
-
+            if (curHp > value)
+            {
+                if (!isExplosionDamage)
+                    hitEvent?.Invoke();
+            }
             curHp = Mathf.Clamp(value, 0, maxHp);
+
+            isExplosionDamage = false;
         }
     }
-
     public string playerName;
 
     public List<PlayerData> playerDataList = new List<PlayerData>();
-
 
     public int engineLevel;
     public int rillLevel;
