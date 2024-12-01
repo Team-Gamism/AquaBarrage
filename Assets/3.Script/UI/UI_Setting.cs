@@ -78,7 +78,10 @@ public class UI_Setting : MonoBehaviour
         {
             musicBar[i].color = i <= MusicFigure - 1 ? new Color(0.45f, 1, 1) : Color.gray;
         }
-        audioMixer.SetFloat("Music", Mathf.Log10(MusicFigure / 10f) * 20);
+        if(MusicFigure != 0)
+            audioMixer.SetFloat("music", Mathf.Log10(MusicFigure / 10f) * 20);
+        else
+            audioMixer.SetFloat("music", -80);
         musicText.text = $"{MusicFigure}";
     }
 
@@ -88,7 +91,10 @@ public class UI_Setting : MonoBehaviour
         {
             effectBar[i].color = i <= EffectFigure - 1 ? new Color(0.45f, 1, 1) : Color.gray;
         }
-        audioMixer.SetFloat("Effect", Mathf.Log10(EffectFigure / 10f) * 20);
+        if (EffectFigure != 0)
+            audioMixer.SetFloat("effect", Mathf.Log10(EffectFigure / 10f) * 20);
+        else
+            audioMixer.SetFloat("effect",-80);
         effectText.text = $"{EffectFigure}";
     }
 
