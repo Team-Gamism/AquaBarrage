@@ -5,7 +5,6 @@ using UnityEngine;
 public class CannonBall : MonoBehaviour
 {
     [SerializeField] private ParticleSystem explosionEffect;
-
     private MeshRenderer meshRenderer;
     private Collider cannonBallCollider;
     private Rigidbody rb;
@@ -33,9 +32,8 @@ public class CannonBall : MonoBehaviour
                 explosionEffect.transform.position = transform.position;
                 explosionEffect.Play();
             }
-
             GameManager.Instance.isExplosionDamage = true;
-            GameManager.Instance.CurHP -= 10;
+            GameManager.Instance.CurHP--;
 
             StartCoroutine(DestroyAfterExplosion());
         }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.08057078, g: 0.099952675, b: 0.3012178, a: 1}
+  m_IndirectSpecularColor: {r: 0.08059167, g: 0.0999681, b: 0.30122826, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -554,17 +554,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4331655169734981847, guid: d355711e2f489d44a90fe1beb91b63fa, type: 3}
   m_PrefabInstance: {fileID: 160326146}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &160326148 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6825885602336374968, guid: d355711e2f489d44a90fe1beb91b63fa, type: 3}
-  m_PrefabInstance: {fileID: 160326146}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d199490a83bb2b844b9695cbf13b01ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &160326149 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2674840144309313321, guid: d355711e2f489d44a90fe1beb91b63fa, type: 3}
@@ -2283,7 +2272,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 472602603e45aed47b8e4feaccbe3f6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameInput: {fileID: 160326148}
+  gameOverNameInput: {fileID: 0}
+  resultNameInput: {fileID: 0}
   stageText: {fileID: 542860846}
   timerText: {fileID: 1096021135}
   hearts:
@@ -4887,6 +4877,7 @@ MonoBehaviour:
   isPlayGame: 0
   isDash: 0
   isClearStage: 0
+  isExplosionDamage: 0
   money: 0
   fishCount: 0
   stageData: 0
@@ -4896,7 +4887,9 @@ MonoBehaviour:
   engineLevel: 0
   rillLevel: 0
   dashLevel: 0
+  player: {fileID: 0}
   uiController: {fileID: 0}
+  effectAudioSource: {fileID: 0}
 --- !u!4 &1671803080
 Transform:
   m_ObjectHideFlags: 0
