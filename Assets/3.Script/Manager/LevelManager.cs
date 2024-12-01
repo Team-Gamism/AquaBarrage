@@ -6,7 +6,7 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     public StageInfoSO stageInfo;
-    
+
     public bool isPausedGame = false;
     public bool isBossCut = false;
     public static LevelManager instance;
@@ -15,5 +15,13 @@ public class LevelManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+
+        
+    }
+
+    private void Start()
+    {
+        if (GameObject.Find("Canvas").GetComponent<UI_Game>() != null)
+            GameObject.Find("Canvas").GetComponent<UI_Game>().stageText.text = $"Stage {GameManager.Instance.stageData}";
     }
 }

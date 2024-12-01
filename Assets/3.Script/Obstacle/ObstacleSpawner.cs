@@ -17,7 +17,7 @@ public class ObstacleSpawner : MonoBehaviour
 
     public void SpawnPirateShip(bool isDir)
     {
-        Quaternion rotation = isDir ? Quaternion.Euler(0, 75, 0) : Quaternion.Euler(0, -75, 0);
+        Quaternion rotation =  Quaternion.Euler(0, isDir ? 75 : -75, 0);
         GameObject pirateShip = Instantiate(pirateShipPrefab, spawnPosition, rotation);
 
         PirateShip shipScript = pirateShip.GetComponent<PirateShip>();

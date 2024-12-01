@@ -10,14 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20578e6ec03bbd24b869244ba9110625, type: 3}
-  m_Name: 3Stage
+  m_Name: 5Stage
   m_EditorClassIdentifier: 
   stageFishes:
   - {fileID: 4979357293161310471, guid: ce7620e4c0d92c74ba2a37b5f82b2c36, type: 3}
   - {fileID: 6734867365965824498, guid: b0f72a75839d18e45aaef3758cdfd18d, type: 3}
   - {fileID: 6734867365965824498, guid: b0f72a75839d18e45aaef3758cdfd18d, type: 3}
-  - {fileID: 5482736062950149518, guid: aa7edf601e6268b4bbc4d0bab284250f, type: 3}
-  - {fileID: 5482736062950149518, guid: aa7edf601e6268b4bbc4d0bab284250f, type: 3}
   - {fileID: 8433227713108293245, guid: bb9267ee7079fd44bab13340eb980ebd, type: 3}
   - {fileID: 8433227713108293245, guid: bb9267ee7079fd44bab13340eb980ebd, type: 3}
-  stageTime: 120
+  - {fileID: 8433227713108293245, guid: bb9267ee7079fd44bab13340eb980ebd, type: 3}
+  - {fileID: 5482736062950149518, guid: aa7edf601e6268b4bbc4d0bab284250f, type: 3}
+  - {fileID: 5482736062950149518, guid: aa7edf601e6268b4bbc4d0bab284250f, type: 3}
+  - {fileID: 5482736062950149518, guid: aa7edf601e6268b4bbc4d0bab284250f, type: 3}
+  stageTime: 3599

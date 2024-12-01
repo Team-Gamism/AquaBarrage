@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.08059167, g: 0.0999681, b: 0.30122826, a: 1}
+  m_IndirectSpecularColor: {r: 0.08057078, g: 0.099952675, b: 0.3012178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -279,6 +279,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f392814e5dcb6a45b0380e07be63338, type: 3}
+--- !u!114 &121200054 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8329896919660258310, guid: 793aeba871f57f3448bb2a18f23420f7, type: 3}
+  m_PrefabInstance: {fileID: 4301912573990719668}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &140501662 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3954221062846639069, guid: 793aeba871f57f3448bb2a18f23420f7, type: 3}
@@ -1305,7 +1316,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &464246706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2334,6 +2345,7 @@ MonoBehaviour:
   resultNameInput: {fileID: 140501662}
   stageText: {fileID: 542860846}
   timerText: {fileID: 1096021135}
+  curCaughtFishText: {fileID: 121200054}
   hearts:
   - {fileID: 415253573}
   - {fileID: 1511845773}
@@ -3396,10 +3408,6 @@ PrefabInstance:
     - target: {fileID: 1397102223998535088, guid: 81ec30eb8531a624bae8634c1b5a2d9f, type: 3}
       propertyPath: m_Name
       value: UI_Fade
-      objectReference: {fileID: 0}
-    - target: {fileID: 1397102223998535088, guid: 81ec30eb8531a624bae8634c1b5a2d9f, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4650694780108181233, guid: 81ec30eb8531a624bae8634c1b5a2d9f, type: 3}
       propertyPath: m_Pivot.x
@@ -5232,7 +5240,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 114526032, guid: f0b038078591d7441bbc6586bbc421d2, type: 3}
   m_PrefabInstance: {fileID: 230213985}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &2023120428
+--- !u!1001 &2114408281
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -5539,5 +5547,5 @@ SceneRoots:
   - {fileID: 1143537675}
   - {fileID: 554072314}
   - {fileID: 1463634775}
+  - {fileID: 2114408281}
   - {fileID: 464246707}
-  - {fileID: 2023120428}

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FishStat - Eel
   m_EditorClassIdentifier: 
   fishName: Eel
-  speed: 1
+  speed: 2.5
   weight: 10
   attackCoolTime: 5
-  money: 100
+  money: 150

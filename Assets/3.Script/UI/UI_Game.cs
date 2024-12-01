@@ -10,6 +10,7 @@ public class UI_Game : MonoBehaviour
     public InputField resultNameInput;
     public Text stageText;
     public Text timerText;
+    public Text curCaughtFishText;
     public GameObject[] hearts;
     public GameObject[] blackHearts;
 
@@ -26,9 +27,9 @@ public class UI_Game : MonoBehaviour
 
     IEnumerator UpdateGame()
     {
-        while(true)
+        while (true)
         {
-            yield return null; 
+            yield return null;
             for (int i = 1; i <= GameManager.Instance.maxHp; i++)
             {
                 hearts[i - 1].SetActive(GameManager.Instance.CurHP >= i);
@@ -45,8 +46,11 @@ public class UI_Game : MonoBehaviour
 
             if (!LevelManager.instance.isPausedGame)
             {
-                timerText.text = $"{(int)time / 60} : {(int)time % 60}";
-                time -= Time.deltaTime;
+                if (GameManager.Instance.stageData % 5 != 0)
+                    timerText.text = $"{(int)time / 60} : {(int)time % 60}";
+                else
+                    timerText.text = "∞";
+               time -= Time.deltaTime;
             }
 
 
@@ -67,6 +71,8 @@ public class UI_Game : MonoBehaviour
             {
                 transform.GetChild(2).gameObject.SetActive(true); //GameOver Panel
                 resultStageText.text = $"최종기록 : Stage {GameManager.Instance.stageData}";
+                curCaughtFishText.text = $"잡은 물고기 수 : {GameManager.Instance.fishCount}마리";
+                
                 LevelManager.instance.isPausedGame = true;
                 Time.timeScale = 0;
             }
@@ -78,7 +84,7 @@ public class UI_Game : MonoBehaviour
         yield return new WaitForSeconds(5f);
         LevelManager.instance.goUI = Instantiate(Resources.Load("UI_GO"), transform) as GameObject;
     }
-    
+
     private void OnTriggerEnter(Collider other)
     {
         GameManager.Instance.stageData++;
@@ -110,7 +116,7 @@ public class UI_Game : MonoBehaviour
             StartCoroutine(LoadRankScene());
         }
     }
-    
+
     IEnumerator LoadRankScene()
     {
         UI_Fade.instance.FadeIn();
@@ -131,19 +137,26 @@ public class UI_Game : MonoBehaviour
         SceneManager.LoadScene("GameScene_UI_HC");
     }
 
+
+
     public void StageInit()
     {
         LevelManager.instance.stageInfo =
             Resources.Load($"StageInfo/{GameManager.Instance.stageData}Stage") as StageInfoSO;
+
         time = LevelManager.instance.stageInfo.stageTime;
         GameManager.Instance.isClearStage = false;
         LevelManager.instance.isPausedGame = false;
 
-        if (LevelManager.instance.goUI != null)
-            Destroy(LevelManager.instance.goUI);
+        Fish[] fishes = FindObjectsOfType<Fish>();
+        foreach (Fish item in fishes)
+        {
+            Destroy(item.gameObject);
+        }
 
-        GameObject.Find("Boat").transform.position = new Vector3(0f, -2f, 0f);
+        if (GameManager.Instance.stageData > 1)
+            UI_NextStage.instance.NextStage();
 
-        stageText.text = $"Stage {GameManager.Instance.stageData}";
+        
     }
 }
