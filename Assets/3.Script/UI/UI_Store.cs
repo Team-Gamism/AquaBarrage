@@ -74,9 +74,9 @@ public class UI_Store : MonoBehaviour
 
     public void Repair()
     {
-        if (GameManager.Instance.money >= 1000 * repairHp)
+        if (GameManager.Instance.money >= 500 * repairHp)
         {
-            GameManager.Instance.money -= 1000 * repairHp;
+            GameManager.Instance.money -= 500 * repairHp;
             GameManager.Instance.CurHP += repairHp;
             SetStore();
         }
@@ -104,8 +104,8 @@ public class UI_Store : MonoBehaviour
     {
         repairHpText.text = $"{repairHp}";
 
-        repairExpenseText.text = $"{1000 * repairHp}";
-        if(GameManager.Instance.money >= repairHp * 1000)
+        repairExpenseText.text = $"{500 * repairHp}";
+        if(GameManager.Instance.money >= repairHp * 500)
             repairExpenseText.color = Color.black;
         else
             repairExpenseText.color = Color.red;

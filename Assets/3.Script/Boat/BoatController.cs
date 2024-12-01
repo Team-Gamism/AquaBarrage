@@ -15,6 +15,7 @@ public class BoatController : MonoBehaviour
     private float targetSpeed = 0f;
     private float minXPos = -23.5f;
     private float maxXPos = 23.5f;
+    float seeDir;
 
     bool canDash = true;
 
@@ -44,7 +45,7 @@ public class BoatController : MonoBehaviour
         {
             curSpeed = Mathf.MoveTowards(curSpeed, targetSpeed,
                     (targetSpeed == 0 ? speedDown : speedUp) * Time.fixedDeltaTime);
-            rb.velocity = new Vector3(curSpeed + engineSO.valueList[GameManager.Instance.engineLevel], rb.velocity.y, 0);
+            rb.velocity = new Vector3(curSpeed, rb.velocity.y, 0);
         }
         float x = Mathf.Clamp(transform.position.x, minXPos, maxXPos);
         transform.position = new Vector3(x, -2.5f, transform.position.z);
@@ -59,7 +60,8 @@ public class BoatController : MonoBehaviour
 
         if (dir != 0)
         {
-            targetSpeed = maxSpeed * dir;
+            targetSpeed = (engineSO.valueList[GameManager.Instance.engineLevel] + maxSpeed) * dir;
+            seeDir = dir;
             Flip(dir);
         }
         else
@@ -81,8 +83,7 @@ public class BoatController : MonoBehaviour
         canDash = false;
         audioSource.PlayOneShot(dashAudio);
         GameManager.Instance.isDash = true;
-        float dir = targetSpeed > 0 ? 1 : -1;
-        rb.velocity = new Vector3(dashForce * dir, rb.velocity.y, 0);
+        rb.velocity = new Vector3(dashForce * seeDir, rb.velocity.y, 0);
         yield return new WaitForSeconds(dashDuration);
         GameManager.Instance.isDash = false;
         yield return new WaitForSeconds(dashCool - dashSO.valueList[GameManager.Instance.dashLevel]);
