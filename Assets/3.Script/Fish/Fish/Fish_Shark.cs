@@ -45,21 +45,15 @@ public class Fish_Shark : MonoBehaviour, ICanFish
         Init();
         StartCoroutine(TurnCoroutine());
         StartCoroutine(ChoicePattern());
+        StartCoroutine(Move());
+        StartCoroutine(Rotate());
         hp = maxHp;
         hpBar.SetHpBar(hp / maxHp);
     }
 
     IEnumerator ChoicePattern()
     {
-        StartCoroutine(Pattern3());
-        while (isSkill)   
-        {
-            yield return null;
-            Move();
-            Rotate();
-
-            CheckGround();
-        }
+         yield return null;
         switch (Random.Range(0, 3))
         {
             case 0:
@@ -77,6 +71,7 @@ public class Fish_Shark : MonoBehaviour, ICanFish
     IEnumerator Pattern1()
     {
         yield return null;
+        isSkill = true;
         transform.DOMove(new Vector3(-50,-19,0),6).onComplete += () => 
         {
             transform.DOLookAt(new Vector3(45, -19, 0), 1);
@@ -85,10 +80,11 @@ public class Fish_Shark : MonoBehaviour, ICanFish
             {
                 fish_Direction = Fish_Direction.Left;
                 transform.DOLookAt(new Vector3(0, -15.5f, 0), 1);
-                transform.DOMove(new Vector3(0, -15.5f, 0), 4).onComplete += () => { StartCoroutine(ChoicePattern()); };
+                transform.DOMove(new Vector3(0, -15.5f, 0), 4).onComplete += () => { isSkill = false; StartCoroutine(ChoicePattern()); };
             };
         };
         transform.DOLookAt(new Vector3(-50, -19, 0), 1);
+        
     }
 
     IEnumerator Pattern1Attack()
@@ -104,44 +100,53 @@ public class Fish_Shark : MonoBehaviour, ICanFish
     
 
     IEnumerator Pattern2()
-    {
-        isSkill = true;
-        for(int i = 0; i < 10; i++)
+    { 
+        for (int i = 0; i < 10; i++)
         {
             yield return new WaitForSeconds(Random.Range(2,3.5f));
             Instantiate(pattern2Atk, transform);
         }
         yield return new WaitForSeconds(3);
-        isSkill = false;
+        StartCoroutine(ChoicePattern());
     }
 
     IEnumerator Pattern3()
     {
-        isSkill = true;
         for (int i = 0; i < 5; i++)
         {
             yield return new WaitForSeconds(Random.Range(3f, 4.5f));
             Instantiate(pattern3Atk, transform);
         }
         yield return new WaitForSeconds(3);
-        isSkill = false;
+        StartCoroutine(ChoicePattern());
     }
 
-    private void Move()
+    IEnumerator Move()
     {
-        transform.Translate((fish_Direction == Fish_Direction.Left ? 1 : -1) * speed * transform.right / 2 * Time.deltaTime);
+        while (true)
+        {
+            yield return null;
+            if (isSkill)
+                continue;
 
-        transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
+            transform.Translate((fish_Direction == Fish_Direction.Left ? 1 : -1) * speed * transform.right / 2 * Time.deltaTime);
+
+            CheckGround();
+        }
     }
 
-    private void Rotate()
+    IEnumerator Rotate()
     {
-       
-        transform.rotation = Quaternion.Euler(new Vector3(
+        while (true)
+        {
+            yield return null;
+            if (isSkill)
+                continue;
+            transform.rotation = Quaternion.Euler(new Vector3(
            Mathf.Lerp(transform.rotation.eulerAngles.x >= 180 ?
            transform.rotation.eulerAngles.x - 360 : transform.rotation.eulerAngles.x,
            turnVecX, Time.deltaTime * Time.deltaTime) - (fish_Direction == Fish_Direction.Left ? 0 : 180), -90f, fish_Direction == Fish_Direction.Left ? 0 : -180));
-
+        }
     }
 
     IEnumerator TurnCoroutine()
