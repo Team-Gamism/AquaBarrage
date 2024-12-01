@@ -10,7 +10,9 @@ public class UI_Main : MonoBehaviour
     private void Start()
     {
         GameManager.Instance.InitData();
-        
+        GameObject go = Instantiate(settingUI);
+        go.GetComponent<UI_Setting>().FirstSet();
+        Destroy(go);
     }
 
     public void ClickPlay()

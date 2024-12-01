@@ -22,18 +22,22 @@ public class UI_Setting : MonoBehaviour
 
     private void Start()
     {
+        FirstSet();
+    }
 
+    public void FirstSet()
+    {
         if (PlayerPrefs.HasKey("Music"))
         {
-            MusicFigure = PlayerPrefs.GetInt("Music",MusicFigure);
-            EffectFigure = PlayerPrefs.GetInt("Effect",EffectFigure);
+            MusicFigure = PlayerPrefs.GetInt("Music", MusicFigure);
+            EffectFigure = PlayerPrefs.GetInt("Effect", EffectFigure);
         }
         else
         {
             MusicFigure = 4;
             EffectFigure = 4;
         }
-       
+
         SetEffect();
         SetMusic();
     }
