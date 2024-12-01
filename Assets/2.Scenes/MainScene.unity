@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.08014171, g: 0.09952094, b: 0.3007938, a: 1}
+  m_IndirectSpecularColor: {r: 0.08059167, g: 0.0999681, b: 0.30122826, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -223,6 +223,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -4.214}
+--- !u!1 &274959329 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4172323120735683537, guid: c3068920263192e4cb283ce1e683c7ab, type: 3}
+  m_PrefabInstance: {fileID: 922199826}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &274959333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 274959329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 4, y: -4}
+  m_UseGraphicAlpha: 1
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -532,7 +552,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4172323120735683537, guid: c3068920263192e4cb283ce1e683c7ab, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 274959333}
   m_SourcePrefab: {fileID: 100100000, guid: c3068920263192e4cb283ce1e683c7ab, type: 3}
 --- !u!1 &963194225
 GameObject:
@@ -739,15 +762,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayGame: 0
+  isDash: 0
+  isClearStage: 0
+  isExplosionDamage: 0
   money: 0
+  fishCount: 0
   stageData: 0
   maxHp: 6
   curHp: 6
   playerName: 
   engineLevel: 0
   rillLevel: 0
-  fishLevel: 0
+  dashLevel: 0
+  player: {fileID: 0}
   uiController: {fileID: 0}
+  effectAudioSource: {fileID: 0}
 --- !u!4 &1401499473
 Transform:
   m_ObjectHideFlags: 0
