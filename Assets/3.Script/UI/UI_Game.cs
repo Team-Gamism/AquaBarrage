@@ -21,6 +21,7 @@ public class UI_Game : MonoBehaviour
     private void Start()
     {
         StageInit();
+        StartCoroutine(UpdateGame());
     }
 
     IEnumerator UpdateGame()
