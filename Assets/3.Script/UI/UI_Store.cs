@@ -144,7 +144,7 @@ public class UI_Store : MonoBehaviour
         else
         {
             dashLevelText.text = "Lv. Max";
-            dashLevelText.gameObject.SetActive(false);
+            dashExpenseText.gameObject.SetActive(false);
         }
 
         if (storeSO_Rill.levelList.Count != GameManager.Instance.rillLevel)
@@ -160,7 +160,7 @@ public class UI_Store : MonoBehaviour
         else
         {
             rillLevelText.text = "Lv. Max";
-            rillLevelText.gameObject.SetActive(false);
+            rillExpenseText.gameObject.SetActive(false);
         }
 
 
