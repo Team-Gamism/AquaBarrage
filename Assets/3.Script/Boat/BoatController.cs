@@ -29,7 +29,7 @@ public class BoatController : MonoBehaviour
     [SerializeField] AudioClip dashAudio;
     [SerializeField] AudioClip hitAudio;
 
-    [SerializeField] ParticleSystem hitEffect;
+    [SerializeField] GameObject hitEffect;
 
     private void Start()
     {
@@ -101,7 +101,7 @@ public class BoatController : MonoBehaviour
 
     void Hited()
     {
-        hitEffect.Play();
+        Instantiate(hitEffect,transform.position + new Vector3(0,1,0),Quaternion.identity);
         audioSource.PlayOneShot(hitAudio);
     }
 }

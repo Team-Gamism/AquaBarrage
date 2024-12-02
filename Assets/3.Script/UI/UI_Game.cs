@@ -17,10 +17,13 @@ public class UI_Game : MonoBehaviour
     public Text gameOverStageText;
     public Text resultStageText;
 
+    GameObject store;
+
     private float time;
 
     private void Start()
     {
+        store = Resources.Load<GameObject>("Store");
         StageInit();
         StartCoroutine(UpdateGame());
     }
@@ -58,7 +61,7 @@ public class UI_Game : MonoBehaviour
             {
                 GameManager.Instance.isClearStage = true;
 
-                Transform trans = Instantiate(Resources.Load<GameObject>("Store")).transform;
+                Transform trans = Instantiate(store).transform;
                 trans.rotation = Quaternion.Euler(0f, 90f, 0f);
                 trans.GetChild(0).position = trans.position + new Vector3(0.215f, 0.715f, 0.1656f);
 
