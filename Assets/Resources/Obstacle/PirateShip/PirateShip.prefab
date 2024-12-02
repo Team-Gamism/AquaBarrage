@@ -6954,7 +6954,36 @@ Transform:
   - {fileID: 7605636320212597190}
   m_Father: {fileID: 1777216875231388741}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &9078441187415338954
+
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8373124807447159536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bc7731a184dd4158982ec3c55cc8699, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cannonPoints:
+  - {fileID: 4025589716203641948}
+  - {fileID: 5676212179403979551}
+  - {fileID: 7946599273213949307}
+  - {fileID: 9071689582457282550}
+  - {fileID: 4146988574016335114}
+  cannonAlert:
+  - {fileID: 6437299844815719808}
+  - {fileID: 2325996453677217455}
+  - {fileID: 530502485737288278}
+  - {fileID: 7666338625770990303}
+  - {fileID: 5809640600968570788}
+  warningDuration: 3
+  fireDelay: 3
+  cannonSpeed: 50
+  rotationSpeed: 3
+  cannonClip: {fileID: 8300000, guid: 6544a283f5dff434e8a8c60f8eaa213e, type: 3}
+
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

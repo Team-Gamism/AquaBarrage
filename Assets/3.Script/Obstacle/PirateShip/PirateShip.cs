@@ -13,6 +13,8 @@ public class PirateShip : MonoBehaviour
     private Vector3[] fireRotation;
     private bool isDir;
 
+    [SerializeField] AudioClip cannonClip;
+
     public void Init(bool isDir)
     {
         this.isDir = isDir;
@@ -92,6 +94,7 @@ public class PirateShip : MonoBehaviour
         GameObject cannonBallPrefab = Resources.Load<GameObject>("Obstacle/PirateShip/CannonBall");
         GameObject cannonBall = Instantiate(cannonBallPrefab, cannonPoints[index].position, cannonPoints[index].rotation);
 
+        GameManager.Instance.effectAudioSource.PlayOneShot(cannonClip);
         Rigidbody rb = cannonBall.GetComponent<Rigidbody>();
         if (rb != null)
         {
