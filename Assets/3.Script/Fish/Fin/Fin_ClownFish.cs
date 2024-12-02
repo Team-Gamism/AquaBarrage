@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClownFish_Fin : Fin
+public class Fin_ClownFish : Fin
 {
     protected override IEnumerator Effect()
     {

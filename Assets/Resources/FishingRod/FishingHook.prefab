@@ -5110,6 +5110,7 @@ MonoBehaviour:
   splashClip: {fileID: 8300000, guid: 8a3842b6e6679444eb25479a165030f8, type: 3}
   fallEffect: {fileID: 2921715212909487636}
   fallEffect2: {fileID: 2276845982489926493}
+  fishEffect: {fileID: 8525990746615576120, guid: b85d21f3b8fed714bacf0c4fd50fa512, type: 3}
 --- !u!82 &6982574461035479142
 AudioSource:
   m_ObjectHideFlags: 0
