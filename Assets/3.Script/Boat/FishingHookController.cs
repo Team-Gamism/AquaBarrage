@@ -20,7 +20,7 @@ public class FishingHookController : MonoBehaviour
 
     [SerializeField] ParticleSystem fallEffect;
     [SerializeField] ParticleSystem fallEffect2;
-
+    [SerializeField] GameObject fishEffect;
     private void Start()
     {
         fishingOrigin = GameObject.Find("FishingOrigin").transform;
@@ -70,14 +70,12 @@ public class FishingHookController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
-        Debug.Log(other.name);
         if (caughtFish == null)
         {
 
             if (other.TryGetComponent<ICanFish>(out var canFish) && caughtFish == null)
             {
-                Debug.Log(other.name);
+                Instantiate(fishEffect, transform.position, Quaternion.identity);
 
                 caughtFish = canFish.Fished(transform);
 
