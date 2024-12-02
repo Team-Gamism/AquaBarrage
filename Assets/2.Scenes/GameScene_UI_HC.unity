@@ -1156,6 +1156,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1063248225457018811, guid: 9758c6d6a768f5e46892555cb85f9f8d, type: 3}
+      propertyPath: clearBehavior
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1853625976936789813, guid: 9758c6d6a768f5e46892555cb85f9f8d, type: 3}
+      propertyPath: hitEffect
+      value: 
+      objectReference: {fileID: 6855314210357232287, guid: 7c2a9b83b809a0848915fabd9596b68b, type: 3}
     - target: {fileID: 1922201960948085030, guid: 9758c6d6a768f5e46892555cb85f9f8d, type: 3}
       propertyPath: m_Intensity
       value: 0
@@ -1200,12 +1208,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5797426538138726045, guid: 9758c6d6a768f5e46892555cb85f9f8d, type: 3}
+      propertyPath: moveWithTransform
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7437991946931223812, guid: 9758c6d6a768f5e46892555cb85f9f8d, type: 3}
       propertyPath: m_Name
       value: Boat
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5797426538138726040, guid: 9758c6d6a768f5e46892555cb85f9f8d, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9758c6d6a768f5e46892555cb85f9f8d, type: 3}
