@@ -989,6 +989,18 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 6980730777396817840, guid: 8ed1be3fbd57e9d43ab6594077d314d4, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6980730777396817840, guid: 8ed1be3fbd57e9d43ab6594077d314d4, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 6980730777396817840, guid: 8ed1be3fbd57e9d43ab6594077d314d4, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
     - target: {fileID: 7353274220291028706, guid: 8ed1be3fbd57e9d43ab6594077d314d4, type: 3}
       propertyPath: m_Pivot.x
       value: 0
