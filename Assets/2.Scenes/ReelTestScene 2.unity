@@ -593,6 +593,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BGM
       objectReference: {fileID: 0}
+    - target: {fileID: 8294396275047847334, guid: e77123bae58682f41a4b4c8c78b8b3ea, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2152,6 +2156,7 @@ MonoBehaviour:
   resultNameInput: {fileID: 0}
   stageText: {fileID: 542860846}
   timerText: {fileID: 1096021135}
+  curCaughtFishText: {fileID: 0}
   hearts:
   - {fileID: 415253573}
   - {fileID: 1511845773}
