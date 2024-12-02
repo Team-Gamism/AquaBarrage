@@ -10,7 +10,7 @@ public class Fin : MonoBehaviour
 
     [SerializeField] GameObject hitEffect;
     [SerializeField] GameObject parryingEffect;
-
+    [SerializeField] AudioClip parryingAudio;
     private void Awake()
     {
         transform.parent = null;
@@ -43,7 +43,10 @@ public class Fin : MonoBehaviour
                 Instantiate(hitEffect, other.transform.position, Quaternion.identity);
             }
             else
-                Instantiate(parryingEffect, other.transform.position + new Vector3(0,1,0), Quaternion.identity,other.transform);
+            {
+                Instantiate(parryingEffect, other.transform.position + new Vector3(0, 1, 0), Quaternion.identity, other.transform);
+                GameManager.Instance.effectAudioSource.PlayOneShot(parryingAudio);
+            }
 
             Destroy(gameObject);
         }

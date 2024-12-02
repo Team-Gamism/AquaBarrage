@@ -41,7 +41,7 @@ public class BoatController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!GameManager.Instance.isDash)
+        if (!GameManager.Instance.isDash && GameManager.Instance.CurHP > 0)
         {
             curSpeed = Mathf.MoveTowards(curSpeed, targetSpeed,
                     (targetSpeed == 0 ? speedDown : speedUp) * Time.fixedDeltaTime);
@@ -53,7 +53,7 @@ public class BoatController : MonoBehaviour
 
     public void OnMove(InputValue value)
     {
-        //if (GameManager.Instance.isDash) return;
+        if (GameManager.Instance.CurHP <= 0) return;
 
         Vector2 input = value.Get<Vector2>();
         float dir = input.x;
@@ -72,6 +72,7 @@ public class BoatController : MonoBehaviour
 
     public void OnDash(InputValue value)
     {
+        if (GameManager.Instance.CurHP <= 0) return;
         if (canDash && value.isPressed)
         {
             StartCoroutine(Dash());

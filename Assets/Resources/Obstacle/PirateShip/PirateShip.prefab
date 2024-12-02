@@ -741,6 +741,7 @@ MonoBehaviour:
   fireDelay: 3
   cannonSpeed: 50
   rotationSpeed: 3
+  cannonClip: {fileID: 8300000, guid: 6544a283f5dff434e8a8c60f8eaa213e, type: 3}
 --- !u!1 &9078441187415338954
 GameObject:
   m_ObjectHideFlags: 0
