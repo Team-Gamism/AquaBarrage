@@ -16,6 +16,6 @@ public class Fish_Eel : Fish
     {
         GameManager.Instance.CurHP--;
         GameManager.Instance.effectAudioSource.PlayOneShot(electricyClip);
-        Instantiate(electricityEffect,transform.position,Quaternion.identity);
+        Instantiate(electricityEffect,GameManager.Instance.player.transform.position,Quaternion.identity);
     }
 }

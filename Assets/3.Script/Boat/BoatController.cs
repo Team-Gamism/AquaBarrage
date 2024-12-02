@@ -19,7 +19,7 @@ public class BoatController : MonoBehaviour
 
     bool canDash = true;
 
-    private float dashCool = 2;
+    private float dashCool = 1.2f;
 
     public PlayerStatSO engineSO;
     public PlayerStatSO dashSO;

@@ -43,7 +43,7 @@ public class Fin : MonoBehaviour
                 Instantiate(hitEffect, other.transform.position, Quaternion.identity);
             }
             else
-                Instantiate(parryingEffect, Vector3.Lerp(transform.position, other.transform.position, 0.5f), Quaternion.identity);
+                Instantiate(parryingEffect, other.transform.position + new Vector3(0,1,0), Quaternion.identity,other.transform);
 
             Destroy(gameObject);
         }
