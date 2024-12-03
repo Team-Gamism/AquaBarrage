@@ -1438,6 +1438,9 @@ MonoBehaviour:
   storeSO_Dash: {fileID: 11400000, guid: cee5432aff71a8c428cca0d6b24e34cc, type: 2}
   storeSO_Engine: {fileID: 11400000, guid: be156e2a3296d7e4db8ed1adfffe0d50, type: 2}
   storeSO_Rill: {fileID: 11400000, guid: 26935fabfbb8d55419400604b295ce3f, type: 2}
+  clickAudio: {fileID: 8300000, guid: 580c45279e0bb9b4fb35e5a97282e87f, type: 3}
+  bellAudio: {fileID: 8300000, guid: 502eb340bcd027d42a29ca0385e92690, type: 3}
+  soldAudio: {fileID: 8300000, guid: d05d95ee58b3fc44ca551a169a09a205, type: 3}
 --- !u!1 &3453920050837519469
 GameObject:
   m_ObjectHideFlags: 0

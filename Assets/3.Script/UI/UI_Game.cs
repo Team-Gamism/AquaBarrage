@@ -17,10 +17,14 @@ public class UI_Game : MonoBehaviour
     public Text gameOverStageText;
     public Text resultStageText;
 
+    GameObject store;
+    [SerializeField] AudioClip clickAudio;
+
     private float time;
 
     private void Start()
     {
+        store = Resources.Load<GameObject>("Store");
         StageInit();
         StartCoroutine(UpdateGame());
     }
@@ -36,7 +40,7 @@ public class UI_Game : MonoBehaviour
                 blackHearts[i - 1].SetActive(GameManager.Instance.CurHP < i);
             }
 
-            if (GameManager.Instance.curHp <= 0)
+            if (GameManager.Instance.curHp <= 0 && !LevelManager.instance.isBossCut)
             {
                 LevelManager.instance.isPausedGame = true;
 
@@ -58,7 +62,7 @@ public class UI_Game : MonoBehaviour
             {
                 GameManager.Instance.isClearStage = true;
 
-                Transform trans = Instantiate(Resources.Load<GameObject>("Store")).transform;
+                Transform trans = Instantiate(store).transform;
                 trans.rotation = Quaternion.Euler(0f, 90f, 0f);
                 trans.GetChild(0).position = trans.position + new Vector3(0.215f, 0.715f, 0.1656f);
 
@@ -69,12 +73,11 @@ public class UI_Game : MonoBehaviour
 
             if (LevelManager.instance.isBossCut)
             {
-                transform.GetChild(2).gameObject.SetActive(true); //GameOver Panel
+                transform.GetChild(2).gameObject.SetActive(true); //Result Panel
                 resultStageText.text = $"최종기록 : Stage {GameManager.Instance.stageData}";
                 curCaughtFishText.text = $"잡은 물고기 수 : {GameManager.Instance.fishCount}마리";
                 
                 LevelManager.instance.isPausedGame = true;
-                Time.timeScale = 0;
             }
         }
     }
@@ -95,6 +98,7 @@ public class UI_Game : MonoBehaviour
     {
         if (gameOverNameInput.text.Length > 0)
         {
+            GameManager.Instance.effectAudioSource.PlayOneShot(clickAudio);
             GameManager.Instance.playerName = gameOverNameInput.text;
             gameOverNameInput.readOnly = true;
         }
@@ -103,6 +107,7 @@ public class UI_Game : MonoBehaviour
     {
         if (resultNameInput.text.Length > 0)
         {
+            GameManager.Instance.effectAudioSource.PlayOneShot(clickAudio);
             GameManager.Instance.playerName = resultNameInput.text;
             resultNameInput.readOnly = true;
         }
@@ -112,6 +117,7 @@ public class UI_Game : MonoBehaviour
     {
         if (GameManager.Instance.playerName != "")
         {
+            GameManager.Instance.effectAudioSource.PlayOneShot(clickAudio);
             GameManager.Instance.AddData();
             StartCoroutine(LoadRankScene());
         }
@@ -120,12 +126,14 @@ public class UI_Game : MonoBehaviour
     IEnumerator LoadRankScene()
     {
         UI_Fade.instance.FadeIn();
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSecondsRealtime(2f);
+        Debug.Log("?");
         SceneManager.LoadScene("RankScene");
     }
 
     public void ClickReTry()
     {
+        GameManager.Instance.effectAudioSource.PlayOneShot(clickAudio);
         GameManager.Instance.InitData();
         StartCoroutine(LoadGameScene());
     }
@@ -150,6 +158,12 @@ public class UI_Game : MonoBehaviour
 
         Fish[] fishes = FindObjectsOfType<Fish>();
         foreach (Fish item in fishes)
+        {
+            Destroy(item.gameObject);
+        }
+
+        Fin[] fins = FindObjectsOfType<Fin>();
+        foreach (Fin item in fins)
         {
             Destroy(item.gameObject);
         }

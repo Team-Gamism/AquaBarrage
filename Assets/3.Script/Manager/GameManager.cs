@@ -51,7 +51,8 @@ public class GameManager : MonoBehaviour
                 if (!isExplosionDamage)
                     hitEvent?.Invoke();
             }
-            curHp = Mathf.Clamp(value, 0, maxHp);
+            if (!LevelManager.instance.isBossCut || !isClearStage)
+                curHp = Mathf.Clamp(value, 0, maxHp);
 
             isExplosionDamage = false;
         }

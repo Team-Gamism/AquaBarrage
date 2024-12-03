@@ -20,6 +20,8 @@ public class UI_Setting : MonoBehaviour
     public Image[] musicBar;
     public Image[] effectBar;
 
+    [SerializeField] AudioClip clickAudio;
+
     private void Start()
     {
         FirstSet();
@@ -50,28 +52,34 @@ public class UI_Setting : MonoBehaviour
     private void OnDisable()
     {
         GameManager.UI.RemovePopupUI(gameObject);
+        PlayerPrefs.SetInt("Music", MusicFigure);
+        PlayerPrefs.SetInt("Effect", EffectFigure);
     }
 
     public void MusicUp()
     {
+        GameManager.Instance.effectAudioSource.PlayOneShot(clickAudio);
         MusicFigure++;
         SetMusic();
     }
 
     public void MusicDown()
     {
+        GameManager.Instance.effectAudioSource.PlayOneShot(clickAudio);
         MusicFigure--;
         SetMusic();
     }
 
     public void EffectUp()
     {
+        GameManager.Instance.effectAudioSource.PlayOneShot(clickAudio);
         EffectFigure++;
         SetEffect();
     }
 
     public void EffectDown()
     {
+        GameManager.Instance.effectAudioSource.PlayOneShot(clickAudio);
         EffectFigure--;
         SetEffect();
     }
@@ -105,8 +113,7 @@ public class UI_Setting : MonoBehaviour
 
     public void Close()
     {
-        PlayerPrefs.SetInt("Music",MusicFigure);
-        PlayerPrefs.SetInt("Effect",EffectFigure);
+        GameManager.Instance.effectAudioSource.PlayOneShot(clickAudio);
         Destroy(gameObject);
     }
 }

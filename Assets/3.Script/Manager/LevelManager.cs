@@ -9,6 +9,7 @@ public class LevelManager : MonoBehaviour
 
     public bool isPausedGame = false;
     public bool isBossCut = false;
+    public bool isPrirate = false;
     public static LevelManager instance;
     public GameObject goUI;
 

@@ -23,11 +23,16 @@ public class UI_Store : MonoBehaviour
     [SerializeField] StoreSO storeSO_Engine;
     [SerializeField] StoreSO storeSO_Rill;
 
+    [SerializeField] AudioClip clickAudio;
+    [SerializeField] AudioClip bellAudio;
+    [SerializeField] AudioClip soldAudio;
+
     int repairHp = 1;
 
     private void Start()
     {
         SetStore();
+        GameManager.Instance.effectAudioSource.PlayOneShot(bellAudio);
     }
 
     private void OnEnable()
@@ -49,6 +54,7 @@ public class UI_Store : MonoBehaviour
             GameManager.Instance.money -= storeSO_Engine.levelList[GameManager.Instance.engineLevel];
             GameManager.Instance.engineLevel++;
             SetStore();
+            GameManager.Instance.effectAudioSource.PlayOneShot(soldAudio);
         }
     }
 
@@ -59,6 +65,7 @@ public class UI_Store : MonoBehaviour
             GameManager.Instance.money -= storeSO_Engine.levelList[GameManager.Instance.dashLevel];
             GameManager.Instance.dashLevel++;
             SetStore();
+            GameManager.Instance.effectAudioSource.PlayOneShot(soldAudio);
         }
     }
 
@@ -69,6 +76,7 @@ public class UI_Store : MonoBehaviour
             GameManager.Instance.money -= storeSO_Rill.levelList[GameManager.Instance.rillLevel];
             GameManager.Instance.rillLevel++;
             SetStore();
+            GameManager.Instance.effectAudioSource.PlayOneShot(soldAudio);
         }
     }
 
@@ -79,12 +87,14 @@ public class UI_Store : MonoBehaviour
             GameManager.Instance.money -= 500 * repairHp;
             GameManager.Instance.CurHP += repairHp;
             SetStore();
+            GameManager.Instance.effectAudioSource.PlayOneShot(soldAudio);
         }
     }
     public void PlusRepairHp()
     {
         if (repairHp + GameManager.Instance.CurHP < GameManager.Instance.maxHp)
         {
+            GameManager.Instance.effectAudioSource.PlayOneShot(clickAudio);
             repairHp++;
             UpdateRepairPrice();
         }
@@ -94,6 +104,7 @@ public class UI_Store : MonoBehaviour
     {
         if (repairHp > 1)
         {
+            GameManager.Instance.effectAudioSource.PlayOneShot(clickAudio);
             repairHp--;
             UpdateRepairPrice();
         }
@@ -177,6 +188,7 @@ public class UI_Store : MonoBehaviour
 
     public void Leave()
     {
+        GameManager.Instance.effectAudioSource.PlayOneShot(clickAudio);
         Destroy(gameObject);
     }
 }
