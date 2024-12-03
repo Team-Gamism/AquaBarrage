@@ -24,6 +24,7 @@ public class UI_Setting : MonoBehaviour
 
     private void Start()
     {
+        
         FirstSet();
     }
 
@@ -86,6 +87,7 @@ public class UI_Setting : MonoBehaviour
 
     void SetMusic()
     {
+        GameManager.Instance.audioMixer = audioMixer;
         for (int i = 0; i < 10; i++)
         {
             musicBar[i].color = i <= MusicFigure - 1 ? new Color(0.45f, 1, 1) : Color.gray;
