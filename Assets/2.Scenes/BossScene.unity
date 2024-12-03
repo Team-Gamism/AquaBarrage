@@ -3902,6 +3902,7 @@ MonoBehaviour:
   stageInfo: {fileID: 11400000, guid: db2e0c36659bcd2479da394077b311a5, type: 2}
   isPausedGame: 0
   isBossCut: 0
+  isPrirate: 0
   goUI: {fileID: 0}
 --- !u!114 &1278001405 stripped
 MonoBehaviour:
