@@ -4695,6 +4695,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c06c67cf5a78f468eb35e3915a35a5dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioClip: {fileID: 8300000, guid: 365f8e1f24b854b1b85e76f211b34a52, type: 3}
 --- !u!199 &8591501368632161303
 ParticleSystemRenderer:
   serializedVersion: 6
