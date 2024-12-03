@@ -745,6 +745,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   checkLeaveUI: {fileID: 4506146804452973591, guid: d1450dc7e62c7f5489dd5a3fcb738ff0, type: 3}
   settingUI: {fileID: 1251077278292968336, guid: 54e0678f87edd434987d93b4bbd4ade3, type: 3}
+  clickAudio: {fileID: 8300000, guid: 580c45279e0bb9b4fb35e5a97282e87f, type: 3}
 --- !u!1 &6214148369267376538
 GameObject:
   m_ObjectHideFlags: 0

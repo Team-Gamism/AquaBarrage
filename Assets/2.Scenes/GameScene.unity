@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.08057078, g: 0.099952675, b: 0.3012178, a: 1}
+  m_IndirectSpecularColor: {r: 0.08014171, g: 0.09952094, b: 0.3007938, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -594,6 +594,10 @@ MonoBehaviour:
   resetSpeed: 500
   waitTime: 1
   reelSpeed: 10
+  rillLevel: {fileID: 0}
+  windClip: {fileID: 0}
+  getFishClip: {fileID: 0}
+  getFishEffect: {fileID: 0}
 --- !u!114 &98589105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -609,6 +613,13 @@ MonoBehaviour:
   maxSpeed: 5
   speedUp: 2
   speedDown: 3
+  dashForce: 10
+  dashDuration: 0.2
+  engineSO: {fileID: 0}
+  dashSO: {fileID: 0}
+  dashAudio: {fileID: 0}
+  hitAudio: {fileID: 0}
+  hitEffect: {fileID: 0}
 --- !u!54 &98589106
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1138,17 +1149,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4331655169734981847, guid: d355711e2f489d44a90fe1beb91b63fa, type: 3}
   m_PrefabInstance: {fileID: 160326146}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &160326148 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6825885602336374968, guid: d355711e2f489d44a90fe1beb91b63fa, type: 3}
-  m_PrefabInstance: {fileID: 160326146}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d199490a83bb2b844b9695cbf13b01ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &160326149 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2674840144309313321, guid: d355711e2f489d44a90fe1beb91b63fa, type: 3}
@@ -3283,9 +3283,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 472602603e45aed47b8e4feaccbe3f6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameInput: {fileID: 160326148}
+  gameOverNameInput: {fileID: 0}
+  resultNameInput: {fileID: 0}
   stageText: {fileID: 542860846}
   timerText: {fileID: 1096021135}
+  curCaughtFishText: {fileID: 0}
   hearts:
   - {fileID: 415253573}
   - {fileID: 1511845773}
@@ -3300,6 +3302,9 @@ MonoBehaviour:
   - {fileID: 197495146}
   - {fileID: 283224316}
   - {fileID: 517925157}
+  gameOverStageText: {fileID: 0}
+  resultStageText: {fileID: 0}
+  clickAudio: {fileID: 8300000, guid: 580c45279e0bb9b4fb35e5a97282e87f, type: 3}
 --- !u!1 &725199233
 GameObject:
   m_ObjectHideFlags: 0
@@ -5299,6 +5304,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stageInfo: {fileID: 11400000, guid: db2e0c36659bcd2479da394077b311a5, type: 2}
+  isPausedGame: 0
+  isBossCut: 0
+  isPrirate: 0
+  goUI: {fileID: 0}
 --- !u!1 &1256679866
 GameObject:
   m_ObjectHideFlags: 0
@@ -6699,15 +6708,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayGame: 0
+  isDash: 0
+  isClearStage: 0
+  isExplosionDamage: 0
   money: 0
+  fishCount: 0
   stageData: 0
   maxHp: 6
   curHp: 1
   playerName: 
   engineLevel: 0
   rillLevel: 0
-  fishLevel: 0
+  dashLevel: 0
+  player: {fileID: 0}
   uiController: {fileID: 0}
+  effectAudioSource: {fileID: 0}
 --- !u!4 &1671803080
 Transform:
   m_ObjectHideFlags: 0

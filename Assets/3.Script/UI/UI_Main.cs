@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class UI_Main : MonoBehaviour
 {
     public GameObject settingUI;
+    [SerializeField] AudioClip clickAudio;
     private void Start()
     {
         GameManager.Instance.InitData();
@@ -17,6 +18,7 @@ public class UI_Main : MonoBehaviour
 
     public void ClickPlay()
     {
+        GameManager.Instance.effectAudioSource.PlayOneShot(clickAudio);
         GameManager.Instance.isPlayGame = true;
         StartCoroutine(LoadGameScene());
     }
@@ -31,10 +33,12 @@ public class UI_Main : MonoBehaviour
     public void ClickSetting()
     {
         Instantiate(settingUI);
+        GameManager.Instance.effectAudioSource.PlayOneShot(clickAudio);
     }
 
     public void ClickHelp()
     {
+        GameManager.Instance.effectAudioSource.PlayOneShot(clickAudio);
         StartCoroutine(LoadHelpScene());
     }
 
@@ -47,6 +51,7 @@ public class UI_Main : MonoBehaviour
 
     public void ClickRank()
     {
+        GameManager.Instance.effectAudioSource.PlayOneShot(clickAudio);
         StartCoroutine(LoadRankScene());
     }
 
@@ -59,6 +64,7 @@ public class UI_Main : MonoBehaviour
 
     public void ClickExit()
     {
+        GameManager.Instance.effectAudioSource.PlayOneShot(clickAudio);
         Application.Quit();
     }
 }

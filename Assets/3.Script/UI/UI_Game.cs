@@ -18,6 +18,7 @@ public class UI_Game : MonoBehaviour
     public Text resultStageText;
 
     GameObject store;
+    [SerializeField] AudioClip clickAudio;
 
     private float time;
 
@@ -97,6 +98,7 @@ public class UI_Game : MonoBehaviour
     {
         if (gameOverNameInput.text.Length > 0)
         {
+            GameManager.Instance.effectAudioSource.PlayOneShot(clickAudio);
             GameManager.Instance.playerName = gameOverNameInput.text;
             gameOverNameInput.readOnly = true;
         }
@@ -105,6 +107,7 @@ public class UI_Game : MonoBehaviour
     {
         if (resultNameInput.text.Length > 0)
         {
+            GameManager.Instance.effectAudioSource.PlayOneShot(clickAudio);
             GameManager.Instance.playerName = resultNameInput.text;
             resultNameInput.readOnly = true;
         }
@@ -114,6 +117,7 @@ public class UI_Game : MonoBehaviour
     {
         if (GameManager.Instance.playerName != "")
         {
+            GameManager.Instance.effectAudioSource.PlayOneShot(clickAudio);
             GameManager.Instance.AddData();
             StartCoroutine(LoadRankScene());
         }
@@ -129,6 +133,7 @@ public class UI_Game : MonoBehaviour
 
     public void ClickReTry()
     {
+        GameManager.Instance.effectAudioSource.PlayOneShot(clickAudio);
         GameManager.Instance.InitData();
         StartCoroutine(LoadGameScene());
     }
