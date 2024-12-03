@@ -32,14 +32,14 @@ public class Fish : MonoBehaviour, ICanFish
 
     public Fish_Direction fish_Direction;
 
-    void Awake()
+    protected virtual void Awake()
     {
         Init();
         StartCoroutine(TurnCoroutine());
         StartCoroutine(AttackCoroutine());
     }
 
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         Move();
         Rotate();
@@ -47,14 +47,14 @@ public class Fish : MonoBehaviour, ICanFish
         CheckGround();
     }
 
-    private void Move()
+    protected void Move()
     {
         transform.Translate((fish_Direction == Fish_Direction.Left ? 1 : -1) * speed * transform.right / 2 * Time.deltaTime);
 
         transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
     }
 
-    private void Rotate()
+    protected void Rotate()
     {
         transform.rotation = Quaternion.Euler(new Vector3(
             Mathf.Lerp(transform.rotation.eulerAngles.x >= 180 ?
@@ -100,7 +100,7 @@ public class Fish : MonoBehaviour, ICanFish
         }
     }
 
-    private void Init()
+    protected void Init()
     {
         fishName = fishStat.fishName;
         speed = fishStat.speed;

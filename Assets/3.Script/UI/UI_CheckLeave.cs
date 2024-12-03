@@ -19,6 +19,13 @@ public class UI_CheckLeave : MonoBehaviour
     public void Leave()
     {
         GameManager.Instance.effectAudioSource.PlayOneShot(clickAudio);
+        StartCoroutine(LoadGameScene());
+    }
+
+    IEnumerator LoadGameScene()
+    {
+        UI_Fade.instance.FadeIn();
+        yield return new WaitForSeconds(2f);
         SceneManager.LoadScene("MainScene");
     }
 

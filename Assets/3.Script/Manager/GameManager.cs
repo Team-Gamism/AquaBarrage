@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class GameManager : MonoBehaviour
 {
@@ -133,4 +134,8 @@ public class GameManager : MonoBehaviour
     public GameObject uiController;
 
     public AudioSource effectAudioSource;
+
+    public AudioMixer audioMixer;
+
+    public float musicAmount;
 }
