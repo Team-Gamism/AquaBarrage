@@ -2443,6 +2443,7 @@ MonoBehaviour:
   - {fileID: 517925157}
   gameOverStageText: {fileID: 1049761395}
   resultStageText: {fileID: 2842153554050099613}
+  clickAudio: {fileID: 0}
 --- !u!1 &725199233
 GameObject:
   m_ObjectHideFlags: 0
@@ -3213,7 +3214,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1081471794}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -5118,6 +5119,8 @@ MonoBehaviour:
   player: {fileID: 0}
   uiController: {fileID: 0}
   effectAudioSource: {fileID: 0}
+  audioMixer: {fileID: 0}
+  musicAmount: 0
 --- !u!4 &1671803080
 Transform:
   m_ObjectHideFlags: 0
