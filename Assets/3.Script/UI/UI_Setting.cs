@@ -50,6 +50,8 @@ public class UI_Setting : MonoBehaviour
     private void OnDisable()
     {
         GameManager.UI.RemovePopupUI(gameObject);
+        PlayerPrefs.SetInt("Music", MusicFigure);
+        PlayerPrefs.SetInt("Effect", EffectFigure);
     }
 
     public void MusicUp()
@@ -105,8 +107,6 @@ public class UI_Setting : MonoBehaviour
 
     public void Close()
     {
-        PlayerPrefs.SetInt("Music",MusicFigure);
-        PlayerPrefs.SetInt("Effect",EffectFigure);
         Destroy(gameObject);
     }
 }
