@@ -202,7 +202,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.28, y: 0.28, z: 1.75}
+  m_Size: {x: 10, y: 0.28, z: 1.75}
   m_Center: {x: 0, y: 0, z: 0.15}
 --- !u!114 &5689161320444044761
 MonoBehaviour:
@@ -216,12 +216,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64df03099df76489d999bdd7c2d69da9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fishInfo: {fileID: 11400000, guid: 2f2cbecf33232473eb710587aa79d498, type: 2}
+  fishStat: {fileID: 11400000, guid: 2f2cbecf33232473eb710587aa79d498, type: 2}
+  bulletPoints: []
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  seaBorderLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  fish_Direction: 0
   riseSpeed: 15
   rotationSpeed: 300
   detectionRange: 50
   targetHeight: 0.25
-  fish_Direction: 0
 --- !u!1 &1883884920672412578
 GameObject:
   m_ObjectHideFlags: 0
