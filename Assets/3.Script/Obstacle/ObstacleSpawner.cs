@@ -6,27 +6,40 @@ public class ObstacleSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject pirateShipPrefab;
     [SerializeField] private Vector3 spawnPosition = new Vector3(0, 0, -25);
-    [SerializeField] private bool isDir = true;
 
     void Start()
     {
-        isDir = Random.value > 0.5f;
-
-        SpawnPirateShip(isDir);
+        StartCoroutine(SpawnPirateShip());
     }
 
-    public void SpawnPirateShip(bool isDir)
+    public IEnumerator SpawnPirateShip()
     {
-        Quaternion rotation =  Quaternion.Euler(0, isDir ? 75 : -75, 0);
-        GameObject pirateShip = Instantiate(pirateShipPrefab, spawnPosition, rotation);
-
-        PirateShip shipScript = pirateShip.GetComponent<PirateShip>();
-        if (shipScript != null)
+        while (true)
         {
-            shipScript.Init(isDir);
+            yield return new WaitForSeconds(15f);
+
+            int i = Random.Range(0, 2);
+            Debug.Log("º÷" + i);
+
+            if (!LevelManager.instance.isPrirate && i == 0)
+            {
+                LevelManager.instance.isPrirate = true;
+
+                bool isDir = Random.value > 0.5f;
+                Quaternion rotation = Quaternion.Euler(0, isDir ? 75 : -75, 0);
+
+                GameObject pirateShip = Instantiate(pirateShipPrefab, spawnPosition, rotation);
+                PirateShip shipScript = pirateShip.GetComponent<PirateShip>();
+
+                if (shipScript != null)
+                {
+                    shipScript.Init(isDir);
+                }
+
+                Vector3 scale = pirateShip.transform.localScale;
+                scale.x = isDir ? Mathf.Abs(scale.x) : -Mathf.Abs(scale.x);
+                pirateShip.transform.localScale = scale;
+            }
         }
-        Vector3 scale = pirateShip.transform.localScale;
-        scale.x = isDir ? Mathf.Abs(scale.x) : -Mathf.Abs(scale.x);
-        pirateShip.transform.localScale = scale;
     }
 }

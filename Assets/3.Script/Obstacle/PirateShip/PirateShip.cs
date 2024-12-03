@@ -40,6 +40,8 @@ public class PirateShip : MonoBehaviour
             yield return StartCoroutine(RotateFirePosition(index));
             if (index == fireRotation.Length - 1)
             {
+                LevelManager.instance.isPrirate = false;
+
                 Destroy(gameObject);
                 break;
             }

@@ -1344,7 +1344,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pirateShipPrefab: {fileID: 8373124807447159536, guid: bdec24f50e168483f86f3df8ea7a5538, type: 3}
   spawnPosition: {x: 0, y: 0, z: -25}
-  isDir: 1
 --- !u!4 &464246707
 Transform:
   m_ObjectHideFlags: 0
