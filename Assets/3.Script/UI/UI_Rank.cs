@@ -12,6 +12,8 @@ public class UI_Rank : MonoBehaviour
     public Text recentName;
     public Text recentScore;
 
+    [SerializeField] AudioClip clickAudio;
+
     private void Start()
     {
         GameManager.Instance.isPlayGame = false;
@@ -31,6 +33,7 @@ public class UI_Rank : MonoBehaviour
 
     public void ClickLeave()
     {
+        GameManager.Instance.effectAudioSource.PlayOneShot(clickAudio);
         StartCoroutine(LoadMainScene());
     }
 

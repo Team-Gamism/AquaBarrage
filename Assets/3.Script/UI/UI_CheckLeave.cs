@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class UI_CheckLeave : MonoBehaviour
 {
+    [SerializeField] AudioClip clickAudio;
     private void OnEnable()
     {
         GameManager.UI.AddPopupUI(gameObject);
@@ -17,11 +18,13 @@ public class UI_CheckLeave : MonoBehaviour
 
     public void Leave()
     {
+        GameManager.Instance.effectAudioSource.PlayOneShot(clickAudio);
         SceneManager.LoadScene("MainScene");
     }
 
     public void Cancel()
     {
+        GameManager.Instance.effectAudioSource.PlayOneShot(clickAudio);
         Destroy(gameObject);
     }
 }

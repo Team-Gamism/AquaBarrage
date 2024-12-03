@@ -5,8 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class UI_Help : MonoBehaviour
 {
-   public void Leave()
+    [SerializeField] AudioClip clickAudio;
+    public void Leave()
     {
+        GameManager.Instance.effectAudioSource.PlayOneShot(clickAudio);
         StartCoroutine(LoadMainScene());
     }
 

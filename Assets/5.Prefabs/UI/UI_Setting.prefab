@@ -502,6 +502,7 @@ MonoBehaviour:
   - {fileID: 3197609168591366535}
   - {fileID: 1311859600091124920}
   - {fileID: 2260739854233301959}
+  clickAudio: {fileID: 8300000, guid: 580c45279e0bb9b4fb35e5a97282e87f, type: 3}
 --- !u!1 &1359003208471631720
 GameObject:
   m_ObjectHideFlags: 0
