@@ -595,7 +595,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8294396275047847334, guid: e77123bae58682f41a4b4c8c78b8b3ea, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1163,6 +1163,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowMaskGraphic: 1
+--- !u!1 &351338665 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5797426538138726040, guid: 9758c6d6a768f5e46892555cb85f9f8d, type: 3}
+  m_PrefabInstance: {fileID: 2267602671148461150}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &415253573
 GameObject:
   m_ObjectHideFlags: 0
@@ -2173,6 +2178,7 @@ MonoBehaviour:
   - {fileID: 517925157}
   gameOverStageText: {fileID: 0}
   resultStageText: {fileID: 0}
+  clickAudio: {fileID: 0}
 --- !u!1 &725199233
 GameObject:
   m_ObjectHideFlags: 0
@@ -3558,6 +3564,7 @@ MonoBehaviour:
   stageInfo: {fileID: 11400000, guid: db2e0c36659bcd2479da394077b311a5, type: 2}
   isPausedGame: 0
   isBossCut: 0
+  isPrirate: 0
   goUI: {fileID: 0}
 --- !u!1 &1301998692
 GameObject:
@@ -3605,7 +3612,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pirateShipPrefab: {fileID: 8373124807447159536, guid: bdec24f50e168483f86f3df8ea7a5538, type: 3}
   spawnPosition: {x: 0, y: 0, z: -25}
-  isDir: 1
 --- !u!1 &1356260632
 GameObject:
   m_ObjectHideFlags: 0
@@ -4973,6 +4979,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1853625976936789813, guid: 9758c6d6a768f5e46892555cb85f9f8d, type: 3}
+      propertyPath: hitEffect
+      value: 
+      objectReference: {fileID: 351338665}
     - target: {fileID: 2382301623619444695, guid: 9758c6d6a768f5e46892555cb85f9f8d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4983,7 +4993,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2382301623619444695, guid: 9758c6d6a768f5e46892555cb85f9f8d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2382301623619444695, guid: 9758c6d6a768f5e46892555cb85f9f8d, type: 3}
       propertyPath: m_LocalRotation.w

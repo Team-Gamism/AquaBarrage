@@ -2,76 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Fish_Direction
+public class Fish_Squid : Fish, ICanFish
 {
-    Left,
-    Right
-}
-
-public class Fish_Squid : MonoBehaviour, ICanFish
-{
-    [SerializeField] private FishStatSO fishInfo;
     [SerializeField] private float riseSpeed = 15f;
     [SerializeField] private float rotationSpeed = 10f;
     [SerializeField] private float detectionRange = 50f;
     [SerializeField] private float targetHeight = 1.25f;
-    public Fish_Direction fish_Direction;
-    public string fishName;
-    private SkinnedMeshRenderer skinnedMeshRenderer;
-    private float speed;
-    private float weight;
-    private float attackCoolTime;
-    private float turnVecX = 0f;
-    private float time = 0f;
     private bool isPlayerDetect = false;
-    private bool isAttack = false;
     private bool isRising = false;
     private bool isExploded = false;
+    private bool isCaught = false;
 
-    private void Init()
-    {
-        skinnedMeshRenderer = transform.Find("Squid").GetComponent<SkinnedMeshRenderer>();
-
-        fishName = fishInfo.fishName;
-        speed = fishInfo.speed;
-        weight = fishInfo.weight;
-        attackCoolTime = fishInfo.attackCoolTime;
-    }
-
-    void Start()
+    protected override void Awake()
     {
         Init();
     }
 
-    void FixedUpdate()
+    protected override void FixedUpdate()
     {
-        if (!isExploded)
-        {
-            Move();
-        }
-    }
+        if (isCaught || isExploded) return;
 
-    private void Move()
-    {
-        if (!isAttack && !isRising)
-        {
-            transform.Translate((fish_Direction == Fish_Direction.Left ? 1 : -1) * speed * transform.right / 2 * Time.deltaTime);
-            transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
-            Rotate();
-            CheckPlayerDetection();
-        }
-        else if (isRising)
+        if (isRising)
         {
             RiseUp();
         }
-    }
-
-    private void Rotate()
-    {
-        transform.rotation = Quaternion.Euler(new Vector3(
-            Mathf.Lerp(transform.rotation.eulerAngles.x >= 180 ?
-            transform.rotation.eulerAngles.x - 360 : transform.rotation.eulerAngles.x,
-            turnVecX, Time.deltaTime * Time.deltaTime) - (fish_Direction == Fish_Direction.Left ? 0 : 180), -90f, fish_Direction == Fish_Direction.Left ? 0 : -180));
+        else
+        {
+            Move();
+            Rotate();
+            CheckPlayerDetection();
+        }
     }
 
     private void CheckPlayerDetection()
@@ -91,7 +51,6 @@ public class Fish_Squid : MonoBehaviour, ICanFish
     {
         transform.rotation = Quaternion.Euler(-90f, 0f, 0f);
         isRising = true;
-        time = 0f;
     }
 
     private void RiseUp()
@@ -114,18 +73,12 @@ public class Fish_Squid : MonoBehaviour, ICanFish
             isExploded = true;
 
             GameObject explosionPrefab = Resources.Load<GameObject>("Fish/Effect/Explosion");
-            GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-            skinnedMeshRenderer.enabled = false;
-            StartCoroutine(DestroyParticlePlay(explosion));
+            if (explosionPrefab != null)
+            {
+                GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            }
+            Destroy(gameObject);
         }
-    }
-
-    private IEnumerator DestroyParticlePlay(GameObject particleObject)
-    {
-        ParticleSystem particleSystem = particleObject.GetComponent<ParticleSystem>();
-        yield return new WaitUntil(() => !particleSystem.isPlaying);
-        Destroy(particleObject);
-        Destroy(gameObject);
     }
 
     private void OnDrawGizmos()
@@ -134,18 +87,10 @@ public class Fish_Squid : MonoBehaviour, ICanFish
         Gizmos.DrawRay(transform.position, Vector3.up * detectionRange);
     }
 
-    public virtual Transform Fished(Transform hook)
+    public override Transform Fished(Transform hook)
     {
-        gameObject.SetActive(false);
-        gameObject.SetActive(true);
-
-        transform.SetParent(hook);
-
-        transform.localPosition = Vector3.zero;
-
-        GameManager.Instance.money += fishInfo.money;
-        GameManager.Instance.fishCount++;
-
-        return transform;
+        isCaught = true;
+        StopAllCoroutines();
+        return base.Fished(hook);
     }
 }
