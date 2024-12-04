@@ -20,7 +20,6 @@ public class FishSpawner : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(12.5f + Random.Range(-1.5f, 1.5f));
 
             int randomIdx;
 
@@ -69,6 +68,7 @@ public class FishSpawner : MonoBehaviour
                     transform.rotation = Quaternion.Euler(new Vector3(transform.rotation.eulerAngles.x,
                         transform.rotation.eulerAngles.y, -transform.rotation.eulerAngles.z));
             }
+            yield return new WaitForSeconds(12.5f + Random.Range(-1.5f, 1.5f));
         }
     }
 }

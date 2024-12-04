@@ -26,6 +26,8 @@ public class BoatController : MonoBehaviour
     public PlayerStatSO dashSO;
 
     AudioSource audioSource;
+    [SerializeField] GameObject dashUIPrefab;
+    UI_Dash dashUI;
 
     [SerializeField] AudioClip dashAudio;
     [SerializeField] AudioClip hitAudio;
@@ -38,6 +40,9 @@ public class BoatController : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         GameManager.Instance.hitEvent = Hited;
         GameManager.Instance.player = transform;
+        dashUI = Instantiate(dashUIPrefab).GetComponent<UI_Dash>();
+        dashUI.canDashAction = CanDash;
+        dashUI.player = transform;
     }
 
     private void FixedUpdate()
@@ -94,7 +99,12 @@ public class BoatController : MonoBehaviour
         rb.velocity = new Vector3(dashForce * seeDir, rb.velocity.y, 0);
         yield return new WaitForSeconds(dashDuration);
         GameManager.Instance.isDash = false;
-        yield return new WaitForSeconds(dashCool - dashSO.valueList[GameManager.Instance.dashLevel]);
+        StartCoroutine(dashUI.UpdateDash(dashCool - dashSO.valueList[GameManager.Instance.dashLevel]));
+        
+    }
+
+    void CanDash()
+    {
         canDash = true;
     }
 

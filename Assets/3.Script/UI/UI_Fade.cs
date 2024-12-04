@@ -21,6 +21,7 @@ public class UI_Fade : MonoBehaviour
     public void FadeIn()
     {
         Time.timeScale = 1f;
+        float amount;
         GameManager.Instance.audioMixer.GetFloat("music", out GameManager.Instance.musicAmount);
         GameManager.Instance.audioMixer.DOSetFloat("music", -80, 3);
         anim.Play("FadeIn");

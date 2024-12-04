@@ -27,6 +27,7 @@ public class UI_Main : MonoBehaviour
     IEnumerator LoadGameScene()
     {
         UI_Fade.instance.FadeIn();
+        GameManager.Instance.stageData = 1;
         yield return new WaitForSeconds(2f);
         SceneManager.LoadScene("GameScene_UI_HC");
     }

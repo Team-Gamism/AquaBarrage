@@ -195,6 +195,13 @@ public class FishingRodController : MonoBehaviour
         audioSource.Play();
         while (curPrefab != null && Vector3.Distance(curPrefab.transform.position, launchPoint.position) > 0.1f)
         {
+            if (Time.timeScale == 0)
+                audioSource.Stop();
+            else
+            {
+                if(!audioSource.isPlaying)
+                    audioSource.Play();
+            }
             curPrefab.transform.position = Vector3.MoveTowards(curPrefab.transform.position, launchPoint.position, (reelSpeed + rillLevel.valueList[GameManager.Instance.rillLevel]) * Time.deltaTime);
             yield return null;
         }

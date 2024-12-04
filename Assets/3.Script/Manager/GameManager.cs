@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
     public void InitData()
     {
         money = 0;
-        stageData = 1;
+        stageData = 0;
         playerName = "";
         engineLevel = 0;
         dashLevel = 0;
