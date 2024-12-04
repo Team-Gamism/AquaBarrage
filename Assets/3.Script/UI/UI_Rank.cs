@@ -24,7 +24,7 @@ public class UI_Rank : MonoBehaviour
             scoreTexts[i].text = $"스테이지 {GameManager.Instance.playerDataList[i].stageData}";
         }
 
-        if (GameManager.Instance.playerName != null)
+        if (GameManager.Instance.playerName != "")
             recentName.text = GameManager.Instance.playerName;
         else
             recentName.text = "--";
@@ -42,5 +42,19 @@ public class UI_Rank : MonoBehaviour
         UI_Fade.instance.FadeIn();
         yield return new WaitForSeconds(2);
         SceneManager.LoadScene("MainScene");
+    }
+
+    public void OnInitRank()
+    {
+        GameManager.Instance.InitRank();
+        for (int i = 0; i < nameTexts.Length; i++)
+        {
+            nameTexts[i].text = "";
+            scoreTexts[i].text = $"스테이지 0";
+        }
+
+        recentName.text = "--";
+        recentScore.text = $"스테이지 0";
+
     }
 }
