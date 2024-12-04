@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class BoatController : MonoBehaviour
 {
@@ -41,7 +42,13 @@ public class BoatController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!GameManager.Instance.isDash && GameManager.Instance.CurHP > 0)
+        if (GameManager.Instance.CurHP <= 0)
+        {
+            rb.velocity = Vector3.zero;
+            return;
+        }
+
+        if (SceneManager.GetActiveScene().name == "HelpScene" || (!GameManager.Instance.isDash && GameManager.Instance.CurHP > 0))
         {
             curSpeed = Mathf.MoveTowards(curSpeed, targetSpeed,
                     (targetSpeed == 0 ? speedDown : speedUp) * Time.fixedDeltaTime);
@@ -101,7 +108,7 @@ public class BoatController : MonoBehaviour
 
     void Hited()
     {
-        Instantiate(hitEffect,transform.position + new Vector3(0,1,0),Quaternion.identity);
+        Instantiate(hitEffect, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
         audioSource.PlayOneShot(hitAudio);
     }
 }

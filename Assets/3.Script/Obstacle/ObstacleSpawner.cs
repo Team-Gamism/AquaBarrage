@@ -18,10 +18,10 @@ public class ObstacleSpawner : MonoBehaviour
         {
             yield return new WaitForSeconds(15f);
 
-            int i = Random.Range(0, 2);
+            int i = Random.Range(0, 3);
             Debug.Log("º÷" + i);
 
-            if (!LevelManager.instance.isPrirate && i == 0)
+            if (!LevelManager.instance.isPrirate && i == 0 && !LevelManager.instance.isPausedGame)
             {
                 LevelManager.instance.isPrirate = true;
 

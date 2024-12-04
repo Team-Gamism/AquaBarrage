@@ -313,7 +313,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Aqua Barrage  1.0.0
+  m_Text: Aqua Barrage  1.0.6
 --- !u!222 &641108574
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -639,6 +639,18 @@ PrefabInstance:
     - target: {fileID: 8184074191852398265, guid: c3068920263192e4cb283ce1e683c7ab, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8949359951725462593, guid: c3068920263192e4cb283ce1e683c7ab, type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 8949359951725462593, guid: c3068920263192e4cb283ce1e683c7ab, type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8949359951725462593, guid: c3068920263192e4cb283ce1e683c7ab, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 150
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

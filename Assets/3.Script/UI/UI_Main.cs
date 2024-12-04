@@ -10,10 +10,11 @@ public class UI_Main : MonoBehaviour
     [SerializeField] AudioClip clickAudio;
     private void Start()
     {
-        GameManager.Instance.InitData();
         GameObject go = Instantiate(settingUI);
         go.GetComponent<UI_Setting>().FirstSet();
         Destroy(go);
+
+        GameManager.Instance.InitData();
     }
 
     public void ClickPlay()
