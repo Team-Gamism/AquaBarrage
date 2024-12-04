@@ -118,6 +118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dashCoolImage: {fileID: 4669357120557013036}
   player: {fileID: 0}
+  dashCoolCLip: {fileID: 8300000, guid: cf551fb0f4d305b4c9e032d2d6f96072, type: 3}
 --- !u!95 &8309282119869913742
 Animator:
   serializedVersion: 5

@@ -8,9 +8,9 @@ using UnityEngine.UI;
 public class UI_Dash : MonoBehaviour
 {
     [SerializeField] Image dashCoolImage;
-
+    [HideInInspector]
     public Transform player;
-
+    [SerializeField] AudioClip dashCoolCLip;
     public Action canDashAction;
     Animator anim;
     private void Start()
@@ -41,5 +41,6 @@ public class UI_Dash : MonoBehaviour
         }
         canDashAction?.Invoke();
         anim.Play("End");
+        GameManager.Instance.effectAudioSource.PlayOneShot(dashCoolCLip);
     }
 }
