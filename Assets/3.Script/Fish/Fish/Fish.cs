@@ -73,7 +73,7 @@ public class Fish : MonoBehaviour, ICanFish
         }
     }
 
-    private IEnumerator AttackCoroutine()
+    protected IEnumerator AttackCoroutine()
     {
         while (true)
         {
