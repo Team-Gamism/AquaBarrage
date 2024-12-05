@@ -49,9 +49,9 @@ public class UI_Store : MonoBehaviour
 
     public void UpgradeEngine()
     {
-        if (GameManager.Instance.money >= storeSO_Engine.levelList[GameManager.Instance.engineLevel] && storeSO_Engine.levelList.Count != GameManager.Instance.engineLevel)
+        if (GameManager.Instance.Money >= storeSO_Engine.levelList[GameManager.Instance.engineLevel] && storeSO_Engine.levelList.Count != GameManager.Instance.engineLevel)
         {
-            GameManager.Instance.money -= storeSO_Engine.levelList[GameManager.Instance.engineLevel];
+            GameManager.Instance.Money -= storeSO_Engine.levelList[GameManager.Instance.engineLevel];
             GameManager.Instance.engineLevel++;
             SetStore();
             GameManager.Instance.effectAudioSource.PlayOneShot(soldAudio);
@@ -60,9 +60,9 @@ public class UI_Store : MonoBehaviour
 
     public void UpgradeDash()
     {
-        if (GameManager.Instance.money >= storeSO_Dash.levelList[GameManager.Instance.dashLevel] && storeSO_Dash.levelList.Count != GameManager.Instance.dashLevel)
+        if (GameManager.Instance.Money >= storeSO_Dash.levelList[GameManager.Instance.dashLevel] && storeSO_Dash.levelList.Count != GameManager.Instance.dashLevel)
         {
-            GameManager.Instance.money -= storeSO_Engine.levelList[GameManager.Instance.dashLevel];
+            GameManager.Instance.Money -= storeSO_Engine.levelList[GameManager.Instance.dashLevel];
             GameManager.Instance.dashLevel++;
             SetStore();
             GameManager.Instance.effectAudioSource.PlayOneShot(soldAudio);
@@ -71,9 +71,9 @@ public class UI_Store : MonoBehaviour
 
     public void UpgradeRill()
     {
-        if (GameManager.Instance.money >= storeSO_Rill.levelList[GameManager.Instance.rillLevel] && storeSO_Rill.levelList.Count != GameManager.Instance.rillLevel)
+        if (GameManager.Instance.Money >= storeSO_Rill.levelList[GameManager.Instance.rillLevel] && storeSO_Rill.levelList.Count != GameManager.Instance.rillLevel)
         {
-            GameManager.Instance.money -= storeSO_Rill.levelList[GameManager.Instance.rillLevel];
+            GameManager.Instance.Money -= storeSO_Rill.levelList[GameManager.Instance.rillLevel];
             GameManager.Instance.rillLevel++;
             SetStore();
             GameManager.Instance.effectAudioSource.PlayOneShot(soldAudio);
@@ -82,9 +82,9 @@ public class UI_Store : MonoBehaviour
 
     public void Repair()
     {
-        if (GameManager.Instance.money >= 500 * repairHp)
+        if (GameManager.Instance.Money >= 500 * repairHp)
         {
-            GameManager.Instance.money -= 500 * repairHp;
+            GameManager.Instance.Money -= 500 * repairHp;
             GameManager.Instance.CurHP += repairHp;
             SetStore();
             GameManager.Instance.effectAudioSource.PlayOneShot(soldAudio);
@@ -116,7 +116,7 @@ public class UI_Store : MonoBehaviour
         repairHpText.text = $"{repairHp}";
 
         repairExpenseText.text = $"{500 * repairHp}";
-        if(GameManager.Instance.money >= repairHp * 500)
+        if(GameManager.Instance.Money >= repairHp * 500)
             repairExpenseText.color = Color.black;
         else
             repairExpenseText.color = Color.red;
@@ -124,14 +124,14 @@ public class UI_Store : MonoBehaviour
 
     public void SetStore()
     {
-        moneyText.text = $"{GameManager.Instance.money}";
+        moneyText.text = $"{GameManager.Instance.Money}";
 
         if (storeSO_Engine.levelList.Count != GameManager.Instance.engineLevel)
         {
             engineLevelText.text = $"Lv. {GameManager.Instance.engineLevel + 1}";
             engineExpenseText.text = $"{storeSO_Engine.levelList[GameManager.Instance.engineLevel]}";
 
-            if (GameManager.Instance.money >= storeSO_Engine.levelList[GameManager.Instance.engineLevel])
+            if (GameManager.Instance.Money >= storeSO_Engine.levelList[GameManager.Instance.engineLevel])
                 engineExpenseText.color = Color.black;
             else
                 engineExpenseText.color = Color.red;
@@ -147,7 +147,7 @@ public class UI_Store : MonoBehaviour
             dashLevelText.text = $"Lv. {GameManager.Instance.dashLevel + 1}";
             dashExpenseText.text = $"{storeSO_Dash.levelList[GameManager.Instance.dashLevel]}";
 
-            if (GameManager.Instance.money >= storeSO_Dash.levelList[GameManager.Instance.dashLevel])
+            if (GameManager.Instance.Money >= storeSO_Dash.levelList[GameManager.Instance.dashLevel])
                 dashExpenseText.color = Color.black;
             else
                 dashExpenseText.color = Color.red;
@@ -163,7 +163,7 @@ public class UI_Store : MonoBehaviour
             rillLevelText.text = $"Lv. {GameManager.Instance.rillLevel + 1}";
             rillExpenseText.text = $"{storeSO_Rill.levelList[GameManager.Instance.rillLevel]}";
 
-            if (GameManager.Instance.money >= storeSO_Rill.levelList[GameManager.Instance.rillLevel])
+            if (GameManager.Instance.Money >= storeSO_Rill.levelList[GameManager.Instance.rillLevel])
                 rillExpenseText.color = Color.black;
             else
                 rillExpenseText.color = Color.red;

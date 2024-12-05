@@ -25,10 +25,15 @@ public class UI_Rank : MonoBehaviour
         }
 
         if (GameManager.Instance.playerName != "")
+        {
             recentName.text = GameManager.Instance.playerName;
+            recentScore.text = $"스테이지 {GameManager.Instance.stageData}";
+        }
         else
+        {
             recentName.text = "--";
-        recentScore.text = $"스테이지 {GameManager.Instance.stageData}";
+            recentScore.text = $"스테이지 0";
+        }
     }
 
     public void ClickLeave()
