@@ -66,7 +66,10 @@ public class FishingHookController : MonoBehaviour
     private void OnDisable()
     {
         if (caughtFish != null)
+        {
+            Instantiate(getMoneyUI).GetComponent<UI_GetMoney>().SignGetMoney(caughtFish.GetComponent<Fish>().fishStat.money);
             getHookAction?.Invoke();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -82,7 +85,6 @@ public class FishingHookController : MonoBehaviour
 
                 hookAction?.Invoke();
 
-                Instantiate(getMoneyUI).GetComponent<UI_GetMoney>().SignGetMoney(caughtFish.GetComponent<Fish>().fishStat.money);
                 Rigidbody rb = GetComponent<Rigidbody>();
                 if (rb != null)
                 {

@@ -120,7 +120,7 @@ public class FishingRodController : MonoBehaviour
     private IEnumerator CastFishingRod()
     {
         yield return Rotate(rotation, speed);
-        yield return new WaitForSeconds(waitTime);
+        //yield return new WaitForSeconds(waitTime);
         yield return Rotate(175f, resetSpeed);
         LaunchPrefab();
         StartCoroutine(DrawFishingLine());
@@ -211,6 +211,7 @@ public class FishingRodController : MonoBehaviour
         {
             meshRenderer.enabled = true;
         }
+        //¿©±â
         audioSource.Stop();
         Destroy(curPrefab);
         ResetLine();
