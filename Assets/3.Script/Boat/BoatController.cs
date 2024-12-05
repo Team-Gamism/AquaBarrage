@@ -56,7 +56,7 @@ public class BoatController : MonoBehaviour
         if (!GameManager.Instance.isDash && GameManager.Instance.CurHP > 0)
         {
             curSpeed = Mathf.MoveTowards(curSpeed, targetSpeed,
-                    (targetSpeed == 0 ? speedDown : speedUp) * Time.fixedDeltaTime);
+                    (targetSpeed == 0 ? speedDown : speedUp) * Time.fixedDeltaTime * 5);
             rb.velocity = new Vector3(curSpeed, rb.velocity.y, 0);
         }
         float x = Mathf.Clamp(transform.position.x, minXPos, maxXPos);

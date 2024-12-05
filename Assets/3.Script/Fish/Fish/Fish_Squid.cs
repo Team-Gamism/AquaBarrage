@@ -75,7 +75,7 @@ public class Fish_Squid : Fish, ICanFish
             GameObject explosionPrefab = Resources.Load<GameObject>("Fish/Effect/Explosion");
             if (explosionPrefab != null)
             {
-                GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+                Instantiate(explosionPrefab, transform.position, Quaternion.identity);
             }
             Destroy(gameObject);
         }
