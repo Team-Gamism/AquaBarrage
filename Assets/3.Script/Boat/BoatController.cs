@@ -53,7 +53,7 @@ public class BoatController : MonoBehaviour
             return;
         }
 
-        if (SceneManager.GetActiveScene().name == "HelpScene" || (!GameManager.Instance.isDash && GameManager.Instance.CurHP > 0))
+        if (!GameManager.Instance.isDash && GameManager.Instance.CurHP > 0)
         {
             curSpeed = Mathf.MoveTowards(curSpeed, targetSpeed,
                     (targetSpeed == 0 ? speedDown : speedUp) * Time.fixedDeltaTime);
