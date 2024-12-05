@@ -215,7 +215,7 @@ public class Fish_Shark : MonoBehaviour, ICanFish
 
             transform.localPosition = Vector3.zero;
 
-            GameManager.Instance.money += fishInfo.money;
+            GameManager.Instance.Money += fishInfo.money;
 
             return transform;
         }

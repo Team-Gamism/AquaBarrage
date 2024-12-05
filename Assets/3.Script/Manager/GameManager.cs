@@ -31,7 +31,12 @@ public class GameManager : MonoBehaviour
     public bool isClearStage;
     public bool isExplosionDamage;
 
-    public int money;
+
+    public Action<int> getMoneyAction;
+
+    public int Money { get { return money; } set { getMoneyAction?.Invoke(value); money = value; } }
+
+    int money;
     public int fishCount;
 
     public int stageData;
@@ -70,7 +75,7 @@ public class GameManager : MonoBehaviour
     public void InitData()
     {
         money = 0;
-        stageData = 0;
+        stageData = 1;
         playerName = "";
         engineLevel = 0;
         dashLevel = 0;
