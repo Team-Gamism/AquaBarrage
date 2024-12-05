@@ -21,6 +21,7 @@ public class FishingHookController : MonoBehaviour
     [SerializeField] ParticleSystem fallEffect;
     [SerializeField] ParticleSystem fallEffect2;
     [SerializeField] GameObject fishEffect;
+    [SerializeField] GameObject getMoneyUI;
     private void Start()
     {
         fishingOrigin = GameObject.Find("FishingOrigin").transform;
@@ -81,6 +82,7 @@ public class FishingHookController : MonoBehaviour
 
                 hookAction?.Invoke();
 
+                Instantiate(getMoneyUI).GetComponent<UI_GetMoney>().SignGetMoney(caughtFish.GetComponent<Fish>().fishStat.money);
                 Rigidbody rb = GetComponent<Rigidbody>();
                 if (rb != null)
                 {

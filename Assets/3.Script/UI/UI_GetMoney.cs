@@ -14,7 +14,7 @@ public class UI_GetMoney : MonoBehaviour
 
     public void SignGetMoney(int money)
     {
-        moneyText.text = money.ToString();
+        moneyText.text = "+"+ money.ToString();
     }
 
     void Disappoint()

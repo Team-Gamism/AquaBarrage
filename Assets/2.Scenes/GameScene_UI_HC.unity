@@ -5241,7 +5241,6 @@ MonoBehaviour:
   isDash: 0
   isClearStage: 0
   isExplosionDamage: 0
-  money: 0
   fishCount: 0
   stageData: 0
   maxHp: 6
