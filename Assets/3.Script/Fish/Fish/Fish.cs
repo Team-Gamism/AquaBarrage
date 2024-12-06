@@ -14,12 +14,12 @@ public class Fish : MonoBehaviour, ICanFish
 
     public Transform[] bulletPoints;
 
-    private string fishName;
-    private float speed;
-    private float weight;
-    private float attackCoolTime;
+    protected string fishName;
+    protected float speed;
+    protected float weight;
+    protected float attackCoolTime;
 
-    private float turnVecX = 0f;
+    protected float turnVecX = 0f;
 
     public LayerMask groundLayer;
     public LayerMask seaBorderLayer;
@@ -50,7 +50,7 @@ public class Fish : MonoBehaviour, ICanFish
         CheckGround();
     }
 
-    protected void Move()
+    protected virtual void Move()
     {
         transform.Translate((fish_Direction == Fish_Direction.Left ? 1 : -1) * speed * transform.right / 2 * Time.deltaTime);
 
@@ -76,7 +76,7 @@ public class Fish : MonoBehaviour, ICanFish
         }
     }
 
-    protected IEnumerator AttackCoroutine()
+    protected virtual IEnumerator AttackCoroutine() 
     {
         while (true)
         {

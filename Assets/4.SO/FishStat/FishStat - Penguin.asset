@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FishStat - Penguin
   m_EditorClassIdentifier: 
   fishName: Penguin
-  speed: 4
+  speed: 5
   weight: 20
-  attackCoolTime: 3
+  attackCoolTime: 1
   money: 300
