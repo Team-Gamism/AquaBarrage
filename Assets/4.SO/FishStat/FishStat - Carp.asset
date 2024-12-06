@@ -15,5 +15,5 @@ MonoBehaviour:
   fishName: Carp
   speed: 2.5
   weight: 10
-  attackCoolTime: 7.8
+  attackCoolTime: 5.5
   money: 250

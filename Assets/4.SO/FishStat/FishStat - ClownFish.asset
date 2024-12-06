@@ -15,5 +15,5 @@ MonoBehaviour:
   fishName: ClownFish
   speed: 2
   weight: 5
-  attackCoolTime: 4
+  attackCoolTime: 2.5
   money: 100

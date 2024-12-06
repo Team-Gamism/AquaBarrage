@@ -15,5 +15,5 @@ MonoBehaviour:
   fishName: Tuna
   speed: 1.5
   weight: 10
-  attackCoolTime: 5
-  money: 400
+  attackCoolTime: 3.5
+  money: 200
