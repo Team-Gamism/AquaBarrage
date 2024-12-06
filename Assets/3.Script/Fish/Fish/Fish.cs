@@ -5,7 +5,7 @@ using UnityEngine;
 public interface ICanFish
 {
     public Transform Fished(Transform hook);
-
+    public int money { get; }
 }
 
 public class Fish : MonoBehaviour, ICanFish
@@ -32,12 +32,15 @@ public class Fish : MonoBehaviour, ICanFish
 
     public Fish_Direction fish_Direction;
 
+    public int money { get => fishStat.money; }
+
     protected virtual void Awake()
     {
         Init();
         StartCoroutine(TurnCoroutine());
         StartCoroutine(AttackCoroutine());
     }
+
 
     protected virtual void FixedUpdate()
     {
@@ -130,7 +133,6 @@ public class Fish : MonoBehaviour, ICanFish
 
         transform.localPosition = Vector3.zero;
 
-        GameManager.Instance.Money += fishStat.money;
         GameManager.Instance.fishCount++;
 
         return transform;
