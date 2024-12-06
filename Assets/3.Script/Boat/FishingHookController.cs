@@ -13,6 +13,7 @@ public class FishingHookController : MonoBehaviour
     public Action getHookAction;
 
     bool isfalled = false;
+    bool canHook;
 
     AudioSource audioSource;
 
@@ -26,6 +27,7 @@ public class FishingHookController : MonoBehaviour
     {
         fishingOrigin = GameObject.Find("FishingOrigin").transform;
         audioSource = GetComponent<AudioSource>();
+        canHook = true;
     }
 
     private void Update()
@@ -67,14 +69,16 @@ public class FishingHookController : MonoBehaviour
     {
         if (caughtFish != null)
         {
-            Instantiate(getMoneyUI).GetComponent<UI_GetMoney>().SignGetMoney(caughtFish.GetComponent<Fish>().fishStat.money);
+            Instantiate(getMoneyUI).GetComponent<UI_GetMoney>().SignGetMoney(caughtFish.GetComponent<ICanFish>().money);
+            GameManager.Instance.Money += caughtFish.GetComponent<ICanFish>().money;
             getHookAction?.Invoke();
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (caughtFish == null)
+
+        if (caughtFish == null && canHook)
         {
 
             if (other.TryGetComponent<ICanFish>(out var canFish) && caughtFish == null)
@@ -82,7 +86,7 @@ public class FishingHookController : MonoBehaviour
                 Instantiate(fishEffect, transform.position, Quaternion.identity);
 
                 caughtFish = canFish.Fished(transform);
-
+                canHook = false;
                 hookAction?.Invoke();
 
                 Rigidbody rb = GetComponent<Rigidbody>();

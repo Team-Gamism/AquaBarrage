@@ -8,12 +8,39 @@ public class StoreTrigger : MonoBehaviour
 
     GameObject storeUIPrefab;
 
+    [SerializeField] GameObject interactUI;
+
+    bool canInteract;
+
+    private void Start()
+    {
+        interactUI.SetActive(false);
+    }
+
+    public void OnInteract()
+    {
+        if (!canInteract)
+            return;
+
+        if (storeUIPrefab == null)
+            storeUIPrefab = Instantiate(storeUI);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<BoatController>() != null)
         {
-            if(storeUIPrefab == null)
-                storeUIPrefab = Instantiate(storeUI);
+            interactUI.SetActive(true);
+            canInteract = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.GetComponent<BoatController>() != null)
+        {
+            interactUI.SetActive(false);
+            canInteract = false;
         }
     }
 }

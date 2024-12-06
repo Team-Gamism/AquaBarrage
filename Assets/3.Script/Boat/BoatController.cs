@@ -28,7 +28,7 @@ public class BoatController : MonoBehaviour
     AudioSource audioSource;
     [SerializeField] GameObject dashUIPrefab;
     UI_Dash dashUI;
-
+    [SerializeField] GameObject canInteractShopUI;
     [SerializeField] AudioClip dashAudio;
     [SerializeField] AudioClip hitAudio;
 
@@ -121,4 +121,5 @@ public class BoatController : MonoBehaviour
         Instantiate(hitEffect, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
         audioSource.PlayOneShot(hitAudio);
     }
+
 }

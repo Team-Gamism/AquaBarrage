@@ -31,7 +31,7 @@ public class Fish_Shark : MonoBehaviour, ICanFish
     public GameObject pattern3Atk;
 
     bool isSkill;
-
+    public int money { get => fishInfo.money; }
     public enum Fish_Direction
     {
         Left,
@@ -215,7 +215,6 @@ public class Fish_Shark : MonoBehaviour, ICanFish
 
             transform.localPosition = Vector3.zero;
 
-            GameManager.Instance.Money += fishInfo.money;
 
             return transform;
         }

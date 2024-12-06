@@ -22249,6 +22249,7 @@ MonoBehaviour:
   engineSO: {fileID: 11400000, guid: e0045997330f9a3449b7ebfaaf2df432, type: 2}
   dashSO: {fileID: 11400000, guid: 9b9b62d73e0a5a540bb3a9e004ccdead, type: 2}
   dashUIPrefab: {fileID: 508811583248805625, guid: cc932d0b41186fc4f96f454da696a75e, type: 3}
+  canInteractShopUI: {fileID: 0}
   dashAudio: {fileID: 8300000, guid: 57e0924619196664095bcb7477ba5241, type: 3}
   hitAudio: {fileID: 8300000, guid: 13aca28e94c92ce4793590f7d1d94258, type: 3}
   hitEffect: {fileID: 6855314210357232287, guid: 7c2a9b83b809a0848915fabd9596b68b, type: 3}
