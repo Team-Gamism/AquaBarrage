@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fish_Shark : MonoBehaviour, ICanFish
+public class Fish_Shark : MonoBehaviour, IFishable
 {
     public FishStatSO fishInfo;
 

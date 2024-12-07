@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fish_Penguin : Fish, ICanFish
+public class Fish_Penguin : Fish, IFishable
 {
     [SerializeField] private float targetHeight = 1.25f;
     [SerializeField] private float jumpPower = 2f;

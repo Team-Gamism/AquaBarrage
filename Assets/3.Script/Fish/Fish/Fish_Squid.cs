@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fish_Squid : Fish, ICanFish
+public class Fish_Squid : Fish, IFishable
 {
     [SerializeField] private float riseSpeed = 15f;
     [SerializeField] private float rotationSpeed = 10f;

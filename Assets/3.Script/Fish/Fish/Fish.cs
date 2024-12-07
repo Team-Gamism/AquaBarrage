@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface ICanFish
+public interface IFishable
 {
     public Transform Fished(Transform hook);
     public int money { get; }
 }
 
-public class Fish : MonoBehaviour, ICanFish
+public class Fish : MonoBehaviour, IFishable
 {
     public FishStatSO fishStat;
 
@@ -39,6 +39,19 @@ public class Fish : MonoBehaviour, ICanFish
         Init();
         StartCoroutine(TurnCoroutine());
         StartCoroutine(AttackCoroutine());
+    }
+
+    protected virtual void Init()
+    {
+        fishName = fishStat.fishName;
+        speed = fishStat.speed;
+        weight = fishStat.weight;
+        attackCoolTime = fishStat.attackCoolTime;
+
+        if (fish_Direction == Fish_Direction.Right)
+        {
+            transform.rotation = Quaternion.Euler(new Vector3(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, -transform.rotation.eulerAngles.z));
+        }
     }
 
 
@@ -103,22 +116,11 @@ public class Fish : MonoBehaviour, ICanFish
         }
     }
 
-    protected void Init()
-    {
-        fishName = fishStat.fishName;
-        speed = fishStat.speed;
-        weight = fishStat.weight;
-        attackCoolTime = fishStat.attackCoolTime;
-
-        if(fish_Direction == Fish_Direction.Right)
-        {
-            transform.rotation = Quaternion.Euler(new Vector3(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, -transform.rotation.eulerAngles.z));
-        }
-    }
+    
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Deleter"))
+        if(other.gameObject.layer == 8)
         {
             Destroy(gameObject);
         }
