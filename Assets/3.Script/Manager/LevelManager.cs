@@ -13,16 +13,15 @@ public class LevelManager : MonoBehaviour
     public static LevelManager instance;
     public GameObject goUI;
 
+    public GameObject gameUI;
+
     private void Awake()
     {
         instance = this;
-
-        
     }
 
     private void Start()
     {
-        if (GameObject.Find("Canvas").GetComponent<UI_Game>() != null)
-            GameObject.Find("Canvas").GetComponent<UI_Game>().stageText.text = $"Stage {GameManager.Instance.stageData}";
+        Instantiate(gameUI).GetComponent<UI_Game>().stageText.text = $"Stage {GameManager.Instance.stageData}";
     }
 }

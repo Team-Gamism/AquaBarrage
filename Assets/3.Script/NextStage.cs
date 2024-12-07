@@ -13,11 +13,6 @@ public class NextStage : MonoBehaviour
             {
                 GameManager.Instance.stageData++;
 
-                //GameObject.Find("Canvas").GetComponent<UI_Game>().StageInit();
-
-
-                Destroy(GameObject.Find("Store(Clone)"));
-
                 StartCoroutine(LoadNextGameScene());
             }
     }

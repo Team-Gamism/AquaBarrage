@@ -22096,8 +22096,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 4.0378194, y: 1.9806013, z: 1.4876773}
-  m_Center: {x: -0.02549696, y: 1.2, z: -0.04004991}
+  m_Size: {x: 4.0378194, y: 0.76, z: 1.4876773}
+  m_Center: {x: -0.02549696, y: 0.5, z: -0.04004991}
 --- !u!54 &7127011724797691437
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -22146,7 +22146,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

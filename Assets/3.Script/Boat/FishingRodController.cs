@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -59,7 +60,6 @@ public class FishingRodController : MonoBehaviour
         }
         lineRenderer.startWidth = 0.05f;
         lineRenderer.endWidth = 0.05f;
-        lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
         lineRenderer.positionCount = 0;
     }
 
@@ -193,7 +193,7 @@ public class FishingRodController : MonoBehaviour
         }
         isReeling = true;
         audioSource.Play();
-        while (curPrefab != null && Vector3.Distance(curPrefab.transform.position, launchPoint.position) > 0.1f)
+        while (curPrefab != null && Mathf.Abs(curPrefab.transform.position.y - launchPoint.position.y) > 1f)
         {
             if (Time.timeScale == 0)
                 audioSource.Stop();
@@ -202,7 +202,7 @@ public class FishingRodController : MonoBehaviour
                 if(!audioSource.isPlaying)
                     audioSource.Play();
             }
-            curPrefab.transform.position = Vector3.MoveTowards(curPrefab.transform.position, launchPoint.position, (reelSpeed + rillLevel.valueList[GameManager.Instance.rillLevel]) * Time.deltaTime);
+            curPrefab.transform.position = Vector3.MoveTowards(curPrefab.transform.position,launchPoint.position , (reelSpeed + rillLevel.valueList[GameManager.Instance.rillLevel]) * Time.deltaTime);
             yield return null;
         }
 
@@ -211,7 +211,6 @@ public class FishingRodController : MonoBehaviour
         {
             meshRenderer.enabled = true;
         }
-        //¿©±â
         audioSource.Stop();
         Destroy(curPrefab);
         ResetLine();

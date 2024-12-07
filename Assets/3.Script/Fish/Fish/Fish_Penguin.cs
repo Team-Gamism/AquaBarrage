@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fish_Penguin : Fish, ICanFish
+public class Fish_Penguin : Fish, IFishable
 {
     private Animator anim;
     private bool isAttack = false;
