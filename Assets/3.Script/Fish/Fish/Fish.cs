@@ -1,6 +1,7 @@
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public interface IFishable
 {
@@ -10,6 +11,8 @@ public interface IFishable
 
 public class Fish : MonoBehaviour, IFishable
 {
+    public Action fishedAcion; 
+
     public FishStatSO fishStat;
 
     public Transform[] bulletPoints;
@@ -132,7 +135,7 @@ public class Fish : MonoBehaviour, IFishable
         gameObject.SetActive(true);
 
         transform.SetParent(hook);
-
+        fishedAcion?.Invoke();
         transform.localPosition = Vector3.zero;
 
         GameManager.Instance.fishCount++;
