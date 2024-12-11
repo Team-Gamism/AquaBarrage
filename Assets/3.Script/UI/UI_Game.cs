@@ -24,6 +24,7 @@ public class UI_Game : MonoBehaviour
 
     private void Start()
     {
+        GameManager.Instance.isPlayGame = true;
         store = Resources.Load<GameObject>("Store");
         StageInit();
         StartCoroutine(UpdateGame());
