@@ -66,7 +66,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: ce6b4a627e540c647b3d05efbe7775bb, type: 3}
+    m_Font: {fileID: 12800000, guid: 95e6da8221062a74e963bd038db21c20, type: 3}
     m_FontSize: 97
     m_FontStyle: 2
     m_BestFit: 0
@@ -165,7 +165,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &8830954231339789434
 MonoBehaviour:
   m_ObjectHideFlags: 0

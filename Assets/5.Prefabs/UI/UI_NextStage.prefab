@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5122183435054769171}
   - component: {fileID: 5323066924915531918}
   - component: {fileID: 5441303201070618425}
+  - component: {fileID: 684082478801496652}
   m_Layer: 5
   m_Name: UI_NextStage
   m_TagString: Untagged
@@ -128,6 +129,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
+--- !u!114 &684082478801496652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1816498694415775481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e710938d716cb2649b3203fe3c986dea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 0}
 --- !u!1 &4427809112004080556
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,8 +210,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: ce6b4a627e540c647b3d05efbe7775bb, type: 3}
-    m_FontSize: 124
+    m_Font: {fileID: 12800000, guid: 95e6da8221062a74e963bd038db21c20, type: 3}
+    m_FontSize: 111
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 10

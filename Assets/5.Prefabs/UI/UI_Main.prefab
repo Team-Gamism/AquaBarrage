@@ -356,8 +356,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: ce6b4a627e540c647b3d05efbe7775bb, type: 3}
-    m_FontSize: 48
+    m_Font: {fileID: 12800000, guid: 95e6da8221062a74e963bd038db21c20, type: 3}
+    m_FontSize: 45
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -435,8 +435,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: ce6b4a627e540c647b3d05efbe7775bb, type: 3}
-    m_FontSize: 48
+    m_Font: {fileID: 12800000, guid: 95e6da8221062a74e963bd038db21c20, type: 3}
+    m_FontSize: 45
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -605,8 +605,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: ce6b4a627e540c647b3d05efbe7775bb, type: 3}
-    m_FontSize: 48
+    m_Font: {fileID: 12800000, guid: 95e6da8221062a74e963bd038db21c20, type: 3}
+    m_FontSize: 45
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -1365,8 +1365,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: ce6b4a627e540c647b3d05efbe7775bb, type: 3}
-    m_FontSize: 150
+    m_Font: {fileID: 12800000, guid: 95e6da8221062a74e963bd038db21c20, type: 3}
+    m_FontSize: 129
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -1459,8 +1459,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: ce6b4a627e540c647b3d05efbe7775bb, type: 3}
-    m_FontSize: 48
+    m_Font: {fileID: 12800000, guid: 95e6da8221062a74e963bd038db21c20, type: 3}
+    m_FontSize: 45
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -1506,7 +1506,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 180, y: 40}
+  m_AnchoredPosition: {x: 219, y: 40}
   m_SizeDelta: {x: 480, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4241923343064713049
@@ -1538,7 +1538,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: ce6b4a627e540c647b3d05efbe7775bb, type: 3}
+    m_Font: {fileID: 12800000, guid: 95e6da8221062a74e963bd038db21c20, type: 3}
     m_FontSize: 38
     m_FontStyle: 1
     m_BestFit: 0
@@ -1550,7 +1550,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Aqua Barrage  1.1.4
+  m_Text: Aqua Barrage  1.1.6
 --- !u!1 &7147506720200927123
 GameObject:
   m_ObjectHideFlags: 0
@@ -1874,8 +1874,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: ce6b4a627e540c647b3d05efbe7775bb, type: 3}
-    m_FontSize: 48
+    m_Font: {fileID: 12800000, guid: 95e6da8221062a74e963bd038db21c20, type: 3}
+    m_FontSize: 45
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1

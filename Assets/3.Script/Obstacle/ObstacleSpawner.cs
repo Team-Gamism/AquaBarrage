@@ -21,7 +21,7 @@ public class ObstacleSpawner : MonoBehaviour
             int i = Random.Range(0, 3);
             Debug.Log("º÷" + i);
 
-            if (!LevelManager.instance.isPrirate && i == 0 && !LevelManager.instance.isPausedGame)
+            if (!LevelManager.instance.isPrirate && i == 0)
             {
                 LevelManager.instance.isPrirate = true;
 

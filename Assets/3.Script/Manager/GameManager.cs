@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
                 if (!isExplosionDamage)
                     hitEvent?.Invoke();
             }
-            if (!LevelManager.instance.isBossCut || !isClearStage)
+            if (!isClearStage || !isChangeScene)
                 curHp = Mathf.Clamp(value, 0, maxHp);
 
             isExplosionDamage = false;
@@ -82,7 +82,7 @@ public class GameManager : MonoBehaviour
         rillLevel = 0;
         fishCount = 0;
 
-        curHp = maxHp;
+        CurHP = maxHp;
     }
 
     public void EndGame()
@@ -166,6 +166,8 @@ public class GameManager : MonoBehaviour
     public AudioSource effectAudioSource;
 
     public AudioMixer audioMixer;
+
+    public bool isChangeScene;
 
     public float musicAmount;
 }
