@@ -10329,7 +10329,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: ce6b4a627e540c647b3d05efbe7775bb, type: 3}
+    m_Font: {fileID: 12800000, guid: 95e6da8221062a74e963bd038db21c20, type: 3}
     m_FontSize: 74
     m_FontStyle: 0
     m_BestFit: 0
@@ -15933,6 +15933,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2309743607039628951, guid: 841b24347c1b4c9419d158a5325e2cf6, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4049032512343745099, guid: 841b24347c1b4c9419d158a5325e2cf6, type: 3}
       propertyPath: m_Name
       value: Coral2
@@ -16004,7 +16008,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: ce6b4a627e540c647b3d05efbe7775bb, type: 3}
+    m_Font: {fileID: 12800000, guid: 95e6da8221062a74e963bd038db21c20, type: 3}
     m_FontSize: 74
     m_FontStyle: 0
     m_BestFit: 0
@@ -16781,7 +16785,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: ce6b4a627e540c647b3d05efbe7775bb, type: 3}
+    m_Font: {fileID: 12800000, guid: 95e6da8221062a74e963bd038db21c20, type: 3}
     m_FontSize: 74
     m_FontStyle: 0
     m_BestFit: 0
@@ -18308,7 +18312,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: ce6b4a627e540c647b3d05efbe7775bb, type: 3}
+    m_Font: {fileID: 12800000, guid: 95e6da8221062a74e963bd038db21c20, type: 3}
     m_FontSize: 48
     m_FontStyle: 3
     m_BestFit: 0
@@ -18663,7 +18667,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: ce6b4a627e540c647b3d05efbe7775bb, type: 3}
+    m_Font: {fileID: 12800000, guid: 95e6da8221062a74e963bd038db21c20, type: 3}
     m_FontSize: 48
     m_FontStyle: 3
     m_BestFit: 0
