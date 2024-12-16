@@ -43,13 +43,12 @@ public class UI_Game : MonoBehaviour
 
             if (GameManager.Instance.curHp <= 0 && !LevelManager.instance.isBossCut)
             {
-                LevelManager.instance.isPausedGame = true;
 
                 transform.GetChild(1).gameObject.SetActive(true); //GameOver Panel
                 gameOverStageText.text = $"최종기록 : Stage {GameManager.Instance.stageData}";
             }
 
-            if (!LevelManager.instance.isPausedGame)
+            if (!GameManager.Instance.isClearStage)
             {
                 if (GameManager.Instance.stageData % 5 != 0)
                     timerText.text = $"{(int)time / 60} : {(int)time % 60}";
@@ -66,9 +65,6 @@ public class UI_Game : MonoBehaviour
                 Transform trans = Instantiate(store).transform;
                 trans.rotation = Quaternion.Euler(0f, 90f, 0f);
                 trans.GetChild(0).position = trans.position + new Vector3(0.215f, 0.715f, 0.1656f);
-
-                LevelManager.instance.isPausedGame = true;
-
                 StartCoroutine(GO());
             }
 
@@ -77,8 +73,6 @@ public class UI_Game : MonoBehaviour
                 transform.GetChild(2).gameObject.SetActive(true); //Result Panel
                 resultStageText.text = $"최종기록 : Stage {GameManager.Instance.stageData}";
                 curCaughtFishText.text = $"잡은 물고기 수 : {GameManager.Instance.fishCount}마리";
-                
-                LevelManager.instance.isPausedGame = true;
             }
         }
     }
@@ -128,7 +122,6 @@ public class UI_Game : MonoBehaviour
     {
         UI_Fade.instance.FadeIn();
         yield return new WaitForSecondsRealtime(2f);
-        Debug.Log("?");
         SceneManager.LoadScene("RankScene");
     }
 
@@ -155,7 +148,7 @@ public class UI_Game : MonoBehaviour
 
         time = LevelManager.instance.stageInfo.stageTime;
         GameManager.Instance.isClearStage = false;
-        LevelManager.instance.isPausedGame = false;
+        GameManager.Instance.isChangeScene = false;
 
         Fish[] fishes = FindObjectsOfType<Fish>();
         foreach (Fish item in fishes)

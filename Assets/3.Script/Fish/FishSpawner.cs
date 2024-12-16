@@ -16,6 +16,8 @@ public class FishSpawner : MonoBehaviour
     {
         while (true)
         {
+            if (GameManager.Instance.isClearStage)
+                break;
 
             int randomIdx;
 

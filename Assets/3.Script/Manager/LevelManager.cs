@@ -7,7 +7,6 @@ public class LevelManager : MonoBehaviour
 {
     public StageInfoSO stageInfo;
 
-    public bool isPausedGame = false;
     public bool isBossCut = false;
     public bool isPrirate = false;
     public static LevelManager instance;
