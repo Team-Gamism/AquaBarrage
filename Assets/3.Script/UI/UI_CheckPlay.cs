@@ -9,15 +9,19 @@ public class UI_CheckPlay : MonoBehaviour
 {
     [SerializeField] AudioClip clickAudio;
 
+    public GameObject settingUI;
+
     Text playText;
     Text tutorialText;
     Text leaveText;
+    Text settingText;
 
     private void Start()
     {
         playText = Util.FindChild<Text>(gameObject,"Play");
         tutorialText = Util.FindChild<Text>(gameObject,"Tutorial");
         leaveText = Util.FindChild<Text>(gameObject,"Leave");
+        settingText = Util.FindChild<Text>(gameObject, "Setting");
 
         UI_EventHandler evt = playText.GetComponent<UI_EventHandler>();
         evt._OnClick += Play;
@@ -28,6 +32,11 @@ public class UI_CheckPlay : MonoBehaviour
         evt._OnClick += Tutorial;
         evt._OnEnter += (PointerEventData p) => { tutorialText.fontSize = 65; };
         evt._OnExit += (PointerEventData p) => { tutorialText.fontSize = 50; };
+
+        evt = settingText.GetComponent<UI_EventHandler>();
+        evt._OnClick += (PointerEventData p) => { Instantiate(settingUI); };
+        evt._OnEnter += (PointerEventData p) => { settingText.fontSize = 65; };
+        evt._OnExit += (PointerEventData p) => { settingText.fontSize = 50; };
 
         evt = leaveText.GetComponent<UI_EventHandler>();
         evt._OnClick += Leave;
@@ -59,7 +68,7 @@ public class UI_CheckPlay : MonoBehaviour
     {
         UI_Fade.instance.FadeIn();
         yield return new WaitForSeconds(2f);
-        SceneManager.LoadScene("HelpScene2");
+        SceneManager.LoadScene("HelpScene");
     }
 
     public void Leave(PointerEventData p)

@@ -18,6 +18,9 @@ public class ObstacleSpawner : MonoBehaviour
         {
             yield return new WaitForSeconds(15f);
 
+            if(GameManager.Instance.isClearStage)
+                yield break;
+
             int i = Random.Range(0, 3);
             Debug.Log("º÷" + i);
 

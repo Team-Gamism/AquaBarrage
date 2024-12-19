@@ -21,7 +21,7 @@ public class NextStage : MonoBehaviour
     {
         UI_Fade.instance.FadeIn();
         yield return new WaitForSeconds(2f);
-
+        GameManager.Instance.isClearStage = false;
         if (GameManager.Instance.stageData % 5 != 0)
             SceneManager.LoadScene("GameScene_UI_HC");
         else

@@ -46,7 +46,7 @@ public class Fin : MonoBehaviour
             }
             else
             {
-                if (SceneManager.GetActiveScene().buildIndex == 5)
+                if (SceneManager.GetActiveScene().name == "HelpScene")
                     TutorialController.parryingAcion?.Invoke();
                 Instantiate(parryingEffect, other.transform.position + new Vector3(0, 1, 0), Quaternion.identity, other.transform);
                 GameManager.Instance.effectAudioSource.PlayOneShot(parryingAudio);
