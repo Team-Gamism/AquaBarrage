@@ -17,6 +17,7 @@ public class UI_ClearTutorial : MonoBehaviour
 
     IEnumerator LoadGameScene()
     {
+        GameManager.Instance.InitData();
         UI_Fade.instance.FadeIn();
         yield return new WaitForSecondsRealtime(2);
         SceneManager.LoadScene(1);
