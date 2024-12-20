@@ -119,17 +119,17 @@ public class Fish : MonoBehaviour, IFishable
         }
     }
 
-    
+
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.layer == 8)
+        if (other.gameObject.layer == 8)
         {
             Destroy(gameObject);
         }
     }
 
-   public virtual Transform Fished(Transform hook)
+    public virtual Transform Fished(Transform hook)
     {
         gameObject.SetActive(false);
         gameObject.SetActive(true);

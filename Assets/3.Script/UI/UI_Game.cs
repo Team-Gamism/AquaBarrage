@@ -150,17 +150,6 @@ public class UI_Game : MonoBehaviour
         GameManager.Instance.isClearStage = false;
         GameManager.Instance.isChangeScene = false;
 
-        Fish[] fishes = FindObjectsOfType<Fish>();
-        foreach (Fish item in fishes)
-        {
-            Destroy(item.gameObject);
-        }
-
-        Fin[] fins = FindObjectsOfType<Fin>();
-        foreach (Fin item in fins)
-        {
-            Destroy(item.gameObject);
-        }
 
         if (GameManager.Instance.stageData > 1)
             UI_NextStage.instance.NextStage();
