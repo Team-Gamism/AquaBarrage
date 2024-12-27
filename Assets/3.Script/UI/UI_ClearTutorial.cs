@@ -20,7 +20,7 @@ public class UI_ClearTutorial : MonoBehaviour
         GameManager.Instance.InitData();
         UI_Fade.instance.FadeIn();
         yield return new WaitForSecondsRealtime(2);
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("GameScene_UI_HC");
     }
 
     public void Home()
@@ -32,6 +32,6 @@ public class UI_ClearTutorial : MonoBehaviour
     {
         UI_Fade.instance.FadeIn();
         yield return new WaitForSecondsRealtime(2);
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("MainScene");
     }
 }
