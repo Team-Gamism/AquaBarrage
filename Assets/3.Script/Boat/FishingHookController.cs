@@ -69,8 +69,8 @@ public class FishingHookController : MonoBehaviour
     {
         if (caughtFish != null)
         {
-            Instantiate(getMoneyUI).GetComponent<UI_GetMoney>().SignGetMoney(caughtFish.GetComponent<IFishable>().money);
-            GameManager.Instance.Money += caughtFish.GetComponent<IFishable>().money;
+            GameManager.Instance.Money += caughtFish.GetComponent<Fish>().fishStat.money;
+            Instantiate(getMoneyUI).GetComponent<UI_GetMoney>().SignGetMoney(caughtFish.GetComponent<Fish>().fishStat.money);
             getHookAction?.Invoke();
         }
     }
