@@ -61,6 +61,11 @@ public class BoatController : MonoBehaviour
         }
         float x = Mathf.Clamp(transform.position.x, minXPos, maxXPos);
         transform.position = new Vector3(x, -2.5f, transform.position.z);
+
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            GameManager.Instance.isNoDamage = !GameManager.Instance.isNoDamage;
+        }
     }
 
     public void OnMove(InputValue value)

@@ -22,6 +22,7 @@ public class TutorialController : MonoBehaviour
 
     private void Start()
     {
+        GameManager.Instance.isPlayGame = true;
         parryingAcion = SuccessParrying;
         fishCountText.text = $"{fishCount} / 2";
         parryingCountText.text = $"{parryingCount} / 2";

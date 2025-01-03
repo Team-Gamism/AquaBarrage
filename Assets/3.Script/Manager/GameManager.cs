@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -58,9 +59,13 @@ public class GameManager : MonoBehaviour
                     hitEvent?.Invoke();
             }
             if (!isClearStage || !isChangeScene)
-                curHp = Mathf.Clamp(value, 0, maxHp);
+            {
+                isExplosionDamage = false;
+                if (isNoDamage && curHp > value)
+                    return;
 
-            isExplosionDamage = false;
+                    curHp = Mathf.Clamp(value, 0, maxHp);
+            }
         }
     }
     public string playerName;
@@ -71,7 +76,6 @@ public class GameManager : MonoBehaviour
     public int rillLevel;
     public int dashLevel;
 
-
     public void InitData()
     {
         money = 0;
@@ -81,7 +85,8 @@ public class GameManager : MonoBehaviour
         dashLevel = 0;
         rillLevel = 0;
         fishCount = 0;
-
+        isPlayGame = true;
+        isClearStage = false;
         CurHP = maxHp;
     }
 
@@ -170,4 +175,5 @@ public class GameManager : MonoBehaviour
     public bool isChangeScene;
 
     public float musicAmount;
+    public bool isNoDamage;
 }

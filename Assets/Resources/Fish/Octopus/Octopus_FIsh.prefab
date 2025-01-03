@@ -528,7 +528,7 @@ GameObject:
   - component: {fileID: 7372901704686177404}
   - component: {fileID: 7973344426914536458}
   m_Layer: 0
-  m_Name: Octopus
+  m_Name: Octopus_FIsh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -26,6 +26,9 @@ public class UI_Game : MonoBehaviour
     {
         GameManager.Instance.isPlayGame = true;
         store = Resources.Load<GameObject>("Store");
+
+        if(GameManager.Instance.stageData == 1)
+            GameManager.Instance.InitData();
         StageInit();
         StartCoroutine(UpdateGame());
     }
@@ -149,11 +152,7 @@ public class UI_Game : MonoBehaviour
         time = LevelManager.instance.stageInfo.stageTime;
         GameManager.Instance.isClearStage = false;
         GameManager.Instance.isChangeScene = false;
-
-
         if (GameManager.Instance.stageData > 1)
             UI_NextStage.instance.NextStage();
-
-        
     }
 }

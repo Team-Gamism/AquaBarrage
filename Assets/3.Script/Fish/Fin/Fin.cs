@@ -40,7 +40,7 @@ public class Fin : MonoBehaviour
         {
             if (GameManager.Instance != null && !GameManager.Instance.isDash)
             {
-                if(SceneManager.GetActiveScene().buildIndex != 5)
+                if(SceneManager.GetActiveScene().name != "HelpScene" && GameManager.Instance.isPlayGame && !GameManager.Instance.isNoDamage)
                  GameManager.Instance.CurHP--;
                 Instantiate(hitEffect, other.transform.position, Quaternion.identity);
             }

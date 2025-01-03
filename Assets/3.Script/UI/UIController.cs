@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class UIController : MonoBehaviour
             Destroy(uiList[uiList.Count - 1]);
         else
         {
-          if(GameManager.Instance.isPlayGame)
+          if(GameManager.Instance.isPlayGame && SceneManager.GetActiveScene().name != "MainScene")
             Instantiate(pause);
         }
     }
