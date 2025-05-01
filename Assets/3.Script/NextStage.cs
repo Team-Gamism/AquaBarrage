@@ -20,6 +20,7 @@ public class NextStage : MonoBehaviour
     IEnumerator LoadNextGameScene()
     {
         UI_Fade.instance.FadeIn();
+        GameManager.Instance.player.GetComponent<BoxCollider>().enabled = false;
         yield return new WaitForSeconds(2f);
         GameManager.Instance.isClearStage = false;
         if (GameManager.Instance.stageData % 5 != 0)

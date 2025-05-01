@@ -1,8 +1,6 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -47,24 +45,33 @@ public class GameManager : MonoBehaviour
     public Action hitEvent;
     public Action explosionHitEvent;
 
+
+    public Transform player;
+
+    public GameObject uiController;
+
+    public AudioSource effectAudioSource;
+
+    public AudioMixer audioMixer;
+
+    public bool isChangeScene;
+
+    public float musicAmount;
+    public bool isNoDamage;
+
     public int curHp;
     public int CurHP
     {
         get => curHp;
         set
         {
+            if (isNoDamage)
+                return;
+
             if (curHp > value)
             {
-                if (!isExplosionDamage)
-                    hitEvent?.Invoke();
-            }
-            if (!isClearStage || !isChangeScene)
-            {
-                isExplosionDamage = false;
-                if (isNoDamage && curHp > value)
-                    return;
-
-                    curHp = Mathf.Clamp(value, 0, maxHp);
+                hitEvent?.Invoke();
+                curHp = Mathf.Clamp(value, 0, maxHp);
             }
         }
     }
@@ -129,9 +136,9 @@ public class GameManager : MonoBehaviour
             Debug.Log(playerName);
             SortData();
         }
-        else if(playerDataList[4].stageData == stageData)
+        else if (playerDataList[4].stageData == stageData)
         {
-            if(playerDataList[4].catchFishCount < fishCount)
+            if (playerDataList[4].catchFishCount < fishCount)
             {
                 playerDataList[4].stageData = stageData;
                 playerDataList[4].playerName = playerName;
@@ -163,17 +170,4 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt($"CatchData{i}", 0);
         }
     }
-
-    public Transform player;
-
-    public GameObject uiController;
-
-    public AudioSource effectAudioSource;
-
-    public AudioMixer audioMixer;
-
-    public bool isChangeScene;
-
-    public float musicAmount;
-    public bool isNoDamage;
 }

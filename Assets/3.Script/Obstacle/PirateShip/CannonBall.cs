@@ -32,7 +32,6 @@ public class CannonBall : MonoBehaviour
                 explosionEffect.transform.position = transform.position;
                 explosionEffect.Play();
             }
-            GameManager.Instance.isExplosionDamage = true;
             GameManager.Instance.CurHP--;
 
             StartCoroutine(DestroyAfterExplosion());
