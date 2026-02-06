@@ -14,6 +14,7 @@ public class UI_Main : MonoBehaviour
     private void Start()
     {
         GameManager.Instance.InitData();
+        AddressableManager.Instance.ReleaseAll();
         GameObject go = Instantiate(settingUI);
         go.GetComponent<UI_Setting>().FirstSet();
         Destroy(go);

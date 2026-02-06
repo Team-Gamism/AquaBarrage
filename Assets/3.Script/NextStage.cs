@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class NextStage : MonoBehaviour
 {
+    [SerializeField] List<StageInfoSO> stageList;
+
     private void OnTriggerEnter(Collider other)
     {
         if (GameManager.Instance.isClearStage)
@@ -23,6 +25,10 @@ public class NextStage : MonoBehaviour
         GameManager.Instance.player.GetComponent<BoxCollider>().enabled = false;
         yield return new WaitForSeconds(2f);
         GameManager.Instance.isClearStage = false;
+
+        yield return FishPreloadController.Instance
+            .Preload(stageList[GameManager.Instance.stageData - 1].fishSpawnList);
+
         if (GameManager.Instance.stageData % 5 != 0)
             SceneManager.LoadScene("GameScene_UI_HC");
         else

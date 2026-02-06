@@ -119,6 +119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c55b6f0126a57744b152d110c5e5a70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stage1Info: {fileID: 11400000, guid: db2e0c36659bcd2479da394077b311a5, type: 2}
+  tutorialInfo: {fileID: 11400000, guid: 99111979295fc3d44a98cf5c076fc51a, type: 2}
   clickAudio: {fileID: 8300000, guid: 580c45279e0bb9b4fb35e5a97282e87f, type: 3}
   settingUI: {fileID: 1251077278292968336, guid: 54e0678f87edd434987d93b4bbd4ade3, type: 3}
 --- !u!95 &5992083251198746183
