@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.07049091, g: 0.35360757, b: 0.97003746, a: 1}
+  m_IndirectSpecularColor: {r: 0.07052275, g: 0.35373604, b: 0.97078824, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1035,6 +1035,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51542c13492f01449875e872fd0bb687, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stageList:
+  - {fileID: 11400000, guid: db2e0c36659bcd2479da394077b311a5, type: 2}
+  - {fileID: 11400000, guid: c1d54a4c251dae94380d87a7766eef77, type: 2}
+  - {fileID: 11400000, guid: 4b8abb863e028ae409c6b7c6f250975d, type: 2}
+  - {fileID: 11400000, guid: 379d70d50a81f0949b7ca9e52fc25348, type: 2}
+  - {fileID: 11400000, guid: 88d16193363151a4580553453db4aa04, type: 2}
 --- !u!54 &554072316
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1785,6 +1791,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 1
+  fishDataBase: {fileID: 11400000, guid: d44a8ec172982254888d3f12959d1237, type: 2}
 --- !u!1 &1114812440
 GameObject:
   m_ObjectHideFlags: 0
@@ -2730,6 +2737,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 0
+  fishDataBase: {fileID: 11400000, guid: d44a8ec172982254888d3f12959d1237, type: 2}
 --- !u!1 &1454309715
 GameObject:
   m_ObjectHideFlags: 0
@@ -3051,17 +3059,18 @@ MonoBehaviour:
   fishCount: 0
   stageData: 0
   maxHp: 6
-  curHp: 1
-  playerName: 
-  engineLevel: 0
-  rillLevel: 0
-  dashLevel: 0
   player: {fileID: 0}
   uiController: {fileID: 0}
   effectAudioSource: {fileID: 0}
   audioMixer: {fileID: 0}
   isChangeScene: 0
   musicAmount: 0
+  isNoDamage: 0
+  curHp: 1
+  playerName: 
+  engineLevel: 0
+  rillLevel: 0
+  dashLevel: 0
 --- !u!4 &1671803080
 Transform:
   m_ObjectHideFlags: 0

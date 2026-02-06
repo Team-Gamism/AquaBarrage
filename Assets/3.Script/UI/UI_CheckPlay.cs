@@ -7,6 +7,9 @@ using UnityEngine.UI;
 
 public class UI_CheckPlay : MonoBehaviour
 {
+    [SerializeField] StageInfoSO stage1Info;
+    [SerializeField] StageInfoSO tutorialInfo;
+    
     [SerializeField] AudioClip clickAudio;
 
     public GameObject settingUI;
@@ -55,6 +58,10 @@ public class UI_CheckPlay : MonoBehaviour
         UI_Fade.instance.FadeIn();
         yield return new WaitForSeconds(2f);
         GameManager.Instance.isPlayGame = true;
+
+        yield return FishPreloadController.Instance
+            .Preload(stage1Info.fishSpawnList);
+
         SceneManager.LoadScene("GameScene_UI_HC");
     }
 
@@ -68,6 +75,10 @@ public class UI_CheckPlay : MonoBehaviour
     {
         UI_Fade.instance.FadeIn();
         yield return new WaitForSeconds(2f);
+
+        yield return FishPreloadController.Instance
+            .Preload(tutorialInfo.fishSpawnList);
+
         SceneManager.LoadScene("HelpScene");
     }
 

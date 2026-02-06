@@ -7,8 +7,6 @@ public class HelpFishSpawner : MonoBehaviour
     [SerializeField] TutorialController tutorialController;
     public Fish.Fish_Direction direction;
 
-    public GameObject fishPrefab;
-
     private void Start()
     {
         StartCoroutine(SpawnFish());
@@ -19,7 +17,7 @@ public class HelpFishSpawner : MonoBehaviour
         while (true)
         {
 
-            GameObject fishObj = Instantiate(fishPrefab,
+            GameObject fishObj = Instantiate(AddressableManager.Instance.Get<GameObject>("Fish/ClownFish"),
                 transform.position + Vector3.up * Random.Range(-3f, 3f), Quaternion.identity);
 
             Fish fish = fishObj.GetComponent<Fish>();
