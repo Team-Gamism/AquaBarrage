@@ -10,29 +10,39 @@ public class FishSpawner : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(SpawnFish());
+        if(direction == Fish.Fish_Direction.Left)
+            GameManager.Instance.leftSpawner = this;
+        else
+            GameManager.Instance.rightSpawner = this;
+
+        StartCoroutine(SpawnFishCor());
     }
 
-    IEnumerator SpawnFish()
+    IEnumerator SpawnFishCor()
     {
         while (true)
         {
             if (GameManager.Instance.isClearStage)
                 break;
 
-            GameObject prefab = GetFishPrefab();
-
-            GameObject fishObj = Instantiate(prefab,
-                transform.position + Vector3.up * Random.Range(-3f, 3f), Quaternion.identity);
-
-            Fish fish = fishObj.GetComponent<Fish>();
-            fish.fish_Direction = direction;
-
-            if (fish.fish_Direction == Fish.Fish_Direction.Right)
-                transform.rotation = Quaternion.Euler(new Vector3(transform.rotation.eulerAngles.x,
-                    transform.rotation.eulerAngles.y, -transform.rotation.eulerAngles.z));
+            SpawnFish();
             yield return new WaitForSeconds(12.5f + Random.Range(-1.5f, 1.5f));
         }
+    }
+
+    public void SpawnFish()
+    {
+        GameObject prefab = GetFishPrefab();
+
+        GameObject fishObj = Instantiate(prefab,
+            transform.position + Vector3.up * Random.Range(-3f, 3f), Quaternion.identity);
+
+        Fish fish = fishObj.GetComponent<Fish>();
+        fish.fish_Direction = direction;
+
+        if (fish.fish_Direction == Fish.Fish_Direction.Right)
+            transform.rotation = Quaternion.Euler(new Vector3(transform.rotation.eulerAngles.x,
+                transform.rotation.eulerAngles.y, -transform.rotation.eulerAngles.z));
     }
 
     GameObject GetFishPrefab()
@@ -79,4 +89,6 @@ public class FishSpawner : MonoBehaviour
         // fallback (¿Ã∑–ªÛ æ» ≈Ω)
         return list[0].fishType;
     }
+
+   
 }
