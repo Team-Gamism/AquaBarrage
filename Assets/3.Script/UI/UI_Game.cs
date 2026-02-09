@@ -37,6 +37,7 @@ public class UI_Game : MonoBehaviour
     {
         while (true)
         {
+
             yield return null;
             for (int i = 1; i <= GameManager.Instance.maxHp; i++)
             {
@@ -69,6 +70,7 @@ public class UI_Game : MonoBehaviour
                 trans.rotation = Quaternion.Euler(0f, 90f, 0f);
                 trans.GetChild(0).position = trans.position + new Vector3(0.215f, 0.715f, 0.1656f);
                 StartCoroutine(GO());
+                yield break;
             }
 
             if (LevelManager.instance.isBossCut)
