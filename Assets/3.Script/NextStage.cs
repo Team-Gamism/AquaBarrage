@@ -8,15 +8,29 @@ public class NextStage : MonoBehaviour
 {
     [SerializeField] List<StageInfoSO> stageList;
 
+    public static NextStage Instance;
+    
+    private void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (GameManager.Instance.isClearStage)
             if (other.CompareTag("Player"))
             {
-                GameManager.Instance.stageData++;
-
-                StartCoroutine(LoadNextGameScene());
+                LoadNextStage();
             }
+    }
+
+    public void LoadNextStage()
+    {
+        GameManager.Instance.stageData++;
+        StartCoroutine(LoadNextGameScene());
     }
 
     IEnumerator LoadNextGameScene()

@@ -170,4 +170,16 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt($"CatchData{i}", 0);
         }
     }
+
+    public FishSpawner leftSpawner;
+    public FishSpawner rightSpawner;
+
+    public void SpawnRendomStageFish()
+    {
+        int idx = UnityEngine.Random.Range(0, 1);
+        if (idx == 0)
+            leftSpawner.SpawnFish();
+        else
+            rightSpawner.SpawnFish();
+    }
 }
